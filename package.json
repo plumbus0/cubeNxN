@@ -1,0 +1,11 @@
+{
+  "name": "cubesite",
+  "version": "1.0.0",
+  "description": "cube site to make nxn cubes and to learn!",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

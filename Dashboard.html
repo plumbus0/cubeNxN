@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Dashboard</title>    
+</head>
+
+<body class="toggleDark">
+    
+    <insertBar></insertBar>
+    <insertD-L></insertD-L>
+    <link rel="stylesheet" href="menuBar.css">
+    <script src="menuBar.js"></script>
+    <div class="title-contain">
+        <h1 class="title">Dashboard</h1>
+    </div>
+    <div id="noTouch"></div>    
+    <div class="startPos" id="tutorialBox">
+        Hello👋 welcome to the <div class="coolText"> Dashboard </div>!
+        
+        <div class="center">
+            here you will create delete and manage your cubes <br>
+            will you like to have a tour creating your first tutorial cube?
+            <div class="continue clickText" onclick="tutorialWalk(event)">continue</div>
+            <div class="skip clickText" onclick="skipTutorial()" >skip</div> 
+        </div>
+    </div>
+
+    <div class="main">
+        <div id="timeContain">
+            <div class="continTimeInfo">
+                <img class="timeImg" onclick="toogleShowScores()" src="https://www.svgrepo.com/show/490407/time-fast.svg" alt="">
+                <div id="highScores">
+                </div>    
+                <svg class="dropArr" onclick="toggleScoreView()" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M7.293 4.707 14.586 12l-7.293 7.293 1.414 1.414L17.414 12 8.707 3.293 7.293 4.707z"/></svg>
+            </div>
+        </div>
+        
+        <div class='key-contain'> 
+            <div class='key-section'>
+                <div class='colour-display gr-notsolved'> 
+                    <div class='describe'> not solved </div>
+                </div>
+            </div>
+            <div class='key-section'>
+                <div class='colour-display gr-solved'> 
+                    <div class='describe'> solved </div>
+                </div>
+            </div>
+            <div class='key-section'>
+                <div class='colour-display gr-play'>
+                    <div class='describe'> play-mode </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="closeBox(event)" class="" id="containDisplay">
+            
+        </div>
+
+    </div>
+    <div id="footer" class="footer">
+        <div class="contain-scroll">
+            need assistance with: 
+            <div id="scroll">
+                <div class="moveingEl"  id="first">Opening Cube</div>
+                <div class="moveingEl" >Adding Cube</div>
+                <div class="moveingEl" >Removeing Cube</div>
+                <div class="moveingEl" >Other</div>
+                <div class="moveingEl" >Opening Cube</div>
+            </div>
+            ?
+        </div>
+
+
+        <div class="help-Page">
+            -click to vist help center-
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    body {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        scrollbar-width: 1px;
+    }
+    body.dark{
+        background: black !important;
+    }
+    .moveingEl{
+        text-align: left;
+        text-decoration: underline #4040a1;
+    }
+    #noTouch{
+        width: 100vw;
+        position: fixed;
+        z-index: 1;
+        transition-duration: 1s;
+        height: 100vh;
+        background: radial-gradient(transparent, #000000b0);   
+    }
+    #highScores{
+        width: fit-content;
+        display: flex;
+        opacity: 0;
+        width: 0px;
+        flex-direction: row;
+        align-items: flex-start;
+        transition-duration: 1s;
+    }
+    .help-Page{
+        font-size: 13px;
+    }
+    .contain-scroll{
+        display: flex;
+        align-items: center;
+    }
+    #scroll{
+        display: flex;
+        overflow: hidden;
+        height: 21px;
+        flex-direction: column;
+    }
+
+    .continTimeInfo.active>#highScores{
+        width: 100%;
+        opacity: 1;
+        margin-left: 10px;
+        margin-top: -7px;
+    }
+    
+
+    .continTimeInfo.active>.dropArr{
+        opacity: 1;
+        width: 30px;
+    }
+    #first{
+        animation: 10s linear .1s scroll infinite;
+    }
+    .footer{
+        width: 100%;
+        display: flex;
+        border-top-left-radius: 166px;
+        border-top-right-radius: 166px;
+        background: #a28bbb2e;
+        margin-top: 40.6vh;
+        justify-content: center;
+        font-family: monospace;
+        font-size: 144%;
+        box-shadow: 0px 0px 20px 5px rgb(0 9 55 / 9%);
+        padding-top: 34px;
+        padding-bottom: 14px;
+        align-items: center;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    
+    .option{
+        border: 4px solid rgb(255, 0, 0);
+        border-radius: 17px;
+        background: linear-gradient(45deg, rgb(0 31 51), rgb(36 63 81));
+        color: white;
+        padding: 2px;
+        margin: 8px;
+        font-size: 20px;
+    }
+
+    .tuOption{
+        background: linear-gradient(45deg, rgb(190 190 190), rgb(190 190 190));
+        color: black;
+        padding: 4px;
+    }
+
+    .moreOp{
+        background: #efefef;
+        color: black;
+        padding: 4px;
+    }
+    .propalt{
+        background: #e9e6e6bf;
+        display: flex;
+        text-align: center;
+        border-radius: 11px;
+        padding: 11px;
+        color: black;
+        height: 5%;
+        box-shadow: 0px 0px 20px 0px rgb(0 9 55 / 40%);
+        align-items: center;
+    }
+
+    .createRef{
+        background: linear-gradient(45deg, #ffeeee, #d5e8ff);
+        color: black;
+        padding: 11px;
+    }
+
+    .coolText{
+        border: 4px solid rgb(222 222 255);
+        border-radius: 17px;
+        background-image: repeating-linear-gradient(45deg, rgb(64, 64, 161), #1e8cff 18px);
+        background-clip: text;
+        color: #ff000000;
+        padding: 3px;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+
+    .continue{
+        background-image: repeating-linear-gradient(45deg, rgb(64 161 95), #c6c6c6 86px);
+        background-clip: text;
+        padding: 3px;
+        font-size: 18px;
+        color: #01c32824;
+    }
+    
+    .skip{
+        background: repeating-linear-gradient(45deg, rgb(214 63 63), #e64848 53px);
+        padding: 4px;
+        font-size: 17px;
+        color: white;
+        border-radius: 12px;
+        margin-top: 53px;
+    }
+    .clickText:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .center{
+        display: flex;
+        width: 100%;
+        margin-top: 29px;
+        flex-direction: column;
+    }
+
+    .dropArr{
+        opacity: 0;
+        width: 0px;
+        fill: rgba(0, 0, 0, 0.328);
+        transition-duration: 0.4s;
+    }
+
+    .dropArr:hover{
+        cursor: pointer;
+        fill: rgba(0, 0, 0);
+    }
+
+    .timeImg:hover{
+        cursor: pointer;
+    }
+
+    .dropArr.active{
+        rotate: 90deg;
+    }
+    .addScroll{
+        max-height: 0;
+        margin: 0;
+        transition-duration: 1s;
+    }
+    .addScroll.visible{
+        height: auto;
+        max-height: 70px;
+        overflow: auto;
+        margin: 8px;
+    }
+    .visible>.time{
+        background: #14867070 !important;
+        color: white;
+        border-radius: 12px;
+        opacity: 1 !important;
+        display: flex;
+        margin: 1px !important;
+        padding: 2px !important;
+        height: 16px !important;
+        justify-content: space-between;
+    }
+    .scorePlace{
+        background: #14867070;
+        border-radius: 6px;
+        padding: 1px;
+        margin-left: 4px;
+        margin-right: 5px;
+    }
+    .continTimeInfo.active>#highScores>.SizeCubeScore{
+        width: fit-content;
+        opacity: 1;
+        background: #00000012;
+        margin: 4px;
+        display: flex;
+        border-radius: 12px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .SizeCubeScore.over{
+        background: linear-gradient(2deg, #e3e3ed, #eaeaff03) !important;
+    }
+    .SizeCubeScore.dark{
+        background:linear-gradient(3deg, black, #4d677466) !important        
+
+    }
+    .SizeCubeScore.over.dark{
+        background:linear-gradient(3deg, black, #4d677466) !important        
+    }
+    .continTimeInfo.active>#highScores>.SizeCubeScore>.highScore{
+        opacity: 1;
+        font-size: 14px;
+        background: #14867070;
+        color: white;
+        display: flex;
+        border-radius: 13px;
+        margin: 1px;
+        padding: 2px;
+        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .highScore{
+        opacity: 1;
+    }
+
+    .time{
+        opacity: 0;
+        height: 0;
+        transition: height 1s;
+    }
+
+    .SizeCubeScore{
+        opacity: 0;
+        transition: width 1s;
+        width: 0%;
+    }
+
+    .continTimeInfo.active>#highScores>.SizeCubeScore>.highScore>.time{
+        opacity: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        background: #14867070;
+        color: white;
+        border-radius: 13px;
+        transition-duration: 0.2s;
+    }
+
+    #timeContain{
+        width: 100%;
+        display: flex;
+        margin-bottom: 63px;
+        justify-content: center;
+    }
+
+
+    .continTimeInfo{
+        position: absolute;
+        z-index: 10;
+        box-shadow: 0px 0px 4px 0px rgb(0 9 55 / 40%);
+        transition-duration: 1s;
+        width: 30px;
+        height: 30px;
+        background: rgb(211 211 255 / 26%);
+        padding: 9px;
+        display: flex;
+        border-radius: 24px;
+        align-items: flex-start;
+        font-family: monospace;
+    }
+    
+    #tutorialBox{
+        position: fixed;
+        bottom: 20px;
+        right: 23px;
+        width: fit-content;
+        height: fit-content;
+        padding: 11px;
+        box-shadow: 0px 0px 167px 20px rgb(0 9 55 / 40%);
+        font-size: large;
+        color: black;
+        text-align: center;
+        display: flex;
+        z-index: 30;
+        border-radius: 12px;
+        font-family: monospace;
+        transition-duration: 1s;
+        border: 4px solid #9292921f;
+        background: linear-gradient(45deg, #e0ffee, #fbe2ff);
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    
+    .continTimeInfo.active{
+        width: revert;
+    }
+    
+    .timeImg{
+        height: 100%;
+    }
+    
+    .sizeBox{
+        width: 100%;
+        padding: 3%;
+        background: #e4e5e596;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .highlight{
+        border : 4px solid #ff0000 !important;
+    }
+
+    .arrImg{
+        cursor: pointer;
+        height: 100%;
+        width: 100%;
+        transition-duration: 1s;
+        background: #e1e3e4;
+        padding: 2px;
+        border-radius: 10px;
+    }
+
+    .binImg{
+        opacity: 0;
+        transition-duration: 1s;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 12%;
+        background: #ff00001a;
+        padding: 2px;
+        border-radius: 10px;
+    }
+    .arrR{
+        rotate: 180deg;
+    }
+    .arrBox{
+        display: flex;
+        width: 27px;
+    }
+    
+    .innerAro {
+        display: flex;
+        background: #e1e3e4;
+        border-radius: 12px;
+        align-items: center;
+        font-family: monospace;
+        justify-content: center;
+        font-size: xx-large;
+        width: 50%;
+    }
+    .xe{
+      font-size:44px;  
+    }
+
+    #infoText{
+        transition-duration: 2s;
+        position: absolute;
+        display: block;
+        background-color: red;
+        z-index: 1;
+        opacity: 0;
+        width: 100px;
+        height: 100px;
+    }
+    .main {
+        display: flex;
+        justify-content: center;
+        width: 89%;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #containDisplay {
+        background: linear-gradient(180deg, rgb(211 211 255 / 17%), transparent);
+        width: 88%;
+        height: 80%;
+        box-shadow: inset -1px 0px 20px 0px rgb(0 9 55 / 4%);
+        padding: 30px;
+        transition-duration: 0.7s;
+        border-radius: 10px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .prop {
+        background-color: #e9e6e6bf;
+        display: flex;
+        text-align: center;
+        border-radius: 11px;
+        padding: 11px;
+        z-index: 10;
+        height: 5%;
+        transition-duration: 0.7s;
+        box-shadow: 0px 0px 20px 0px rgb(0 9 55 / 40%);
+        flex-direction: column;
+        font-family: monospace;
+        align-items: center;
+    }
+
+    .prop:hover {
+        box-shadow: 0px 0px 20px 4px rgb(0 9 55 / 40%);
+        background-color: white;
+        height: 16%;
+    }
+
+    .ExtLinkImg {
+        opacity: 0;
+        transition-duration: 0.3s;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 12%;
+    }
+
+    .sizeC{
+        color: black;
+    }
+
+    .other {
+        opacity: 0;
+        transition-delay: 0.5;
+        transition-duration: 1s;
+    }
+
+    .prop:hover>.sizeC>.other {
+        opacity: 1;
+        background: #dededecf;
+        border-radius: 13px;
+        padding: 4px;
+    }
+
+    .plusContain {
+        position: absolute;
+        display: flex;
+        width: 40%;
+        transition-duration: 1s;
+        height: 40%;
+        z-index: 51;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .addCon {
+        cursor: pointer;
+        box-shadow: -1px 0px 20px 5px rgb(0 9 55 / 4%);
+        transition-duration: 1s !important;
+        background: linear-gradient(360deg, #ffffff, #ebf1f5) !important;
+        display: flex;
+        padding: 26px;
+        width: 200px;
+        height: 200px;
+        perspective: 600px;
+        border: 4px solid #9292921f;
+        transition-duration: 0.5s;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #ffeeee, #d5e8ff);
+        margin: 50px;
+        margin-left: 1vw;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .addL>div {
+        opacity: 0;
+        transition-delay: 0.12s;
+        transition-duration: 1s;
+    }
+
+    .addR {
+        width: 13%;
+        height: 59%;
+        transition-duration: 1s;
+        position: absolute;
+        border-radius: 13px;
+        background-color: white;
+    }
+
+    .addL {
+        width: 59%;
+        height: 13%;
+        position: absolute;
+        transition-duration: 1s;
+        border-radius: 13px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+    }
+
+    .addCon.active>.plusContain>.addL {
+        transition-delay: 0s;
+        background: #c7c7c770;
+        width: 217%;
+        margin-top: 57%;
+        height: 208%;
+    }
+
+    .addCon.active>.plusContain>.addL>div {
+        opacity: 1;
+    }
+
+    .addCon.active>.plusContain {
+        
+        margin-top: -7%;
+    }
+
+    .addCon.active>.addCube {
+        margin-top: -232px;
+    }
+
+    .addCon.active {
+        height: 300px;
+        cursor: default !important;
+    }
+
+    #addBtn {
+        background: linear-gradient(45deg, #ffeeee, #d5e8ff);
+        padding: 12px;
+        border: 4px solid #9292921f;
+        border-radius: 10px;
+        margin-top: 6%;
+        transition-duration: 1s;
+        font-family: monospace;
+    }
+
+    #addBtn:hover {
+        cursor: pointer;
+    }
+
+    .extra {
+        width: 90%;
+        height: 90%;
+        border-radius: 10px;
+        background: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+
+    }
+
+    #adding{
+        transition-duration: 0.5s;
+        color: black !important;
+    }
+
+    /*https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #362b2b4d;
+        transition-duration: 0.8s;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        transition-duration: 0.8s;
+        background: rgba(70, 67, 67, 0.676);
+    }
+
+    .cube-container {
+        box-shadow: -1px 0px 20px 5px rgb(0 9 55 / 4%);
+        opacity: 1;
+        display: flex;
+        padding: 26px;
+        width: 200px;
+        height: 200px;
+        perspective: 600px;
+        border: 4px solid #9292921f;
+        transition-duration: 0.5s;
+        border-radius: 12px;
+        background: linear-gradient(45deg, #ffeeee, #d5e8ff);
+        margin: 50px;
+        margin-left: 1vw;
+        justify-content: space-evenly;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cube-container:hover {
+        cursor: pointer;
+    }
+
+    .cube-container:hover>.cube {
+        transition-duration: 1s;
+        animation: rotateCube 4s infinite ease-in-out;
+    }
+
+    .cube-container:hover>img {
+        opacity: 1;
+    }
+
+    .cube {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        transform-style: preserve-3d;
+        transform: rotateX(330deg) rotateY(45deg);
+        transition-duration: 1s;
+        transform-origin: center center;
+    }
+
+    .addCube {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        transform-style: preserve-3d;
+        transform: rotateX(330deg) rotateY(45deg);
+        transition-duration: 1s;
+        transition-delay: 0s;
+        transform-origin: center center;
+    }
+    .solvedCube{
+        background:linear-gradient(45deg, #ebffef, #cfe5ff)
+    }
+    
+    .displayPice{
+        background-color: #001f33;
+        border: 0.1px solid #243f51;
+    }
+
+    .solvedCube>.binImg{
+        opacity: 1;
+    }
+
+    .face {
+        border-radius: 5px;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: #001f33;
+        border: 2px solid #243f51;
+        line-height: 50px;
+        text-align: center;
+        font-size: 10px;
+        color: white;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 33px);
+    }
+
+    .cu {
+        background: red;
+    }
+
+    .face.top {
+        transform: rotateX(90deg) translateZ(50px) rotate(90deg);
+    }
+
+    .face.bottom {
+        transform: rotateX(-90deg) translateZ(50px);
+    }
+
+    .face.front {
+        transform: translateZ(50px) rotate(90deg);
+    }
+
+    .face.back {
+        transform: rotateY(180deg) translateZ(50px) rotate(-90deg);
+    }
+
+    .face.left {
+        transform: rotateY(-90deg) translateZ(50px);
+    }
+
+    .face.right {
+        transform: rotateY(90deg) translateZ(50px) rotate(180deg);
+    }
+
+    .doneTime{
+        box-shadow: 0px 0px 20px 4px rgb(0 9 55 / 40%);
+        background: radial-gradient(#e9fdf045, #d1e6ff);
+        color: black;
+        font-size: 17px;
+        text-wrap: nowrap;
+        height: auto !important;
+        margin-bottom: -12%;
+    }
+    
+    .doneTime:hover{
+        background-color: #afd3cd5c;
+    }
+    
+    .doneTime>.sizeC>.other{
+        opacity: 1;
+        font-size: 21px;
+        background: #14867070;
+        color: white;
+        border-radius: 13px;
+        padding: 4px;
+    }
+    
+    .doneTime:hover>.sizeC>.other{
+        background: #00574799;
+    }
+
+    .containSelection{   
+        margin-top: 2%;
+        margin-bottom: 2%;
+        width: 81%;
+        height: 73%;
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .selection{
+        width: 100%;
+        height: 100%;
+        background: #efefef;
+        border-radius: 10px 
+    }
+
+    .tabs{
+        background: linear-gradient(180deg, #ffffff, transparent);
+        font-family: monospace;
+        font-size: 11px;
+        width: 100%;
+        height: 20%;
+        display: flex;
+    }
+    
+    #content{
+        background: #efefef;
+        position: relative;
+        transition-duration: 1s;
+        display: flex;
+        border-bottom-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+        flex-direction: column;
+        align-items: center;
+        overflow: auto;
+        height: 9vh;
+        width: 100%;
+    }
+    .tab{
+        width: 50%;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        margin-top: 3%;
+        height: 61%;
+        background: #f7f7f7;
+        padding: 3px;
+        transition-duration: .5s;
+    }
+    .tab:hover{
+        cursor: pointer;
+        background: #ffffff3b;
+    }
+
+    .listItem{
+        display: flex;
+        padding-left: 12px;
+        font-family: monospace;
+        background: radial-gradient(white, #00000012);
+        width: 85%;
+        border-radius: 12px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1%;
+    }
+    .listItem:hover{
+        background: radial-gradient(gainsboro, #00000012);
+    }
+    .popUpInfo{
+        opacity: 0;
+        transition-duration: 0.5s;
+        position: fixed;
+        right: 0%;
+        bottom: -9%;
+        height: 0%;
+        width: auto;
+        background: #1818182e;
+        border-radius: 8px;
+        width: 100%;
+        display: flex;
+        background: #e5e5e68a;
+        align-items: center;
+        justify-content: center;
+    }
+    .listItem:hover>.popUpInfo{
+        display: block;
+        opacity: 1;
+        height: 12%;
+        
+    }
+
+    .showSettings{   
+        margin: 4px;
+        margin-top: 4px;
+        border-radius: 12px;    
+        height: 11%;
+        padding: 2%;
+        display: flex;
+        background: #bebebe;
+        justify-content: center;
+        flex-direction: row;
+        font-family: monospace;
+        align-items: center;
+        transition-duration: 1s;
+    }
+    .showSettings:hover{
+        cursor: pointer;
+    }
+    .showSettings.active>.dropDownArr{
+        rotate: 0deg;
+    }
+    .showSettings.active{
+        margin-top: 11%;
+        background: #efefef;
+    }
+    .showSettings.active+#content{
+        height: 0%;
+        overflow-y: hidden;
+    }
+    
+    .dropDownArr{
+        height: 12px;
+        rotate: 90deg;
+        margin-left: 12%;
+        transition-duration: 1s;
+    }
+    .side-colour-Contain{
+        display: flex;
+        margin-top: 3px;
+        flex-direction: column;
+        background: radial-gradient(white, #00000012);
+        border-radius: 12px;
+        font-family: monospace;
+        padding: 3px;
+    }
+    .side-colour{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2px;
+        align-items: center;
+    }
+    .note{
+        color: #00000069;
+        filter: drop-shadow(1px 0px 4px black);
+    }
+
+    .colour{
+        background: #efefef;
+        border: 0;
+        height: 21px;
+        width: 21px;
+        padding: 0px;
+        border-radius: 2px;
+        box-shadow: 0 0 20px 0px #80808045;
+    }
+    .optionTitle{
+        font-size: 12px;
+        margin-top: 4px;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+        width: 80%;
+        padding: 2px;
+        background: #bebebe;
+        font-family: monospace;
+    }
+    .containHatImg{
+        width: 34px;
+        height: 5px;
+    }
+    .hatImg {
+        width: 100%;
+        margin-top: 6px;
+        opacity: 0.1;
+    }
+    .noTime:hover{
+        height: 13px;
+    }
+    .PlayModeCube{
+        background: linear-gradient(45deg, #ffe7f6, #e5ffe2) !important;
+    }
+    #filler{
+        transition-duration:1s;
+    }
+    .key-contain{
+        display: flex;
+        padding: 8px;
+        margin: 19px;
+        margin-top: 0px;
+        border-radius: 19px;
+        width: 87%;
+        font-family: monospace;
+        background: linear-gradient(180deg, rgb(211 211 255 / 12%), transparent);
+        box-shadow: inset -1px 0px 4px 0px rgb(0 9 55 / 9%);
+        align-items: center;
+        justify-content: space-around;
+    }
+    .key-section{
+        display: flex;
+        width: 33%;
+        align-items: center;
+        justify-content: center;
+    }
+    .describe{
+        filter: drop-shadow(0px 0px 1px rgb(214, 240, 244));
+        color: black;
+        text-align: center;
+    }
+    .colour-display{
+        box-shadow: inset -1px 0px 4px 1px rgb(0 9 55 / 9%);
+        padding: 2px;
+        padding-left: 21px;
+        padding-right: 21px;
+        width: 47%;
+        border-radius: 31px;
+        }
+    .startPos{
+        bottom: 50% !important;
+        right: 50% !important;
+        transform: translate(50%, 50%);
+    }
+    .finalTimeImg{
+        height: 19px;
+        background: #ffffff63;
+        padding: 7px;
+        margin-right: 10px;
+        border-radius: 35px;
+    }
+    .displaytime{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .gr-notsolved{
+        background: linear-gradient(189deg, #ffeeee, #d5e8ff);
+    }
+    .gr-solved{
+        background:linear-gradient(189deg, #ebffef, #cfe5ff)
+    }
+    .gr-play{
+        background: linear-gradient(189deg, #ffe7f6, #e5ffe2) !important;
+    }
+    @keyframes rotateCube {
+        from {
+            transform: rotateX(330deg) rotateY(45deg);
+        }
+
+        to {
+            transform: rotateX(330deg) rotateY(405deg);
+        }
+    }
+    @keyframes scroll {
+        0% {
+            margin-top: -1%;
+        }
+        100% {
+            margin-top: -62%;
+        }
+    }
+</style>
+<script>
+    cubes = document.getElementById("containDisplay")
+    var canChangeCubeVal = false;
+    var BoxOpen = false;
+    var newCube = false;
+    var selectMain = true;
+    var stepOnTutoal = 1;
+
+    // map of the piece(sticker) to hide when useing the tutorial   
+    const tutorialCubeStageMap = 
+    [
+        [
+            ["2","1","2"],
+            ["1","1","1"],
+            ["2","1","2"],
+        ],
+        [           
+            ["5","4","5"],
+            ["4","4","4"],
+            ["5","4","5"],
+        ],
+        [
+            ["2","3","6"],
+            ["1","1","7"],
+            ["2","3","6"],
+        ],
+        [
+            ["6","3","2"],
+            ["7","1","1"],
+            ["6","3","2"],
+        ],
+        [
+            ["2","1","2"],
+            ["3","1","3"],
+            ["6","7","6"],
+        ],
+        [
+            ["6","7","6"],
+            ["3","1","3"],
+            ["2","1","2"],
+        ],
+    ]
+
+
+    //when you click the option the corresponging check box gets checked
+    function SetOption(event,index){
+        if(event.target.classList[0]!="listItem"){return}
+        itemEl = document.getElementsByClassName("CBox")[index];
+        itemEl.checked = !itemEl.checked;    
+    }
+
+
+    //adds in the options (called when the user clicks on the tabs)  
+    function toggleSelect(mainCube){
+        const TutorialOptions = {
+            "block-out colours" : [true," black out pieces that are not relevent to the step"],
+            "timer" : [false,"time the time active on the cube"],
+            "animations": [true,"The cube animations can be canceled for faster movement"],
+            "play-mode" : [true,"the ability still use cube after solved"],
+        };
+
+        const defaultOptions = {
+            "play-mode" : [false,"the ability still use cube after solved"],
+            "animations": [true,"The cube animations can be canceled for faster movement"],
+            "timer" : [true,"time the time active on the cube"],
+        };
+
+        selectCol = "rgb(239 239 239)";
+        defaultCol = "rgb(190 190 190)";
+        tab1 = document.getElementById("tab1");
+        tab2 = document.getElementById("tab2");
+        content = document.getElementById("content");
+        content.innerHTML = "";
+
+        //add in html
+        
+        //colours
+        if(mainCube){
+            content.innerHTML+='<div class="optionTitle">Custom Colors:</div> <div class="side-colour-Contain"> <div class="side-colour"> <div class="sideText"> Top </div> <div> <input class="colour" type="color" value="#ffffff"> </div> </div> <div class="side-colour"> <div class="sideText"> bottom </div> <div> <input class="colour" type="color" value="#ffff74"> </div> </div> <div class="side-colour"> <div class="sideText"> right </div> <div> <input class="colour" type="color" value="#4040f6"> </div> </div> <div class="side-colour"> <div class="sideText"> back-left </div> <div> <input class="colour" type="color" value="#24c124"> </div> </div> <div class="side-colour"> <div class="sideText"> left </div> <div> <input class="colour" type="color" value="#c40505"> </div> </div> <div class="side-colour"> <div class="sideText"> back-right </div> <div> <input class="colour" type="color" value="#ffa500"> </div> </div> </div>';
+        }
+        // Advanced Options
+        content.innerHTML+='<div class="optionTitle">Advanced Options:</div>';
+
+        // if the option is mainCube  
+        if(mainCube){
+            // show arrow 
+            document.getElementsByClassName("arrImg")[0].style.opacity="1";
+            document.getElementsByClassName("arrImg")[1].style.opacity="1";
+            canChangeCubeVal = true;
+            
+            tab1.style.background = selectCol;
+            tab2.style.background = defaultCol;
+            var count = 0;
+            for (var key in defaultOptions) {
+                content.innerHTML += '<div onclick="SetOption(event,'+count+')" id="select-'+count+'"; itemName="'+key+'" ; class="listItem">'+key+'<input type="checkbox" class="CBox"></input> <div class="popUpInfo">'+defaultOptions[key][1]+'<div></div>';
+                if(defaultOptions[key][0]){
+                    document.getElementsByClassName("CBox")[count].setAttribute("checked",defaultOptions[key][0]);
+                };
+                count++
+            }
+
+        // if the option is Tutorial  
+        }else{
+            //set the cube to 3
+            updateCubeDisplay(3);
+            changeCubeVal(true,3);
+            // hide arrow 
+            document.getElementsByClassName("arrImg")[0].style.opacity="0"
+            document.getElementsByClassName("arrImg")[1].style.opacity="0"
+            canChangeCubeVal = false
+
+            tab1.style.background = defaultCol;
+            tab2.style.background = selectCol;
+
+            var count = 0
+            for (var key in TutorialOptions) {
+                content.innerHTML += '<div onclick="SetOption(event,'+count+')" id="select-'+count+'"; itemName="'+key+'" ; class="listItem">'+key+'<input type="checkbox" class="CBox"></input> <div class="popUpInfo">'+TutorialOptions[key][1]+'<div></div>';
+                if(TutorialOptions[key][0]){
+                    document.getElementsByClassName("CBox")[count].setAttribute("checked",TutorialOptions[key][0]);
+                }
+                count++
+            }
+        }
+        
+    }
+
+
+    // format timeInSeconds
+    function convertTime(timeInSeconds){
+        var hours = Math.floor(timeInSeconds / 3600)+"h ";
+        var minutes = Math.floor((timeInSeconds % 3600) / 60)+"m ";
+        var seconds = Math.floor(timeInSeconds % 60)+"s ";
+        var milliseconds = (String(parseFloat(timeInSeconds).toFixed(3)).split(".")[1])+"ms ";
+
+        if( hours[0]  == 0 ){hours = ""};
+        if( minutes[0] == 0 ){minutes = ""};
+        if( seconds[0] == 0 ){seconds = ""};
+        if( milliseconds == "undefinedms " ){milliseconds = ""};
+        if( milliseconds[0] == 0  ){milliseconds = ""};
+
+        formatedTime = hours + minutes + seconds + milliseconds
+        if(formatedTime==""){formatedTime="---"}
+        return formatedTime;
+    }
+
+
+    // whent the user changes the size of the cube
+    function changeCubeVal(add,setval){
+        currentSize = parseInt(document.getElementById("newCube-size").innerHTML.split("<")[0])
+        arrow = '<div class="innerAro">✖</div>'
+        if(setval){
+            document.getElementById("newCube-size").innerHTML = setval + arrow + setval
+            return;
+        }
+        if(canChangeCubeVal == false){return}
+        if(add){
+            currentSize++
+            if(currentSize==10){alert("having a large cube may result in slow performance and overall longer load time.")};
+            document.getElementById("newCube-size").innerHTML = currentSize+arrow+currentSize
+        }else{
+            if(2<currentSize){currentSize--}
+            document.getElementById("newCube-size").innerHTML = currentSize+arrow+currentSize
+        }
+        updateCubeDisplay(currentSize);
+    }
+
+
+    //fill the "add cube" with a girid reflecing on the size slected 
+    function updateCubeDisplay(currentSize){
+        const sides = document.getElementsByClassName("displaySize")
+        for (var i = 0; i < sides.length; i++) {
+            sides[i].innerHTML=""
+            sides[i].style.gridTemplateColumns = "repeat("+currentSize+", 1fr)";
+            sides[i].style.gridTemplateRows    = "repeat("+currentSize+", 1fr)";
+            for (var j = 0; j < currentSize**2; j++) {
+                sides[i].innerHTML+= "<div class='displayPice'></div>";
+            }
+        }
+    }
+
+
+    //add in the high score html
+    function addHigScores(){
+        highScoreEl = document.getElementById("highScores") 
+        highScores = JSON.parse(localStorage.getItem("highScores"));
+        count = 0
+        if(Object.keys(highScores).length == 0){
+            highScoreEl.innerHTML += "<div class='SizeCubeScore'> no cubes time recorded </div>";
+        }
+        for (const key in highScores){
+            highScoreEl.innerHTML += "<div class='SizeCubeScore toggleDark'>"+key+"x"+key+" <div class='innerBlur'></div></div>";      
+            SizeCubeScoreEl = document.getElementsByClassName("SizeCubeScore")[count];
+            sortedArr = highScores[key].sort((a, b) => a - b);
+
+            SizeCubeScoreEl.innerHTML += "<div class='highScore';> <div class='scorePlace'>PB </div>"+convertTime(sortedArr[0])+"</div>";
+            highScore = document.getElementsByClassName("highScore")[count];
+            if(sortedArr.length>1){
+                SizeCubeScoreEl.innerHTML += "<div class='addScroll'></div>";
+            }
+
+            addScroll = document.getElementsByClassName("addScroll")[count];
+            
+            for (let i = 1; i < sortedArr.length; i++) {
+                addScroll.innerHTML += "<div class='time';> <div class='scorePlace'>"+(i+1)+".</div> "+convertTime(sortedArr[i])+"</div>"
+            }
+            count++
+        }
+    }
+
+
+    //when the user clicks the drop down arrow on the cube times button
+    function toggleScoreView(){
+        timeContains = document.getElementsByClassName("addScroll");
+        for (let i = 0; i < timeContains.length; i++) {
+            timeContains[i].classList.toggle("visible");
+        }
+        SizeCubeScore = document.getElementsByClassName("SizeCubeScore")
+        for (let i = 0; i < SizeCubeScore.length; i++) {
+            SizeCubeScore[i].classList.toggle("over")
+        }
+        document.getElementsByClassName("dropArr")[0].classList.toggle("active")
+    }
+
+
+    //add the pieces/stickers for a cube
+    function fillCube(colMap, cubeId, colours) {
+        faceAll = document.getElementById(cubeId).getElementsByClassName("face")
+        cubeSize = colMap[0].length
+        piSize = 100 / cubeSize
+        row = 0
+        col = 0
+        for (let Si = 0; Si < 6; Si++) {
+            faceAll[Si].style.gridTemplateColumns = "repeat(auto-fill, " + 100 / cubeSize + "px)";
+            for (let pi = 0; pi < cubeSize ** 2; pi++) {
+                faceAll[Si].innerHTML += "<div class='cu' style='background:" + colours[colMap[Si][col][row][0]] + "; width:" + (piSize - 2) + "px ;height:" + (piSize - 2) + "px;'></div>"
+                row++
+                if ((pi + 1) % cubeSize == 0) {
+                    col += 1
+                    row = 0
+                }
+            }
+            row = 0
+            col = 0
+        }        
+    }
+
+
+    //add the cubes html from loacal storage 
+    function addCubes() {
+        BoxOpen = false
+        cubes.innerHTML = "";
+        var allCubes = JSON.parse(localStorage.getItem('allCubes'));
+        var orderClick = JSON.parse(localStorage.cubeOrder);
+        
+        for (var i = 0; i < allCubes.length; i++) {
+            cubes.innerHTML += '<div class="cube-container" onclick="openCubeWindow(event,'+i+','+allCubes[orderClick[i]].id+')"><div class="cube" id="cube-'+orderClick[i]+'"><div class="face top"></div><div class="face bottom"></div><div class="face front"></div><div class="face back"></div><div class="face left"></div><div class="face right"></div></div><img class="ExtLinkImg" src="https://creazilla-store.fra1.digitaloceanspaces.com/icons/3202818/external-link-icon-sm.png"><img class="binImg" onClick="removeCube('+i+')" src="https://cdn2.iconfinder.com/data/icons/thin-line-color-1/21/33-512.png"><div class="prop"><div class="sizeC">'+allCubes[orderClick[i]].cubeSize+'x'+allCubes[orderClick[i]].cubeSize+'<div class="other"><div class="displaytime">'+convertTime(allCubes[orderClick[i]].timeSpent)+'</div></div></div></div></div>';
+
+            // visual representation of the cube 
+            fillCube(allCubes[orderClick[i]].state, "cube-" + orderClick[i] , allCubes[orderClick[i]].optionsSelect.colours)
+
+            //add animation to last elent so it looks like the cube just got added 
+            if(newCube == true && i == (allCubes.length-1)){
+                document.getElementsByClassName("cube-container")[allCubes.length-1].style.opacity = "0";
+                setTimeout(() => { document.getElementsByClassName("cube-container")[allCubes.length-1].style.opacity = "1"; },500);
+                newCube = false;
+            }
+
+            // for solved cubes
+            if(allCubes[orderClick[i]].solved){
+                document.getElementsByClassName("cube-container")[i].classList.add("solvedCube");
+                document.getElementsByClassName("prop")[i].classList.add("doneTime");  
+                document.getElementsByClassName("displaytime")[i].innerHTML = allCubes[orderClick[i]].finalSolveTime;
+
+                if(allCubes[orderClick[i]].optionsSelect.timer == true){
+                    document.getElementsByClassName("displaytime")[i].innerHTML+="<img class='finalTimeImg' src='https://www.svgrepo.com/show/490407/time-fast.svg'></img>";
+                }
+            }
+
+            //for tutorial cubes
+            if(allCubes[orderClick[i]].optionsSelect.tutorial == true){
+                document.getElementsByClassName("prop")[i].innerHTML+='<div class="containHatImg"><img class="hatImg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/University_hat_icon.svg/1200px-University_hat_icon.svg.png"></img></div>';
+            }
+            if(allCubes[orderClick[i]].optionsSelect["play-mode"] == true){
+                document.getElementsByClassName("cube-container")[i].classList.add("PlayModeCube")
+            }
+
+            if(allCubes[orderClick[i]].optionsSelect.timer == false){
+                document.getElementsByClassName("displaytime")[i].innerHTML="";
+                document.getElementsByClassName("prop")[i].classList.add("noTime")
+            }
+        }
+        cubes.innerHTML += '<div id = "filler"></div>';
+        cubes.innerHTML += '<div id="adding"> <div onclick="openBox(); tutorialWalk(event)" class="addCon"> <div class="plusContain"> <div class="addR"></div> <div class="addL"> <div class="extra"> <div class="sizeBox"> <div onclick="changeCubeVal(false)" class="arrBox"><img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="arrImg" alt=""></div> <div id="newCube-size" class="innerAro"> 3 <div class="innerAro" >✖</div> 3 </div> <div onclick="changeCubeVal(true)" class="arrBox arrR"><img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="arrImg" alt=""></div> </div> <div class="containSelection"> <div class="selection"> <div class="tabs"> <div class="tab" id="tab1" onclick="toggleSelect(true)" > NxN cube </div> <div class="tab" id="tab2" onclick="tutorialWalk(event); toggleSelect(false)"> tutorial </div> </div> <div class="showSettings"; onclick="toggleoptions()"> More Options <img class="dropDownArr" src="https://static.thenounproject.com/png/634840-200.png"></img></div> <div id="content"> </div> </div> <div id="addBtn" onclick="submit();tutorialWalk(event)"> create </div> </div> </div> </div> </div> <div class="addCube"> <div class="face top displaySize"></div> <div class="face bottom displaySize"></div> <div class="face front displaySize"></div> <div class="face back displaySize"></div> <div class="face left displaySize"></div> <div class="face right displaySize"></div> </div> <div></div> </div> </div>';
+        updateCubeDisplay(3);
+        toggleSelect(true);
+        toggleoptions();
+    }
+    
+
+    // toogle the options menu 
+    function toggleoptions(){
+        document.getElementsByClassName("showSettings")[0].classList.toggle("active");
+        if(document.getElementsByClassName("showSettings")[0].classList.contains("active")==true){
+            document.getElementsByClassName("addCon")[0].style.height="200px";
+            document.getElementById("addBtn").style.marginTop = "-100%";
+        }else{
+            document.getElementsByClassName("addCon")[0].style.height="300px";
+            document.getElementById("addBtn").style.marginTop = "6%";
+        }
+    }
+
+
+    // open the score 
+    function toogleShowScores(){
+        document.getElementsByClassName("continTimeInfo")[0].classList.toggle("active")
+    }
+
+
+    //remove a Cube
+    function removeCube(index){
+
+        var orderArr = JSON.parse(localStorage.cubeOrder);
+        var allCubes = JSON.parse(localStorage.allCubes);
+        
+        const removedItem = orderArr[index]
+        const cubeElement = document.getElementsByClassName("cube-container")[index]
+        //cubeElement.style.transitionDelay   = "1s"
+        cubeElement.style.opacity           = "0"
+        setTimeout(()=>{
+            cubeElement.style.width         = "0px"
+            cubeElement.style.padding       = "0px"
+            cubeElement.style.margin        = "0px"
+        },500)
+
+        setTimeout(()=>{
+            //remove the cube
+            allCubes.splice(orderArr[index], 1);
+            orderArr.splice(index, 1)
+
+            // then shift left
+            for (let i = 0; i < orderArr.length; i++) {
+                if(removedItem < orderArr[i]){
+                    orderArr[i] -= 1
+                }
+            }
+
+            localStorage.setItem('cubeOrder', JSON.stringify(orderArr));
+            localStorage.setItem('allCubes', JSON.stringify(allCubes));
+            addCubes()
+        },1000);
+    }
+
+
+    //open a cube in a new tab
+    function openCubeWindow(event,index,id) {
+        // the elements overlap so make sure that the user is not clicking the delete button 
+        if(event.target.classList.contains("binImg")){return}
+
+        //move it to the start
+        var cubesArr = JSON.parse(localStorage.cubeOrder);
+        //swap order
+        item = cubesArr[index]
+        cubesArr.splice(index, 1)
+        cubesArr.unshift(item)
+        localStorage.setItem('cubeOrder', JSON.stringify(cubesArr));
+        //update to show 
+        addCubes()
+        //open link in new tab / same tab
+        if(event.target.classList.contains("ExtLinkImg")){
+            window.open("cube.html?cubeID=" + id, "_blank");            
+        }else{
+            window.location.href="cube.html?cubeID=" + id;
+        }
+
+    }
+
+
+    //open the add cube box
+    function openBox() {
+        if (BoxOpen == false) {
+            document.getElementsByClassName("addCon")[0].classList.toggle("active");
+            BoxOpen = true;
+        }
+    }
+
+
+    //close the add cube box
+    function closeBox(event) {
+        if(event){
+            if(event.target != document.getElementById("containDisplay")){
+                return
+            }
+        }
+
+        if(!document.getElementsByClassName("showSettings")[0].classList.contains("active")){
+            document.getElementsByClassName("showSettings")[0].classList.add("active")
+        }
+
+        if (BoxOpen == true) {
+            document.getElementsByClassName("addCon")[0].classList.toggle("active");
+            document.getElementsByClassName("addCon")[0].style.height = "200px";
+            document.getElementById("addBtn").style.marginTop = "-100%";
+            BoxOpen = false;
+        }
+    }
+
+
+    // gets 3d arrays and "overlapps" them to combine them to a single array
+    function merge(arr1,arr2){
+        // new array with the same parremetors
+        const mergeArray = arr1
+
+        for(var i=0; i < arr1.length; i++){
+            for(var j = 0; j < arr1[i].length; j++){            
+                for(let item = 0; item < arr1[i][j].length; item++){
+                    mergeArray[i][j][item]+= arr2[i][j][item]
+                }
+            }
+        }
+        return mergeArray;
+    }
+
+
+    // create a cube 
+    function submit() {
+        if (BoxOpen == false) { return }
+
+        cubeSize = parseInt(document.getElementById("newCube-size").innerHTML.split("<")[0]);
+        var allCubes = JSON.parse(localStorage.allCubes);
+
+
+        cubestate     = populatecube(cubeSize);
+        userselection = getUserSelection();
+
+        // add in the extra data if its a tutorialCube (need to see what piece to hide)
+        if(userselection.tutorial){
+            cubestate = merge(cubestate,tutorialCubeStageMap)
+        }
+
+        if(userselection == "error"){
+            alert("same colours used on more than one side!")
+            return
+        }
+        allCubes.push({
+            "state"          : cubestate,
+            "cubeSize"       : cubeSize,
+            "timeSpent"      : "0",
+            "id"             : generateID(),
+            "solved"         : false,
+            "doneScramble"   : false,
+            "finalSolveTime" : "---",
+            "optionsSelect"  : userselection,
+        });
+    
+        //change cube order and add to sotrage 
+        order = JSON.parse(localStorage.cubeOrder);
+        order.push(order.length);
+        localStorage.setItem('cubeOrder', JSON.stringify(order));
+        localStorage.setItem('allCubes', JSON.stringify(allCubes));
+        console.log(cubeSize)
+
+        newCube = true;
+        closeBox()
+
+        // make room for the cubew
+        document.getElementById("filler").style.marginLeft = "310px";
+        document.getElementsByClassName("addCon")[0].classList.toggle("active")
+        // re add the cube with the new one 
+        setTimeout(()=>{
+            addCubes();             
+            BoxOpen = false;
+        },1000);
+
+    }
+
+
+    //see what id cube is available 
+    function generateID() {
+        allIds = JSON.parse(localStorage.allIds);
+        newId = 0;
+        while (allIds.includes(newId)) {
+            newId++;
+        }
+        allIds.push(newId)
+        localStorage.setItem('allIds', JSON.stringify(allIds));
+        return newId
+    }
+
+
+    // return a record of the user's selection 
+    function getUserSelection(){
+        // see if the user can change the value to determine if the user is on the tutorial 
+        userselection = {
+            "tutorial" : !canChangeCubeVal,
+            "stage":0,        
+        }
+
+        CodeForColour = ["W","Y","B","G","R","O"]
+        
+        colourEl = document.getElementsByClassName("colour")
+        //get colour:
+        userselection.colours = {}
+        if(!canChangeCubeVal){
+            // if the user is using a tutoiral cube the colours are set  
+            userselection.colours = {
+            "W":"white",
+            "Y":"#ffff74",
+            "B":"rgb(64 64 246)",
+            "G":"#24c124",
+            "R":"#c40505",
+            "O":"orange",
+            "-":"#5c5c5c70"
+            }; 
+        }else{
+            // make sure that each colour is not the same
+            for (let i = 0; i < colourEl.length; i++) {
+                // convet the userselection.colours into a array then see if the value is in it
+                if(Object.values(userselection.colours).includes(colourEl[i].value)){
+                    return "error"
+                }
+                userselection.colours[CodeForColour[i]] = colourEl[i].value;
+            }
+        }
+        // get the selection for listItems selected:
+        var listItems = document.getElementsByClassName("listItem");
+        for (let i = 0; i < listItems.length; i++) {
+            userselection[listItems[i].getAttribute("itemName")] = listItems[i].getElementsByClassName("CBox")[0].checked;
+        }
+        return userselection
+    }   
+
+
+    //returns a 3d array for a solved cube state 
+    function populatecube(cubeSize) {
+        //https://sentry.io/answers/how-can-i-create-a-two-dimensional-array-in-javascript/#:~:text=There%20are%2C%20broadly%20speaking%2C%20two,array%20to%20create%20nested%20arrays.
+        CubeStartArr = [[], [], [], [], [], []]
+        CodeForColour = ["W", "Y", "B", "G", "R", "O"]
+        for (var i = 0; i < 6; i++) {
+            let sideArray = Array(cubeSize).fill().map(() => Array(cubeSize).fill(CodeForColour[i]));
+            CubeStartArr[i] = sideArray;
+        }
+        return CubeStartArr;
+    }
+
+    
+    // skip the Tutorial
+    function skipTutorial(){
+        localStorage.setItem("newUser","false");
+        tutorialBox.remove();
+        if(document.getElementById("noTouch") != null){
+            document.getElementById("noTouch").remove();
+        }
+    }
+
+
+    // step by step walk through on makeing a tutorial cube 
+    function tutorialWalk(event){
+        const tutorialBox = document.getElementById("tutorialBox");
+
+        switch(stepOnTutoal){
+            case 1://start
+                if(event.target == document.getElementsByClassName("continue")[0]){
+                    document.getElementsByClassName("addCon")[0].classList.add("highlight");
+                    tutorialBox.classList.remove("startPos")
+                    tutorialBox.innerHTML='click the <div class="option createRef"> <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 58 58" xml:space="preserve" fill="#243f51" stroke="#243f51" stroke-width="1.218" style=" width: 32px; height: 32px; "><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <polygon style="fill:#001f33;" points="29,58 3,45 3,13 29,26 "></polygon> <polygon style="fill:#001f33;" points="29,58 55,45 55,13 29,26 "></polygon> <polygon style="fill:#001f33;height: 32px;" points="3,13 28,0 55,13 29,26 "></polygon> </g> </g></svg> </div> to add open the options for a new cube';
+                    tutorialBox.style.height = "21%";
+                    tutorialBox.style.width = "308px;";
+                    document.getElementById("noTouch").style.opacity = "0";
+                    setTimeout(() => {
+                        document.getElementById("noTouch").remove();
+                    }, 1000);
+                    stepOnTutoal++
+                }
+                break;
+            case 2:// click add box
+                document.getElementById("tab2").classList.add("highlight")
+                document.getElementsByClassName("addCon")[0].classList.remove("highlight");
+                tutorialBox.innerHTML='click the <div class="option tuOption"> tutorial </div> to get to the tutorial section';
+
+                stepOnTutoal++
+                break;
+            case 3:// click tab 2
+                if(event.target == document.getElementById("tab2")){
+                    tutorialBox.innerHTML='click the <div class="option moreOp"> moreOptions > </div> for more advanced options ';
+                    document.getElementById("tab2").classList.remove("highlight");
+                    document.getElementsByClassName("showSettings")[0].classList.add("highlight");
+                    stepOnTutoal++
+                }
+                break;
+            case 4://click more options
+                if(event.target == document.getElementsByClassName("showSettings")[0] || event.target == document.getElementsByClassName("dropDownArr")[0]){
+                    tutorialBox.style.height = "250px";
+                    tutorialBox.style.width = "300px";
+                    tutorialBox.innerHTML='click the <div class="option createRef"> create </div> to add the cube to the dashboard. <br><br> <div class="note"> before creating the cube you can make changes to the cube colour and play mode </div>';
+                    document.getElementsByClassName("showSettings")[0].classList.remove("highlight");
+                    document.getElementById("addBtn").classList.add("highlight");
+                    document.getElementById("content").classList.add("highlight");
+                    stepOnTutoal++
+                }
+                break;
+            case 5://click create  
+                cubeContainer = document.getElementsByClassName("cube-container")
+                
+                if(event.target == document.getElementById("addBtn")){
+                    tutorialBox.style.width = "700px";
+                    tutorialBox.innerHTML='<div style="\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n"> click the <div class="option createRef"> <svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 58 58" xml:space="preserve" fill="#000000" style="width: 32px;height: 33px;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <polygon style="fill:#c40505;" points="29,58 3,45 3,13 29,26 "></polygon> <polygon style="fill:#4040f6;" points="29,58 55,45 55,13 29,26 "></polygon> <polygon style="fill:#f0f0f0;" points="3,13 28,0 55,13 29,26 "></polygon> </g> </g></svg> </div> to open the cube in another tab. </div> <br> <br>  <div style="\n    width: 100%;\n    display: flex;\n    align-items: center;\n    flex-wrap: wrap;\n    justify-content: center;\n"> hovering over the <div class="option propalt"> 3x3 </div> will dispay the time. <div class="note"> the time will not display by default as the timer is turned off for tutorial cubes</div> </div>';
+                    document.getElementById("addBtn").classList.remove("highlight");
+                    document.getElementById("content").classList.remove("highlight");
+                    stepOnTutoal++
+                    setTimeout(()=>{
+                        cubeContainer[cubeContainer.length-1].classList.add("highlight");
+                        document.getElementsByClassName("prop")[cubeContainer.length-1].classList.add("highlight");
+
+                        cubeContainer[cubeContainer.length-1].addEventListener("click",(event)=>{
+                            skipTutorial()
+                            document.getElementsByClassName("prop")[cubeContainer.length-1].classList.remove("highlight");
+                        })
+                    },2000)
+                }
+                break;
+        }
+    }
+
+
+    // set up local storage if they dont have anything stored 
+    function setlocalStorage(){
+        if (JSON.parse(localStorage.getItem('allCubes') == null)) {
+            localStorage.setItem('allCubes', JSON.stringify([]));
+        }
+        if (JSON.parse(localStorage.getItem('cubeOrder') == null)) {
+            var filler = []
+            for (var i = 0; i < JSON.parse(localStorage.getItem('allCubes')).length; i++) {
+                filler.push(i)
+            }
+            localStorage.setItem('cubeOrder', JSON.stringify(filler));
+        }
+        if (JSON.parse(localStorage.getItem('allIds') == null)) {
+            localStorage.setItem('allIds', JSON.stringify([]));
+        }
+        if (JSON.parse(localStorage.getItem('highScores') == null)) {
+            localStorage.setItem('highScores', JSON.stringify({}));
+        }
+        if (JSON.parse(localStorage.getItem('newUser') == null)) {
+            localStorage.setItem('newUser', JSON.stringify(true));
+        }
+        if(localStorage.getItem("newUser") == "false"){ 
+            skipTutorial();
+        }
+    }
+
+    
+    // initialise the display and functionality
+    function main(){
+        document.getElementById("footer").addEventListener("click",()=>{
+            window.open('helpPage.html', '_blank');
+        })
+        setlocalStorage();
+        addCubes();
+        addHigScores();
+    }
+    document.onload = main();
+
+
+/*
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+  - - - - - - - - - - - - - - DRIVERS - - - - - - - - - - - - - - - - - 
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+*/
+
+function driver(){
+    console.log(convertTime(120));
+    console.log(convertTime(12132323232393933));
+    console.log(convertTime(60));
+    console.log(convertTime(0));
+}
+
+// driver();
+
+</script>

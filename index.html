@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Home [nxn]</title>
+</head>
+<body>
+    <insertBar></insertBar>
+    <insertD-L></insertD-L>
+
+    <link rel="stylesheet" href="menuBar.css">
+    <script src="menuBar.js"></script>
+
+    <div class="scrollIcon">
+        <img src="img/scroll.gif" alt="" class="scrollImg">
+    </div>
+
+    <div id="roadMap" class="toggleDark">
+        <div id="progressBar_out">
+            <div id="dots"></div>
+            <div id="progressBar"></div>
+        </div>
+    </div>
+    
+    <div id="filler"></div>
+    <div id="background" class="contain">
+        <div class="contain" id="container">
+            <div id="mainBox" class="toggleDark">
+                <div id="swipe" class="toggleDark "></div>
+                <div id="text"></div>
+            </div>
+        </div>    
+    </div> 
+</body>
+</html>
+
+<style>
+
+    body{
+        /* overflow:hidden; */
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        scrollbar-width: 1px;
+
+    }
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /*bar*/
+    #dots{
+        position: fixed;
+        display: flex;
+        height: 441px;
+        left: 22px;
+        width: 14px;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    #progressBar_out{
+        border: 1px solid #929292;
+        border-radius:122px;
+        height: 88%;
+        width: 7px;
+        margin: 55%;
+        margin-left: 30%;
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .title{
+        font-size: 10vw;
+        font-family: monospace;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+    .dot{
+        border: 1px solid #929292;
+        transition-duration:1s;
+        border-radius: 25px;
+        width: 78%;
+        height: 3%;
+        cursor: pointer;
+    }
+    .dot > div{
+        margin-left: 24px;
+        opacity: 0;
+        font-family: monospace;
+        transition-duration:0.3s;
+        transition: opacity .4s ease,margin-left .4s ease;
+        /* transition-delay: 0.4s,0s; */
+    }
+    .dot:hover>div>.hide{
+        margin-left: 1px;
+        width: 386%;
+    }
+    .hide{
+        width: 0%;
+        height: 4px;
+        margin-left: 10px;
+        margin-top: 17px;
+        transition-duration: 1s;
+        background: rgb(0, 0, 0);
+        opacity: 0.8;
+        filter: contrast(0.5);
+        position: absolute;
+    }
+    #roadMap:hover > #progressBar_out > #dots > .dot> div {
+        margin-left: 12px;
+        opacity: 1;
+        width: 0%;
+    }
+    .fog{
+        background: rgba(255, 255, 255, 0.2); 
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        text-align: center;
+        backdrop-filter: blur(10px); 
+    }
+    .contain{
+        position: fixed;
+        transition-duration: 0.4s;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #progressBar{
+        transition-duration: 1s;
+        background: #0000005c;
+        height: 95px;
+        width: 100%;
+    }
+    #roadMap{
+        z-index: 1;
+        position: fixed;
+        left: 0px;
+        display: flex;
+        top: 17%;
+        border-top-right-radius: 122px;
+        border-bottom-right-radius: 122px;
+        width: 40px;
+        height: 501px;
+        background: #dddddd;    
+    }
+    #container{
+        width: 90%;
+        height: 90%;
+        margin: 5%;
+    }
+    #swipe{
+        width: 100%;
+        position: absolute;
+        z-index: 1;
+        border-radius: 10px;
+        transition-duration: 0.3s;
+        background: rgb(222, 222, 222);
+    }
+    #swipe.dark{
+        background:rgb(5 9 43) !important;
+    }
+
+    #mainBox{
+        position: fixed;
+        overflow: hidden;
+        background: #ffffff;
+        height: 100px;
+        width: 100px;
+        transition: background-color 3s, color 0.3s, transform 0.3s,width 0.7s, height 0.7s;
+        /* transition-duration: 0.7s; */
+        box-shadow: 0px 0px 20px 20px rgb(0 9 55 / 40%);
+        border-radius: 10px;
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    #background{
+        background-color: rgb(188, 183, 183);
+        transition-duration: 1s;
+        width: 100%;
+        height: 100%;        
+    }
+    .showScroll{
+        transition: margin 0.3s;
+        /* transition-duration: 0.3s; */
+        display: flex;
+        height: 60px;
+        width: 330px;
+        overflow: hidden;
+        border: 1px;
+        padding: 2px;
+        border-radius: 15px;
+        box-shadow: inset 0px 0px 20px 0px rgb(0 9 55 / 40%);
+        flex-direction: column;
+        align-items: center;
+    }
+    #outerScroll{
+        transition-duration: 0.3s;
+        height: 60px;            
+        display: flex;
+        font-size: 50px;
+    }
+    #text{
+        display: flex;
+        font-family: monospace;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .containImg{
+        width: 13%;
+        height: 13%;
+        margin-top: 4%;
+        margin-left: 4%;
+    }
+    #innerScroll2{
+        transition-duration: 0.3s;
+    }
+    #innerScroll1{
+        transition-duration: 0.3s;
+        color: gray;
+    }
+    .slideHead{
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+    .button{
+        font-size: 3vw;
+        background: #4040a145;
+        border-radius: 50px;
+        filter: drop-shadow(2px 0px 1px rgb(0 9 55 / 40%));
+        padding: 13px;
+        box-shadow: inset 0px 0px 20px 0px rgb(0 9 55 / 40%);
+        justify-content: center;
+        transition: filter 1s;
+        /* transition-duration: 1s; */
+        width: 40vw;
+        display: flex;
+        align-items: center;
+    }
+    .button:hover{
+        cursor: pointer;
+        filter: none;
+        box-shadow: inset 0px 0px 20px 0px rgb(0 9 55 / 10%) ;
+    }
+    .dashText{
+        font-size: 1.5rem;
+        margin-top: 11%;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .dashText>div{
+        opacity: 0;
+        font-weight: normal;
+        margin-left:30px;
+        transition-duration: 0.5s;
+    }
+    .show{
+        margin-left:0px !important;
+        opacity: 1 !important;
+    }
+    #tuBtn{
+        background: rgb(32 162 95 / 50%);
+    }
+    #subText{
+        transition-duration: 0.3s;
+        opacity: 0;
+        transform: rotateX(40deg);
+    }
+    .rotateText{
+        transform: rotateX(0deg)!important;
+        opacity: 1!important;
+    }
+
+    .linkIcon{
+        fill: white
+    }
+    .linkIconContain{
+        width: 5%;
+        box-shadow: rgba(0, 9, 55, 0.4) 2.20933px -0.0746667px 20px 0px;
+        margin-left: 30px;
+        display: flex;
+        background: #cd7add3d;
+        border-radius: 15px;
+        padding: 9px;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .continTime{
+        /* box-shadow: 0px 0px 4px 0px rgb(0 9 55 / 40%); */
+        transition-duration: 1s;
+        width: 36vw;
+        /* background: rgb(211 211 255 / 26%); */
+        padding: 9px;
+        display: flex;
+        border-radius: 24px;
+        align-items: center;
+        font-family: monospace;
+        justify-content: center;
+    }
+    .timeImg{
+        margin-top: 0.2rem;
+        padding: 0.4rem;
+        width: 5vw;
+        border-radius: 62px;
+        background: rgb(202 59 59 / 47%);
+        box-shadow: inset 0px 0px 8px 5px rgb(0 9 55 / 23%);
+    }
+    .scoreDisplay{
+        width: 89vw;
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    .timeExpland{
+        border-radius: 13px;
+        width: 66%;
+        background: #ffcccc47;
+        transition-duration: 1s;
+        text-align: center;
+        margin: 38px;
+        height: 35px;
+        padding: 23px;
+        font-size: 2vw;
+    }
+    .timeExpland.show{
+        width: 70%;
+        color: unset;
+        height: 100%;
+        padding: 23px;
+        display: flex;
+        font-size: 1.2rem;
+        margin: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+    .changeNum{
+        font-size: 9vw;
+        width: 10vw;
+        text-align: center;
+        transition-duration: 0.1s;
+    }
+    .invert{
+        filter: invert(1);
+    }
+    .textScore.show{
+        color: unset;
+        background: #ffffff42;
+        border-radius: 23px;
+        margin: 19px;
+        padding: 15px;
+        width: fit-content;        
+    }
+    .textScore{
+        transition-duration: 0.2s;
+        color: rgba(255, 0, 0, 0);
+    }
+
+    #containHelp{
+        position: absolute;
+        background: #f485ff4f;
+        bottom: -17%;;
+        width: 100%;
+        display: flex;
+        height: 8vh;
+        align-items: center;
+        justify-content: center;
+        transition-duration: 1s;      
+        cursor: pointer;  
+    }
+    #containHelp.show{
+        bottom:0;
+    }
+    #quesionWall{
+        position: absolute;
+        bottom: 0;
+        opacity: 0.14;
+        filter: drop-shadow(3px 4px 4px rgba(0, 0, 0, 0.495));
+        pointer-events: none;
+        color: #8166bf;
+        width: 100%;
+        height: 100%;
+    }
+    .helpbtn{
+        background: #8166bf82;
+    }
+    .questionMark{
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        opacity: 0.2;
+        filter: blur(6px);
+    }
+    .scrollImg{
+        width: 100%;
+        filter: blur(0.3px) drop-shadow(1px 1px 0px black);
+        opacity: 0.5;
+    }
+    .scrollIcon{
+        margin: 2%;
+        position: fixed;
+        bottom: 18px;
+        width: 8%;
+        height: 8%;
+        right: 0;
+        z-index: 1;
+        transition-duration: 1s;
+    }
+    
+</style>
+<script>
+    const mainBox = document.getElementById("mainBox")
+    const text  = document.getElementById("text")
+    const background = document.getElementById("background")
+    const BarBack = document.getElementById("progressBar_out")
+    const proBar = document.getElementById("progressBar")
+    const dots = document.getElementsByClassName("dot")
+    const mouseFollow = document.getElementById("mouseBlur")
+    var totalHeight  = 0;
+    var boxOnIndex   = 0;
+    const offset = 100
+    var newTimeMove = 0;
+
+
+    //makes the user to scroll the given y
+    function moveto(yPos){
+        window.scrollTo({
+            top: yPos,
+            behavior: 'smooth'
+        });
+    }
+
+
+    //updates the display box with the content of the current box on
+    function updateBox(){
+        for(let i = 0; i < dots.length; i++){
+            dots[i].style.background = "#00000073"
+        }
+        mainBox.style.height = displays[boxOnIndex].height+"%"
+        proBar.style.height = ((1-boxOnIndex/(displays.length-1))*100)+"%"
+        mainBox.style.width = displays[boxOnIndex].width+"%"
+        text.innerHTML = displays[boxOnIndex].html
+        background.style.background = displays[boxOnIndex].colour
+        dots[boxOnIndex].style.background = displays[boxOnIndex].colour
+    }
+
+
+    //every time the user scrols it updates what box the user should be looking at 
+    function Scrolly(ScrollTop){
+        currentHeightSum = 0
+        //determine the display to show
+        for(let i = 0; i < displays.length; i++){
+            currentHeightSum += displays[i].yScroll
+            //if the user y scroll is below the total y
+            if(currentHeightSum >= ScrollTop+offset){
+                //by comparing it to the previous index find if scrolled up or down 
+                if(boxOnIndex!=i){
+                    if(boxOnIndex>i){
+                        transition(true);
+                    }else{
+                        transition(false);
+                    }
+                }
+                // return what box the user is on
+                return i;
+            }
+        }
+    }
+
+
+    //makes a swipe animation in a direction 
+    function transition(up){
+        contrain = document.getElementById("container");
+        swipe    = document.getElementById("swipe");
+        
+        delay    = parseFloat(getComputedStyle(swipe).transitionDuration.replace("s",""))*500
+        if(up){
+            swipe.style.alignSelf = "start";
+            swipe.style.height = "90%"
+
+            setTimeout(()=>{
+                swipe.style.alignSelf ="end";
+                swipe.style.height = "  0%" ;
+                updateBox()
+            },delay)
+        }else{
+            swipe.style.alignSelf = "end";
+            swipe.style.height = "90%" 
+
+            setTimeout(()=>{
+                swipe.style.alignSelf = "start";
+                swipe.style.height = "  0%" ;
+                updateBox()
+            },delay)
+        }
+    }
+
+
+    //gets random integer
+    function RandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+
+    //gets html for random qestion marks 
+    function randomPosMark(numberOfMarks){
+        marks=""
+        for (let i = 0; i < numberOfMarks; i++) {
+            marks+="<div style='opacity:"+RandomInt(2,10)/10+";filter:blur("+RandomInt(0,4)+"px); top: "+RandomInt(2,98)+"%;left: "+RandomInt(2,98)+"%;font-size: "+RandomInt(3,10)+"vw;rotate: "+RandomInt(-40,40)+"deg;' class='questionMark'>?</div>"
+        }
+        return marks
+    }
+
+
+    const markHTML = randomPosMark(10);
+    const scrollSize = 1200
+    const displays = [
+    {
+        "yScroll":scrollSize*1.6,
+        "height":99,
+        "width":99,
+        "colour":"white",
+        "title":"Home",
+        "html":
+        "<h1 class='title'>CUBE [<div class='changeNum'>N</div>x<div class='changeNum'>N</div>]"+
+        "</h1>"
+    },
+    {
+        "yScroll":scrollSize*3,
+        "height":75,
+        "width":75,
+        "colour":"rgb(64, 64, 161)",
+        "title":"Dashboard",
+
+        "html":
+        "<div>"+
+        "<div class='dash slideHead'>start now!</div> <br>"+
+        "<div id='dashBtn' onclick='openPage(&quot;Dashboard.html&quot;)'; class='button insetScroll'>go to dashboard"+
+            "<div class='linkIconContain'>"+
+                '<svg class="linkIcon" fill="#000000" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.512"></g><g id="SVGRepo_iconCarrier"> <rect id="Icons" x="-896" y="0" width="1280" height="800" style="fill:none;"></rect> <g id="Icons1" serif:id="Icons"> <g id="Strike"> </g> <g id="H1"> </g> <g id="H2"> </g> <g id="H3"> </g> <g id="list-ul"> </g> <g id="hamburger-1"> </g> <g id="hamburger-2"> </g> <g id="list-ol"> </g> <g id="list-task"> </g> <g id="trash"> </g> <g id="vertical-menu"> </g> <g id="horizontal-menu"> </g> <g id="sidebar-2"> </g> <g id="Pen"> </g> <g id="Pen1" serif:id="Pen"> </g> <g id="clock"> </g> <g id="external-link"> <path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z"></path> <path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z"></path> </g> <g id="hr"> </g> <g id="info"> </g> <g id="warning"> </g> <g id="plus-circle"> </g> <g id="minus-circle"> </g> <g id="vue"> </g> <g id="cog"> </g> <g id="logo"> </g> <g id="radio-check"> </g> <g id="eye-slash"> </g> <g id="eye"> </g> <g id="toggle-off"> </g> <g id="shredder"> </g> <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"> </g> <g id="react"> </g> <g id="check-selected"> </g> <g id="turn-off"> </g> <g id="code-block"> </g> <g id="user"> </g> <g id="coffee-bean"> </g> <g id="coffee-beans"> <g id="coffee-bean1" serif:id="coffee-bean"> </g> </g> <g id="coffee-bean-filled"> </g> <g id="coffee-beans-filled"> <g id="coffee-bean2" serif:id="coffee-bean"> </g> </g> <g id="clipboard"> </g> <g id="clipboard-paste"> </g> <g id="clipboard-copy"> </g> <g id="Layer1"> </g> </g> </g></svg>'+            
+            "</div>"+
+        "</div> <br>"+
+        "<div class='dashText'>Effectively :<div class=''>- create</div><div class=''>- manage</div><div class=''>- delete</div></div>"+
+        "</div>",
+
+    },
+    {
+        "yScroll":scrollSize*5,
+        "height":50,
+        "width":90,
+        "colour":"orange"   ,
+        "title":"Customise",
+
+        "html":
+        "<div style='position: absolute;top: 1%;font-weight: bold;text-transform: uppercase;font-size: 10vw;'>Customise:</div>"+
+        "<div class='showScroll insetScroll'><div id='outerScroll'>any &nbsp;<div> <div id='innerScroll1'  >size</div> <div style='color: rebeccapurple;'>colour</div> </div></div><div style='font-size: 60px; text-align: center; '><div id='innerScroll2' style='height: 60px; color:rgb(202, 59, 59);'>animations</div><div style='height: 60px; color:rgb(64, 64, 161)'>timer</div><div style='height: 60px; color:rgb(32, 162, 95);'>game mode</div></div></div>"
+        ,
+    },{ 
+        "yScroll":scrollSize*2,
+        "height":80,
+        "width":80,
+        "colour":"rgb(32, 162, 95)",
+        "title":"tutorial",
+
+        "html":
+        "<div style='display: flex; flex-direction: column; align-items: center;'>"+
+        "<div class='dash slideHead'>tutorial</div> <br>"+
+        "<div id='tuBtn' onclick='openPage(&quot;tutorials.html&quot;)' class='button insetScroll'>go to tutorial page"+
+            "<div class='linkIconContain'>"+
+                '<svg class="linkIcon" fill="#000000" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.512"></g><g id="SVGRepo_iconCarrier"> <rect id="Icons" x="-896" y="0" width="1280" height="800" style="fill:none;"></rect> <g id="Icons1" serif:id="Icons"> <g id="Strike"> </g> <g id="H1"> </g> <g id="H2"> </g> <g id="H3"> </g> <g id="list-ul"> </g> <g id="hamburger-1"> </g> <g id="hamburger-2"> </g> <g id="list-ol"> </g> <g id="list-task"> </g> <g id="trash"> </g> <g id="vertical-menu"> </g> <g id="horizontal-menu"> </g> <g id="sidebar-2"> </g> <g id="Pen"> </g> <g id="Pen1" serif:id="Pen"> </g> <g id="clock"> </g> <g id="external-link"> <path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z"></path> <path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z"></path> </g> <g id="hr"> </g> <g id="info"> </g> <g id="warning"> </g> <g id="plus-circle"> </g> <g id="minus-circle"> </g> <g id="vue"> </g> <g id="cog"> </g> <g id="logo"> </g> <g id="radio-check"> </g> <g id="eye-slash"> </g> <g id="eye"> </g> <g id="toggle-off"> </g> <g id="shredder"> </g> <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"> </g> <g id="react"> </g> <g id="check-selected"> </g> <g id="turn-off"> </g> <g id="code-block"> </g> <g id="user"> </g> <g id="coffee-bean"> </g> <g id="coffee-beans"> <g id="coffee-bean1" serif:id="coffee-bean"> </g> </g> <g id="coffee-bean-filled"> </g> <g id="coffee-beans-filled"> <g id="coffee-bean2" serif:id="coffee-bean"> </g> </g> <g id="clipboard"> </g> <g id="clipboard-paste"> </g> <g id="clipboard-copy"> </g> <g id="Layer1"> </g> </g> </g></svg>'+            
+            "</div>"+
+        "</div> <br>"+
+        "<div style='text-align:center; font-size: 1rem; margin-left: 12%; margin-right: 12%;'> <div style='font-weight: bold;'>new to using a rubik's cube? don't worry! </div> <div id='subText'> <br>We provide step by step tutorials to help you solve the cube with no prior knowledge </div> </div>"+
+        "</div>",
+    },
+    {
+        "yScroll":scrollSize*4,
+        "height":90,
+        "width":90,
+        "colour":"rgb(202, 59, 59)",
+        "title":"scores",
+        "html":
+        "<div class='scoreDisplay'>"+
+            "<div class='continTime'>"+
+                "<div style='font-size: 9vw;'>score</div>"+
+                '<img class="timeImg insetScroll" src="https://www.svgrepo.com/show/490407/time-fast.svg" alt="">'+
+            "</div>"+
+            "<div class='timeExpland'>"+
+                "<div class='textScore'>"+
+                    "Get new personal records!"+
+                "</div>"+
+                "<div class='textScore'>"+
+                    "Compare your time to your friends!"+
+                "</div>"+
+            "</div>"+
+        "</div>",
+    },
+    {
+        "yScroll":scrollSize*3,
+        "height":90,
+        "width":97,
+        "colour":"rgb(129 102 191)",
+        "title":"helpCenter",
+        "html":
+        "<div style='display: flex; margin: 9%; flex-direction: column; align-items: center;'>"+
+            "<div style='font-size: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center;'>need help?</h1>"+
+            "<div style= 'font-size: 1rem; margin: 36px; '> The help center outlines every aspect of the website to provide you with 100% confidence in using the website.</div>"+  
+        
+            "<div onclick='openPage(&quot;helpPage.html&quot;)'; class='helpbtn button insetScroll'>go to help center"+
+                "<div class='linkIconContain'>"+
+                    '<svg class="linkIcon" fill="#000000" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="0.512"></g><g id="SVGRepo_iconCarrier"> <rect id="Icons" x="-896" y="0" width="1280" height="800" style="fill:none;"></rect> <g id="Icons1" serif:id="Icons"> <g id="Strike"> </g> <g id="H1"> </g> <g id="H2"> </g> <g id="H3"> </g> <g id="list-ul"> </g> <g id="hamburger-1"> </g> <g id="hamburger-2"> </g> <g id="list-ol"> </g> <g id="list-task"> </g> <g id="trash"> </g> <g id="vertical-menu"> </g> <g id="horizontal-menu"> </g> <g id="sidebar-2"> </g> <g id="Pen"> </g> <g id="Pen1" serif:id="Pen"> </g> <g id="clock"> </g> <g id="external-link"> <path d="M36.026,20.058l-21.092,0c-1.65,0 -2.989,1.339 -2.989,2.989l0,25.964c0,1.65 1.339,2.989 2.989,2.989l26.024,0c1.65,0 2.989,-1.339 2.989,-2.989l0,-20.953l3.999,0l0,21.948c0,3.308 -2.686,5.994 -5.995,5.995l-28.01,0c-3.309,0 -5.995,-2.687 -5.995,-5.995l0,-27.954c0,-3.309 2.686,-5.995 5.995,-5.995l22.085,0l0,4.001Z"></path> <path d="M55.925,25.32l-4.005,0l0,-10.481l-27.894,27.893l-2.832,-2.832l27.895,-27.895l-10.484,0l0,-4.005l17.318,0l0.002,0.001l0,17.319Z"></path> </g> <g id="hr"> </g> <g id="info"> </g> <g id="warning"> </g> <g id="plus-circle"> </g> <g id="minus-circle"> </g> <g id="vue"> </g> <g id="cog"> </g> <g id="logo"> </g> <g id="radio-check"> </g> <g id="eye-slash"> </g> <g id="eye"> </g> <g id="toggle-off"> </g> <g id="shredder"> </g> <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"> </g> <g id="react"> </g> <g id="check-selected"> </g> <g id="turn-off"> </g> <g id="code-block"> </g> <g id="user"> </g> <g id="coffee-bean"> </g> <g id="coffee-beans"> <g id="coffee-bean1" serif:id="coffee-bean"> </g> </g> <g id="coffee-bean-filled"> </g> <g id="coffee-beans-filled"> <g id="coffee-bean2" serif:id="coffee-bean"> </g> </g> <g id="clipboard"> </g> <g id="clipboard-paste"> </g> <g id="clipboard-copy"> </g> <g id="Layer1"> </g> </g> </g></svg>'+            
+                "</div>"+
+            "</div> <br>"+
+            
+        
+        "</div>"+
+        "<div id='quesionWall'>"+
+            markHTML+
+        "</div>"+
+
+        "<div id='containHelp' onclick='moveto(1920)'>"+
+            "<div id='backToTop'>"+
+            '<svg fill="#000000" height="200px" width="55px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_224_" d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z"></path> </g></svg>'+
+        "</div>"
+        
+        ,
+    },];
+
+
+
+    //Adds the content of section to the side progress bar
+    function addContent(){
+        for(let i = 0; i < displays.length; i++){
+            document.getElementById("dots").innerHTML+="<div class='dot'id='dot-"+i+"'> <div><div style='background:"+displays[i].colour+"' class='hide'></div> <div style='background: #cbcbcbbd; border-radius:5px; width: fit-content;'>" + displays[i].title+"</div></div> </div>"
+            document.getElementById("dot-"+i).setAttribute("onmousedown","moveto("+totalHeight+")")//the y-pos of the display
+            totalHeight += displays[i].yScroll
+        }
+        document.getElementById("filler").style.height = totalHeight+"px"
+    }
+
+
+    //Returns the pixels into the section
+    function getPxIntoSection(section){
+        const px = ScrollTop-(currentHeightSum-displays[section].yScroll)+offset;
+        return px;
+    }
+
+
+    //calculates which subsection of 100 split into an Amount given the given scroll percentage falls into.
+    function getSubIndex(subScrollPercent,subSectionAmount){
+        for (let i = 1; i < subSectionAmount+1; i++) {
+            if(subScrollPercent<100/subSectionAmount*i){
+                return i
+            }   
+        }
+    }
+
+
+    //display animations for each section
+    function transitionTextSection(px,section){
+        subScrollPercent = px/(displays[section].yScroll)*100;
+        switch(section){
+            case 0:
+                const changeNum = document.getElementsByClassName("changeNum")
+                subSectionStageOn = getSubIndex(subScrollPercent,40);
+                if(!changeNum[0]){return;}
+                //invert if dark mode 
+                if(localStorage.darkMode=="true"){
+                    changeNum[0].classList.add("invert");
+                    changeNum[1].classList.add("invert");
+                }else{
+                    changeNum[0].classList.remove("invert");
+                    changeNum[1].classList.remove("invert");
+                }
+                var hue = (subSectionStageOn - 2) * (360 / 38);
+                var darkness = subSectionStageOn*1.3
+                var color = "hsl("+ hue +", 100%, "+darkness+"%)";
+
+                var innerCubeSizeText = subSectionStageOn-2;
+                if(innerCubeSizeText==1 || innerCubeSizeText=="NaN"){ 
+                    innerCubeSizeText = "N"
+                    color = "black"
+                }
+
+                changeNum[0].innerHTML = innerCubeSizeText;
+                changeNum[1].innerHTML = innerCubeSizeText;
+
+                changeNum[0].style.color = color;
+                changeNum[1].style.color = color;
+            break;
+            case 1:
+                const dashText = document.getElementsByClassName("dashText")[0]
+                subSectionStageOn = getSubIndex(subScrollPercent,5);
+                if(!dashText){return;}
+                
+                const showEls = dashText.getElementsByTagName("div");
+                switch(subSectionStageOn){
+                    case 1:
+                        showEls[0].classList.remove("show");
+                        showEls[1].classList.remove("show");
+                        showEls[2].classList.remove("show");
+                        break;
+                    case 2:
+                        showEls[0].classList.add("show");
+                        showEls[1].classList.remove("show");
+                        showEls[2].classList.remove("show");
+                        break;
+                    case 3:
+                        showEls[0].classList.add("show");
+                        showEls[1].classList.add("show");
+                        showEls[2].classList.remove("show");
+                        break;
+                    case 4:
+                    case 5:
+                        showEls[0].classList.add("show");
+                        showEls[1].classList.add("show");
+                        showEls[2].classList.add("show");
+                        break;
+                }
+
+            break;
+            case 2:
+            const outerScroll = document.getElementById("outerScroll");
+            const innerScroll1 = document.getElementById("innerScroll1");
+            const innerScroll2 = document.getElementById("innerScroll2");
+            subSectionStageOn = getSubIndex(subScrollPercent,5);            
+            //if the slide is not loaded yet 
+            if(!outerScroll){return;}
+
+            switch(subSectionStageOn){
+                case 1:
+                    outerScroll.style.marginTop = "0px";    
+                    innerScroll1.style.marginTop = "0px";
+                    innerScroll2.style.marginTop = "0px"; 
+                    break;             
+                case 2:
+                    outerScroll.style.marginTop = "0px";
+                    innerScroll1.style.marginTop = "-60px";
+                    innerScroll2.style.marginTop = "0px";
+                    break;
+                case 3:
+                    outerScroll.style.marginTop = "-60px";
+                    innerScroll1.style.marginTop = "-60px";
+                    innerScroll2.style.marginTop = "0px";
+                    break;
+                case 4:
+                    outerScroll.style.marginTop = "-60px"; 
+                    innerScroll1.style.marginTop = "-60px";
+                    innerScroll2.style.marginTop = "-60px";
+                    break;
+                case 5:
+                    outerScroll.style.marginTop = "-60px"  
+                    innerScroll1.style.marginTop = "-60px";
+                    innerScroll2.style.marginTop = "-130px";
+                    break;
+            }
+            break;
+            case 3:
+                const subText= document.getElementById("subText");
+                subSectionStageOn = getSubIndex(subScrollPercent,2);
+                //if the slide is not loaded yet 
+                if(!subText){return;}
+
+                switch(subSectionStageOn){
+                    case 1:
+                        subText.classList.remove('rotateText');
+                        break;             
+                    case 2:
+                        subText.classList.add('rotateText');
+                        break;
+                }
+            break;
+            case 4:
+                const timeExpland= document.getElementsByClassName("timeExpland")[0];
+                const textScore= document.getElementsByClassName("textScore");
+                subSectionStageOn = getSubIndex(subScrollPercent,3);
+                //if the slide is not loaded yet 
+                if(!timeExpland){return;}
+                switch(subSectionStageOn){
+                    case 1:
+                        timeExpland.classList.add('show');
+                        textScore[0].classList.remove('show');
+                        textScore[1].classList.remove('show');
+                        break;
+                    case 2:
+                        timeExpland.classList.add('show');
+                        textScore[0].classList.add('show');
+                        textScore[1].classList.remove('show');
+                        break;
+                    case 3:
+                        timeExpland.classList.add('show');
+                        textScore[0].classList.add('show');
+                        textScore[1].classList.add('show');
+                        break;
+                }
+            break;
+            case 5:
+                const HelpText = document.getElementById("containHelp");
+                const quesionWall = document.getElementById("quesionWall");
+                subSectionStageOn = getSubIndex(subScrollPercent,2);
+                smoothness = 100
+                pageMove = getSubIndex(subScrollPercent,smoothness);
+                //if the slide is not loaded yet 
+                if(!HelpText){return;}
+                quesionWall.style.height = pageMove*5+"%"
+
+                switch(subSectionStageOn){
+                    case 1:
+                        HelpText.classList.remove('show');
+                        break;
+                    case 2:
+                        HelpText.classList.add('show');
+                        break;
+                }
+            break;
+        }
+        //if the slide is not loaded yet 
+    }
+
+
+    //opens page url in new tab
+    function openPage(pageLink){
+        window.open(pageLink);
+    }
+
+
+    //listens to user scroll and mousemove to update display 
+    function addUserMovement(){
+
+        //update the box user is on
+        window.addEventListener('scroll',()=>{
+            newTimeMove = Date.now();
+            ScrollTop = document.documentElement.scrollTop;
+            boxOnIndex = Scrolly(ScrollTop);
+            var px = getPxIntoSection(boxOnIndex);
+            transitionTextSection(px,boxOnIndex);
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const mainBoxRect = mainBox.getBoundingClientRect();
+            const slowDown = 0.02;
+            const insetslowDown = 0.5;
+            //get the center of the main box
+            const centerX = mainBoxRect.left + mainBoxRect.width / 2;
+            const centerY = mainBoxRect.top + mainBoxRect.height / 2;
+            // make the x y move from the center 
+            const shadowX = (centerX - e.clientX) * slowDown;
+            const shadowY = (centerY - e.clientY) * slowDown;
+            // aply the mouse movement to the shadows
+            mainBox.style.boxShadow = shadowX+"px "+shadowY+"px 20px 20px rgb(0 9 55 / 40%)";
+            const insetScroll = document.getElementsByClassName("insetScroll")[0]
+            const quesionWall = document.getElementById("quesionWall")
+            if(quesionWall){
+                quesionWall.style.filter = "drop-shadow("+shadowX*0.8+"px "+shadowY*0.8+"px 4px rgba(0, 0, 0, 0.495))";
+            }
+            if(insetScroll){
+                insetScroll.style.boxShadow = "rgba(0, 9, 55, 0.4)"+shadowX*-insetslowDown+"px "+shadowY*-insetslowDown+"px 20px 0px inset";
+            }
+
+        });
+    }
+
+
+    // shows a scroll icon when the user scrool is inactive 
+    function userScroll(){
+        const scrollIcon = document.getElementsByClassName("scrollIcon")[0]
+        setInterval(()=>{
+            if(Date.now()-newTimeMove > 5000 && boxOnIndex == 0){
+                scrollIcon.style.opacity = "1"
+                scrollIcon.style.bottom = "18px"
+            }else{
+                scrollIcon.style.opacity = "0";
+                scrollIcon.style.bottom = "-12px"
+            }
+
+        },10)
+    }
+
+    // initialise the display
+    function main(){
+        addContent()
+        updateBox()
+        userScroll()
+        addUserMovement()
+    }
+
+    main()
+
+/*
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+  - - - - - - - - - - - - - - DRIVERS - - - - - - - - - - - - - - - - - 
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+*/
+
+    
+    function driver() {
+        const testCases = [
+            [10, 4],
+            [30, 4],
+            [60, 4],
+            [90, 4],
+            [25, 2],
+            [75, 2],
+            [0, 3],
+            [33.3, 3],
+            [66.7, 3]
+        ];
+
+        for (let i = 0; i < testCases.length; i++) {
+            subScrollPercent = testCases[i][0];
+            subScrollPercent = testCases[i][1];
+            const result = getSubIndex(subScrollPercent, subSectionAmount);
+            console.log(subScrollPercent+" , "+subSectionAmount+"  => "+result);
+        }
+    }
+    
+    // driver()
+
+
+</script>

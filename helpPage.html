@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>Help ℹ </title>
+</head>
+<body class="toggleDark ">
+    <insertBar></insertBar>
+    <insertD-L></insertD-L>
+    <link rel="stylesheet" href="menuBar.css">
+    <script src="menuBar.js"></script>
+    <!-- file:///C:/Users/aryap/OneDrive/Documents/cubeSite/helpPage.html -->
+    <div class="sideMenu toggleDark">
+        <div onclick="ToggleStartDispay()" class="OverView">OverView</div>
+    </div>
+    <div class="header-contain">
+        <div class="header">Help Center</div>
+    </div>
+    <div class="main-contain toggleDark" onclick="StartDispay(true)">
+
+        <div class="mainContent">
+            <div class="space"></div>
+
+            <div class="cube-contain section toggleDark">
+                <div class="main" style="background: var(--cubeSection);">cube</div>
+                <div class="mainHead redUnder">cube</div>
+                    <div class="sub">Reference Manual</div>
+                        <div class="mainText lessRed" style="align-items: center;">
+                            <table class="manual-Table">
+                                <thead style="background: #cd5c5c42;">
+                                    <tr>
+                                    <th style="width: 40%;">
+                                            <div>
+                                                Action
+                                            </div>
+                                        </th>
+                                    <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="dispayRigt">
+                                                Right Click|
+                                                <div class="iconText">
+                                                    + direction
+                                                </div>
+                                                <div class="icon toggleDark">
+                                                    <svg style="    width: 80%;" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 417.031 417.031" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M219.683,92.146c-0.279-0.315-0.52-0.627-0.849-0.925c-3.644-3.272-3.742-2.306,0.247-5.983 c2.955-2.712,6.541-4.834,9.79-7.18c8.596-6.213,14.254-14.534,18.079-24.399c8.582-22.15-16.706-37.453-29.396-50.562 c-9.168-9.485-23.603,4.982-14.444,14.447c7.076,7.325,16.19,13.264,22.349,21.407c6.897,9.116-3.613,19.174-10.814,24.249 c-11.133,7.844-20.757,18.262-18.533,29.434c-49.964,4.668-96.16,32.052-96.16,80.327v135.51 c0,59.862,48.698,108.562,108.564,108.562c59.863,0,108.566-48.7,108.566-108.562V172.95 C317.085,120.247,268.05,94.723,219.683,92.146z M120.391,172.95c0-35.833,38.898-56.581,79.186-60.027v124.982 c-36.751-1.85-66.589-10.222-79.186-14.309V172.95z M296.648,308.461c0,48.604-39.537,88.133-88.129,88.133 c-48.59,0-88.128-39.529-88.128-88.133V245.08c18.249,5.516,52.6,13.882,93.202,13.882c26.003,0,54.556-3.479,83.056-13.286 V308.461z M296.648,223.94c-25.844,9.883-52.237,13.746-76.635,14.271v-125.59c39.407,2.363,76.635,21.264,76.635,60.337V223.94z M289.735,216.203c0,0-46.688,13.073-62.567,10.271V122.813C269.429,130.753,296.625,143.533,289.735,216.203z"></path> </g> </g></svg>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td>move the cube side or entire cube</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="dispayRigt">
+                                                Left Click| 
+                                                <div class="iconText">
+                                                    + drag
+                                                </div>
+                                                <div class="icon toggleDark">
+                                                    <svg style="    width: 80%;" fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 450.47 450.47" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M237.298,99.533c-0.301-0.34-0.562-0.677-0.916-0.999c-3.937-3.535-4.043-2.491,0.266-6.463 c3.192-2.929,7.063-5.222,10.574-7.755c9.286-6.711,15.398-15.699,19.529-26.356C276.02,34.033,248.707,17.503,235,3.344 c-9.904-10.247-25.496,5.382-15.604,15.604c7.643,7.912,17.489,14.328,24.14,23.123c7.453,9.848-3.901,20.712-11.68,26.194 c-12.026,8.473-22.423,19.727-20.02,31.794c-53.971,5.042-103.87,34.623-103.87,86.767V333.2c0,64.664,52.603,117.27,117.27,117.27 c64.663,0,117.27-52.605,117.27-117.27V186.817C342.51,129.888,289.543,102.317,237.298,99.533z M130.044,186.817 c0-38.707,42.017-61.117,85.535-64.841v135.005c-39.697-1.998-71.928-11.042-85.535-15.457V186.817z M320.433,333.194 c0,52.5-42.705,95.199-95.192,95.199c-52.488,0-95.196-42.699-95.196-95.199V264.73c19.713,5.958,56.817,14.995,100.676,14.995 c28.088,0,58.93-3.759,89.713-14.352V333.194z M320.433,241.896c-27.916,10.675-56.424,14.849-82.78,15.415v-135.66 c42.569,2.553,82.78,22.969,82.78,65.175V241.896z M206.072,133.429v111.973c-17.153,3.027-67.583-11.094-67.583-11.094 C131.049,155.812,160.429,142.005,206.072,133.429z"></path> </g> </g></svg>
+                                                </div>
+
+                                            </div>
+                                        </td>
+                                        <td>quickly peek around the cube by . a mini map will be displayed on the top right to refect the movements made. The cube orientation will reset ofter the mouse is let go</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="dispayRigt">
+                                                Left Arrow 
+                                                <div class="icon toggleDark">
+                                                    <svg style="      rotate: 180deg;  width: 80%;" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#000000"></path></g></svg>                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>(when using tutorial mode) left slide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="dispayRigt">
+                                                Reft Arorw 
+                                                <div class="icon toggleDark">
+                                                    <svg style="    width: 80%;" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M256 120.768L306.432 64 768 512l-461.568 448L256 903.232 659.072 512z" fill="#000000"></path></g></svg>                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>(when using tutorial mode) right slide</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                        <div class="mainText lessRed" style="align-items: center;">
+                            <div class="lessRed">
+                                <div class="subHead">
+                                    cube zoom
+                                </div>  
+                                to zoom in to the cube click the + to zoom in and - to zoom out <br> 
+                                this will be from the values of 0 to 100
+                            </div>
+                            <div class="zoom">
+                                <div class="zoomBtn">➖</div>
+                                <div class="zoomNum">
+                                    0-100%
+                                </div>
+                                <div class="zoomBtn">➕</div>    
+                            </div>
+                        </div>
+                        
+                <div class="sub">Tutorial Mode</div>
+                    <div class="mainText lessRed">
+                        <div class="subHead">
+                            block out colours
+                        </div>
+                        <img src="img/blockCol.png"></img>
+                        <div class="goToLink" onclick="scrollToSection(2,2)"> click here for more info on the tutorial</div>
+                        the cube pieces visible are relevant to the slide currently active the tutorial. <br> 
+                        this will simplify the process of solving the cube by showing only relevent sections <br>
+                        the feature can be disabled when creating the cube. 
+                        <div class="subHead">mini window</div>  
+                        the mini window can be resized by click the bottom of the window.<br> 
+                        by click and holding the three dots the window can be draged<br>
+                        clicking the cross will close hide the window to the left of the screen, <br>
+                        by clicking the side bar the window will re-open<br>
+                        <br>
+
+
+                    </div>
+                    
+            </div>
+            
+            <div class="dashbord-contain section toggleDark">
+                <div class="main" style="background: var(--dashbordSection);">dashboard</div>
+                <div class="mainHead blueUnder">dashboard </div>
+                    <div class="sub">Add Cube</div>
+
+                    <div class="mainText lessBlue">
+                        <insertTutorial tutorial="Add Cube"></insertTutorial>
+                    </div>
+                    
+                    <div class="sub">cube options</div>
+                    <div class="mainText lessBlue">
+                        here are the verius customisable attributes of the cube under the cube options
+                    </div>
+                    <div class="mainText lessBlue">
+                        <insertTutorial tutorial="cube options"></insertTutorial>                           
+                    </div>
+
+                    <div class="sub">Remove/ open Cube</div>
+                    <div class="mainText lessBlue">
+                        <img src="img/hoverCube.png"></img>
+                        <div class="mainText lessBlue">
+                            click on the bin icon to permanently remove the cube <br>  
+                            clicking the cube box will open it (clickt he right icon to open in new tab)<br>
+                        </div>
+                    </div>
+
+                    <div class="sub"> Time Spent on a cube</div>
+                    <div class="mainText lessBlue smlImg ">
+                        <img src="img/hoverTime1.png"></img>
+                        <div class="circle">></div>
+                        <img src="img/hoverTime2.png"></img>
+                        
+                    </div>
+                        <div class="mainText lessBlue">
+                            hover over the cube size to reveal the current time spent on the cue
+                        </div>    
+
+                    <div class="sub"> Solve times </div>
+                    <div class="mainText lessBlue">
+                        <img src="img/Time1.png"></img>
+                        <div class="mainText lessBlue">
+                            Click the icon above the cubes to reveal the personal Best (PB) times for each cube size.
+                        </div>    
+                        <img src="img/Time2.png"></img>
+                        <div class="mainText lessBlue">
+                            click the drop down arrow to reveal all the solve times of the cubes (seen below)
+                        </div>
+                        <img src="img/Time3.png"></img>                    
+                    </div>
+
+            </div>
+
+            <div class="tutorial-contain section toggleDark">
+                <div class="main" style="background: var(--tutorialSection);">tutorial</div>
+                <div class="mainHead greenUnder">tutorial</div>
+                    <div class="sub">change Slides</div>
+                    <div class="mainText lessGreen">
+                        <img src="img/Tu-page1.png"></img>                      
+                        <div class="mainText lessGreen">
+                            <div class="boldText"><</div> arrow to go to the left slide <br> <br>
+                            <div class="boldText">></div> arrow to go to the right slide
+                        </div>
+                    </div>
+                    
+                    <div class="sub">Play/Reset animation</div>
+                    <div class="mainText lessGreen">
+                        <img src="img/Tu-Play.png"></img>
+                        <div class="mainText lessGreen">
+                            click the Play icon to play the animation
+                        </div>
+
+                        <img src="img/Tu-Reset.png"></img>
+                        <div class="mainText lessGreen">
+                            click the circular arrow icon to Reset the animation
+                        </div>
+                                    
+                    </div>
+                    <div class="sub">Window Controls</div>
+                    <div class="mainText lessGreen">
+                        <div class="sub-Titile">Back to Slide</div>
+                        <div class="mainText lessGreen">
+                            <img src="img/Tu-otherPage.png"></img>                            
+                            <div class="mainText lessGreen">
+                                when visiting an external link within the mini window of a tutorial cube click the <- icon to go back
+                            </div>
+                        </div>
+                        <div class="sub-Titile">hide Window</div>
+                        <div class="mainText lessGreen">
+                            <img src="img/Tu-CloseWindow.png"></img>                            
+                            <div class="mainText lessGreen">
+                                click the "X" to hide the window 
+                            </div>
+                        </div>
+                        <div class="sub-Titile">re-size Window</div>
+                        <div class="mainText lessGreen">
+                            <img src="img/Tu-ReSize.png"></img>                            
+                            <div class="mainText lessGreen">
+                                click and drag the bottom right of the window to re-size  
+                            </div>
+                        </div>
+
+                        <div class="sub-Titile">move window</div>
+                        <div class="mainText lessGreen">
+                            <img src="img/Tu-MoveWindow.png"></img>                            
+                            <div class="mainText lessGreen">
+                                click and hold the three dots to move the window
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="sub">progress bar</div>
+                    <div class="mainText lessGreen">
+                        <img src="img/Tu-proBar.png"></img>                            
+                        <div class="mainText lessGreen">
+                            the progress bar indicates how far into the tutorial you are and displays the name of the current stage 
+                        </div>
+                    </div> 
+                    
+            </div>
+
+            <div class="other-contain section toggleDark">
+                <div class="main" style="background: var(--otherSection);">other</div>
+                <div class="mainHead orangeUnder">other</div>
+                    <div class="sub">Light/dark mode </div>
+                    <div class="mainText lessOrange">
+                        <img src="img/L-DMode.png"></img>                                             
+                        <div class="mainText lessOrange">
+                            to toggle dark and light mode a button on the top right can be clicked<br> 
+                            this is consistent with all pages
+                        </div>
+                    </div>
+                    <div class="sub">Navigation</div>
+                    <div class="mainText lessOrange">
+                        <div class="mainText lessOrange">
+                            the hamburger menu is consistent through the page and is found on the top left
+                        </div>
+                        <img src="img/Nav1.png"></img>                                             
+                        <img src="img/Nav2.png"></img>                                                     
+                        <div class="mainText lessOrange">
+                            to expand the menu hover the mouse over it and it will reveal the 3 main pages of the site 
+                        </div>
+                    </div>
+                    <div class="sub">home page</div>
+                    <div class="mainText lessOrange">
+                        <div class="mainText lessOrange">
+                            continue to scroll down the page to play the animation outlining the site and its features 
+                        </div>
+                        <img src="img/HomeNav.png"></img>                                             
+                        <div class="mainText lessOrange">
+                            navigation bar on the left used to jump to sections. <br> 
+                            hover over the bar and click the section to jump to 
+                        </div>
+                    </div>
+                    <div class="sub">feedback</div>
+
+                    <div class="mainText lessOrange">
+                        At Cube NXN, we are dedicated to providing an exceptional user experience, and your feedback plays a pivotal role in our continuous improvement. We invite you to share your thoughts, suggestions, or any issues you might encounter. Your insights help us refine and enhance our services.
+                        <br>
+                        You can also contact us directly at <a href="mailto:cube.nxn@gmail.com">cube.nxn@gmail.com</a> We look forward to hearing from you!
+
+                    </div>
+                    <div onclick="scrollToSection(0,0)" class="goToLink"> Back To Top</div>
+
+                    <div class="mainText lessOrange">
+                        &copy; 2024 Cube NXN. All rights reserved.                
+                    </div>
+
+                    
+                <div class="filler"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+<style>
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+tr{
+    box-shadow: 0px 2px 20px #00000014;
+    border-radius: 15px;
+}
+td{
+    padding-left: 13px;
+    text-align: center;
+}
+.mainText>img{
+    width: 50%;
+    margin: 13px;
+    margin-left: 24%;
+    border-radius: 12px;
+}
+.lessRed>img{
+    border: 6px solid #f39292;
+}
+.lessBlue>img{
+    border: 6px solid #9292f3;
+}
+.lessGreen>img{
+    border: 6px solid #99c9a5;
+}
+.lessOrange>img{
+    border: 6px solid #f3be92;
+}
+.smlImg{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+}
+
+.smlImg>img{
+    width: 30%!important;
+    margin:auto!important;
+
+}
+.circle{
+    width: 12%;
+    font-size: 47px;
+    height: 12%;
+    background: #b9b5ff47;
+    border-radius: 1000px;
+}
+.dispayRigt{
+    display: flex;
+    margin-right: 13px;
+    align-items: center;
+    justify-content: flex-end;
+}
+:root{
+    --cubeSection: rgb(202, 59, 59);
+    --dashbordSection: rgb(64, 64, 161);
+    --tutorialSection: rgb(32, 162, 95);
+    --otherSection: rgb(240 157 76);
+}
+.icon{
+    height: 100%;
+    width: 31px;
+}
+.icon.dark>svg{
+    fill: white;
+}
+.icon.dark>svg>g>path{
+    fill: white;
+}
+.table-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.manual-Table{
+    width: 70%;
+}
+.iconText{
+    font-weight: bold;
+}
+.boldText{
+    display: contents;
+    font-weight: bold;
+}
+.goToLink{
+    cursor: pointer;
+    padding: 4px;
+    text-decoration: underline;
+}
+.sub-Titile{
+    font-size: 1vw;
+    text-decoration: underline;
+    text-transform: capitalize;
+}
+.describe{
+    background: #c0a3ff3d;
+    margin: 16px;
+    padding: 8px;
+    border-radius: 12px;
+}
+.tu-img{
+    border-radius: 17px;
+    box-shadow: 0px 0px 17px 4px rgb(0 6 34 / 59%);
+    height: 85%;
+    width: 82%;
+    object-fit: contain;
+    margin: 4px;
+}
+.image-outer{
+    height: 80%;
+    border-radius: 12px;
+    box-shadow: inset 0px 0px 20px 20px rgb(0 9 55 / 40%);
+    display: flex;
+    background: #000000b8;
+    align-items: center;
+    justify-content: center;
+}
+.contain-tutorial{
+    width: 95%;
+    height: 350px;
+    display: flex;
+    box-shadow: 0px 0px 12px -1px rgb(0 9 55 / 40%);
+    background: #bfc4ff73;
+    margin: 1.5%;
+    border-radius: 13px;
+    padding: 1%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.contain-info{
+    width: 41%;
+    height: 100%;
+    display: flex;
+    border-radius: 15px;
+    margin: 9px;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.step{
+    background: #ffffff8f;
+    padding: 7px;
+    transition-duration: 1s;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.step.active{
+    background:#7842ff4f;
+    FONT-WEIGHT: 900;
+}
+.steps{
+    width: 35%;
+    height: 100%;
+    background: #c0a3ff3d;
+    padding-left: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.zoom{
+    display: flex;
+    width: 185px;
+    height: 56px;
+    background: #ffffffa1;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    opacity: 0.9;
+}
+.zoomBtn{
+    display: flex;
+    font-size: 22px;
+    z-index: 1;
+    width: 23%;
+    background: #0000001f;
+    height: 90%;
+    margin: 7px;
+    border-radius: 26px;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.7s;
+}
+.zoomNum{
+    display: flex;
+    font-family: monospace;
+    text-align: center;
+    font-size: 20px;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.highlight {
+    background-color: #74d1a559;
+}
+
+.filler{
+    height: 250px;
+}
+
+
+.mainHead{
+    -webkit-text-stroke-width: 1px;
+    font-size: 8vw;
+    text-transform: uppercase;
+}
+
+.redUnder{
+    text-decoration: underline var(--cubeSection);
+}
+.blueUnder{
+    text-decoration: underline var(--dashbordSection);
+}
+.greenUnder{
+    text-decoration: underline var(--tutorialSection);
+}
+.orangeUnder{
+    text-decoration: underline var(--otherSection);
+}
+
+.OverView{
+    font-size: 20px;
+    margin-left: 11px;
+    margin-top: 9px;
+    border-radius: 12px;
+    background: #ffffff75;
+    padding: 5px;
+    width: fit-content;
+    transition-duration: 0.5s;
+}
+.OverView:hover{
+    cursor: pointer;
+    background:rgb(129 102 191 / 18%);
+}
+.sub{
+    font-size: 27px;
+    padding: 6px;
+    text-transform: capitalize;
+    border-radius: 100px;
+    transition-duration: 0.2s;
+}
+
+.mainText{
+    margin: 33px;
+    max-width: 780px;
+    padding: 12px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.lessRed{
+    background: rgb(202, 59, 59, 5%);
+}
+.lessBlue{
+    background: rgb(64, 64, 161, 5%);
+}
+
+.lessGreen{
+    background: rgb(32, 162, 95, 5%);
+}
+.lessOrange{
+    background: rgb(240,157, 76, 5%);
+}
+
+.colourOverlay{
+    transition-duration: 1s;
+    background: #ffffffa3;
+    padding: 4px;
+    border-radius: 7px;
+}
+.colourOverlay:hover{
+    background:#ffffff40 !important;
+    cursor: pointer;
+}
+.colourOverlay.active{
+    padding: 1px;
+    background: rgb(227 215 255 / 53%);
+}
+.main{
+    color:transparent;
+
+}
+.space{
+    height: 0px;
+}
+.space.active{
+    height: 95px;
+}
+.section{
+    width: 80%;
+    text-align: -webkit-center;
+    background: white;
+    border-radius: 12px;
+    margin: 13px;
+    box-shadow: 0px 0px 20px 5px rgb(0 9 55 / 11%);
+}
+.section.dark{
+    background: radial-gradient(black, transparent) !important;
+}
+.sideMenu{
+    width: 47%;
+    font-family: monospace;
+    background: rgb(129 102 191 / 18%);
+    position: absolute;
+    top: 50%;
+    border-radius: 13px;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 6px;
+    transition-duration: 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.sideMenu.active{
+    background: #00000012;
+    top: 26%;
+    left: 12px;
+    width: 229px;
+    border-radius: 16px;
+    padding: 0px;
+    transform: none;
+    height: auto;
+}
+.sideMenu.active>.OverView{
+    font-size: 16px;
+}
+.sideMenu.active>.context-main>.head-main{
+    font-size: 15px;
+}
+
+.sideMenu.dark{
+    background: #48396dab;
+}
+.main-contain{
+    position: absolute;
+    transition-duration: 1s;
+    filter: blur(2px);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    font-family: monospace;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.main-contain.active{
+    filter: blur(0px);
+}
+.mainContent{
+    box-shadow: inset 0px 0px 20px 5px rgb(0 9 55 / 83%);
+    display: flex;
+    background-color: rgb(0 0 0 / 19%);
+    border-radius: 13px;
+    padding: 13px;
+    width: 73%;
+    height: 76%;
+    transition-duration: 1s;
+    flex-direction: column;
+    align-items: center;
+    opacity:0.2;
+    overflow-y: hidden;
+}
+.mainContent.active{
+    box-shadow: inset 0px 0px 20px 5px rgb(0 9 55 / 9%);
+
+    opacity: 1;
+    background-color: rgb(0 0 0 / 2%);
+    width: 98%;
+    height: 90%;
+    margin-top: 74px;
+    overflow-y: scroll;
+}
+.header-contain{
+    display: flex;
+    justify-content: center;
+}
+
+.header{
+    background-color: rgb(129 102 191 / 41%);
+    position: absolute;
+    transition-duration: 1s;
+    z-index: 1;
+    font-size: 30px;
+    top: 12px;
+    width: 100%;
+    text-align: center;
+    font-family: monospace;
+    padding-top: 17px;
+    padding-bottom: 6px;
+}
+.header.active{
+    border-radius: 15px;
+    background-color: rgb(129 102 191 / 18%);
+    font-size: 20px;
+    width: 40%;
+    font-weight: bold;
+    margin: 0;
+    padding: 17px;
+}
+
+.context-sub{
+    cursor: pointer;
+    width: 99%;
+    height: 20px;
+    transition-duration: 0.4s;
+    align-self: flex-start;
+    display: flex;
+    text-transform: capitalize;
+    align-items: center;
+    justify-content: space-between;
+}
+.context-sub:hover{
+    text-decoration: underline;
+    background-color: #ab3aff1c;
+    border-radius: 125px;
+    margin-left: 12px;
+    padding: 1px;
+    width: 95%;
+}
+.context-sub.dark:hover{
+    text-decoration: underline;
+    background-color: #0000003b;
+    border-radius: 125px;
+    margin-left: 12px;
+    padding: 1px;
+    width: 95%;
+}
+
+.context-main.hide>.context-sub{
+    height: 0px;
+    color: transparent;
+    padding:0;
+    pointer-events: none;
+
+}
+.context-main.hide>.context-sub>.dot{
+    height: 0px;
+    background-color: rgba(182, 56, 56, 0);
+}
+.context-main.hide>.head-main{  
+    background: rgb(0 0 0 / 56%) !important;
+    color: rgb(27, 32, 101);
+}
+
+.head-main{
+    text-align: center;
+    font-size: 25px;
+    width: 98%;
+}
+.context-main{
+    display: flex;
+    background: #ffffff9c;
+    padding: 9px;
+    margin: 9px;
+    border-radius: 12px;
+    flex-direction: column;
+    align-items: center;
+    transition-duration: 0.4s;
+}
+
+.context-main.dark{
+    background: #ffffff3b;
+}
+
+.dot.active{
+    background-color: #ab3aff45;
+    margin-right: 0px;
+    width: 12px;
+    height: 12px;
+}
+.dot{
+    transition-duration: 0.3s;
+    background-color: rgba(182, 56, 56, 0);
+    width: 0px;
+    height: 0px;
+    border-radius: 100px;
+    margin-right: 20px;
+}
+.screenTooSmall.active{
+    opacity: 0 !important;
+    pointer-events: none;
+}
+.subHead{
+    background: rgb(202, 59, 59, 5%);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+</style>
+<script>
+    
+    const sideMenu = document.getElementsByClassName("sideMenu")[0]
+    const mainEl = document.getElementsByClassName("main")
+    const subEl = document.getElementsByClassName("sub")
+
+    const mainContent = document.getElementsByClassName("mainContent")[0]; 
+    const sections = document.getElementsByClassName("section")
+
+    tutorialSections = {
+        "Add Cube":
+        [{
+            "stepName":'click the add cube box',
+            "descriptions":"this is found on the end of all the cubes made",
+            "image":"img/tuImg.png",
+        },{
+            "stepName":'click desired cube type/size',
+            "descriptions":"select the cube tab",
+            "image":"img/tuImg1.png",
+        },{
+            "stepName":'click "More Options"(optional)',
+            "descriptions":"more informaiton about each of the settings can be found in the next section",
+            "image":"img/tuImg2.png",
+        },{
+            "stepName":'click the "create button"',
+            "descriptions":"this will add the cube to the dashboard",
+            "image":"img/tuImg3.png",
+        }],
+
+        "cube options":
+        [{
+            "stepName":'cube colours',
+            "descriptions":"select the colour corresponding to the side. you can not have sides with the same colour ",
+            "image":"img/opImg.png",
+        },{
+            "stepName":'Advanced Options',
+            "descriptions":"under the advanced options you can toggle more specific attributes of the cube",
+            "image":"img/opImg1.png",
+        },{
+            "stepName":'play-mode',
+            "descriptions":"this game mode will alow you to continue using the cube after it has been solved",
+            "image":"img/opImg2.png",
+        },{
+            "stepName":'animations',
+            "descriptions":"The cube animations can be canceled for faster movement",
+            "image":"img/opImg3.png",
+        },{
+            "stepName":'timer',
+            "descriptions":"when turning the timer is off the cube time will not be saved",
+            "image":"img/opImg4.png",
+        }],
+
+        "All Solve Times":
+        [{
+            "stepName":'click on the clock icon',
+            "descriptions":"this is found in the top of the cubes made.<br> This will show the highest times for each cube size.",
+            "image":"",
+        },{
+            "stepName":'click on the drop down arrow',
+            "descriptions":"this will show the times for every cube made.",
+            "image":"",
+        },{
+            "stepName":'',
+            "descriptions":"",
+            "image":"",
+        },{
+            "stepName":'',
+            "descriptions":"",
+            "image":"",
+        }],
+
+    }
+
+    //opens the selection the user clicked in the prosedural tutorial 
+    function opensection(tutorialSectionIndex,sectionIndexOf){
+        tutorialSectionEl = document.getElementsByTagName("insertTutorial")[tutorialSectionIndex]
+        steps = tutorialSectionEl.getElementsByClassName("step");
+        tutorialName = tutorialSectionEl.getAttribute("tutorial")
+        for (let i = 0; i < steps.length; i++) {
+            if( i == sectionIndexOf ){
+                steps[i].classList.add("active");
+            }else{
+                steps[i].classList.remove("active");
+            }
+        }
+        tutorialSectionEl.getElementsByClassName("tu-img")[0].setAttribute("src",tutorialSections[tutorialName][sectionIndexOf]["image"])
+        tutorialSectionEl.getElementsByClassName("describe")[0].innerHTML = tutorialSections[tutorialName][sectionIndexOf]["descriptions"]
+        
+    }
+
+
+    // adds in the steps for the prosedural tutorials
+    function addInStepByStep(){
+        tagTu = document.getElementsByTagName("insertTutorial")
+        for (let i = 0; i < tagTu.length; i++) {
+            const tagEl = tagTu[i];
+            tagEl.innerHTML += "<div class='contain-tutorial'> <div class='steps '> </div> <div class='contain-info lessBlue'> <div class='image-outer'> <img class='tu-img'></img> </div> <div class='describe'></div> </div> </div>";
+            Tutorial = tagEl.getAttribute("tutorial");
+            tutorialProp = tutorialSections[Tutorial];
+            for (let j = 0; j < tutorialProp.length; j++) {
+                document.getElementsByClassName("steps")[i].innerHTML += "<div class='step' id='"+i+j+"-step'> "+(j+1)+"- "+tutorialProp[j]["stepName"]+"</div>";
+                document.getElementById((""+i+j+"-step")).setAttribute("onclick","opensection("+i+","+j+")");
+            }
+            opensection(i,0)
+        }
+    }
+
+
+    //Fills the context menu with the contents from the page
+    function addInOutline(){
+        for (let i = 0; i < sections.length; i++) {
+            sideMenu.innerHTML += "<div class='context-main ' id='main-"+i+"'> <div style='background:"+sections[i].getElementsByClassName('main')[0].style.background+"' class='head-main'> <div class='colourOverlay' onclick='openSection("+i+")''>" + sections[i].getElementsByClassName('main')[0].innerHTML + "</div></div></div>";
+            subHead = sections[i].getElementsByClassName('sub');
+            for (let j = 0; j < subHead.length; j++) {
+                id = i+"-"+j
+                document.getElementById("main-"+i).innerHTML+= "<div id='"+id+"' onclick='scrollToSection("+i+","+j+")') class='context-sub '>"+ subHead[j].innerHTML +"<div class='dot'></div> </div>"
+            }
+        }
+    }
+
+    
+    // Enlarges the context menu to cover screen
+    function ToggleStartDispay(){
+        if(document.getElementsByClassName("header")[0].classList.contains("active")){
+            //enlarge
+            StartDispay(false)
+        }else{
+            //un-enlarge
+            StartDispay(true)
+        }
+    }
+
+    //
+    function StartDispay(start){
+        const header = document.getElementsByClassName("header")[0]
+        const mainContain = document.getElementsByClassName("main-contain")[0]
+        const mainContent = document.getElementsByClassName("mainContent")[0]
+        const sideMenu = document.getElementsByClassName("sideMenu")[0]
+        const space = document.getElementsByClassName("space")[0]
+        // add/remove the classes from all elements  
+        if(start){
+            header.classList.add("active")
+            mainContain.classList.add("active")
+            mainContent.classList.add("active")
+            sideMenu.classList.add("active")
+            space.classList.add("active")
+            colourOverlays = document.getElementsByClassName("colourOverlay")
+            for (let i = 0; i < colourOverlays.length; i++) {
+                colourOverlays[i].classList.add("active")
+            }
+            const contextMain = document.getElementsByClassName("context-main")
+            for (let i = 0; i < contextMain.length; i++) {
+                contextMain[i].classList.add("hide");
+            }
+        }else{
+            header.classList.remove("active")
+            mainContain.classList.remove("active")
+            mainContent.classList.remove("active")
+            sideMenu.classList.remove("active")
+            space.classList.remove("active")
+            const colourOverlays = document.getElementsByClassName("colourOverlay")
+            for (let i = 0; i < colourOverlays.length; i++) {
+                colourOverlays[i].classList.remove("active")
+            }
+            const contextMain = document.getElementsByClassName("context-main")
+            for (let i = 0; i < contextMain.length; i++) {
+                contextMain[i].classList.remove("hide");
+            }
+        }        
+    }
+
+
+    //opens the selection selected in the context menu
+    function openSection(hedderIndex){
+        // only opens section if the header is shown
+        if(!document.getElementsByClassName("header")[0].classList.contains("active")){
+            return
+        }
+
+        const contextMain = document.getElementsByClassName("context-main")
+        for (let i = 0; i < contextMain.length; i++) {
+            contextMain[i].classList.remove("hide");
+            if(i != hedderIndex){
+                contextMain[i].classList.add("hide");
+            }
+        }
+    }
+
+
+    //Scrolls to the given section
+    function scrollToSection(hedderIndex,sectionIndex){
+        // get element to scroll to 
+        const element = document.getElementsByClassName("section")[hedderIndex].getElementsByClassName("sub")[sectionIndex]
+
+        if(!document.getElementsByClassName("header")[0].classList.contains("active")){
+            setTimeout(()=> {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }, 700); 
+        }else{
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        //un-enlarge display 
+        StartDispay(true)
+        //open the seciont on the context menue
+        openSection(hedderIndex)
+
+        // hilight the function
+        setTimeout(function() {
+            element.classList.add('highlight');
+            setTimeout(function() {
+                element.classList.remove('highlight');
+            }, 1000); 
+        }, 1000); 
+    }
+
+
+    //returns the index of the section and subsection that the user is looking at 
+    function getContextMenueOn(){
+        offset = 10
+        for (let i = 0; i < sections.length; i++) {
+            subSections = sections[i].getElementsByClassName("sub")
+            for (let j = 0; j < subSections.length; j++) {
+                subSection = document.getElementsByClassName("section")[i].getElementsByClassName("sub")[j]
+                if(subSection.getBoundingClientRect().top > offset ){
+                    return [i,j]
+                }
+            }
+        }
+    }
+    
+
+    // add that dot that shows what section you are on
+    function addDot(hedderIndex,sectionIndex){
+        for (let i = 0; i < sections.length; i++) {
+            subSections = sections[i].getElementsByClassName("sub")
+            for (let j = 0; j < subSections.length; j++) {
+                dotElement = document.getElementById(i+"-"+j).getElementsByClassName("dot")[0]
+                if( i == hedderIndex && sectionIndex == j){
+                    dotElement.classList.add("active")
+                }else{
+                    dotElement.classList.remove("active")
+                }
+            }
+        }
+    }
+
+    //when user is on phone or small divice remove the side bar
+    function removeSideBar(){
+        if(window.innerWidth < 554){
+            sideMenu.classList.add("screenTooSmall")
+        }else{
+            sideMenu.classList.remove("screenTooSmall")
+        }
+    }
+
+
+    //add user input (scroll and resize)
+    function userInput(){
+        mainContent.addEventListener("scroll",()=>{
+            sectionAndSub = getContextMenueOn()
+            openSection(sectionAndSub[0])
+            addDot(sectionAndSub[0],sectionAndSub[1])
+        })
+        
+        addEventListener("resize", () => {
+            removeSideBar();
+        });
+    }
+
+    
+    // initialise the display 
+    function main(){
+        userInput()
+        removeSideBar()
+        addInOutline()
+        addInStepByStep()
+    }
+
+    main()
+
+</script>
+</html>

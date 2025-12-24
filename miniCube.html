@@ -1,0 +1,2395 @@
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <title></title>
+</head>
+
+<body id="bod">
+  
+  <div id="contain-all">
+    
+    <div id = "contain-moves">
+      <div id="playBtn" class="playBtn">
+        <div class="play" onclick="playAnimation()">
+          <svg xmlns="http://www.w3.org/2000/svg"  fill="#000000" width="50%" height="50%" viewBox="0 0 32 32" version="1.1"><path d="M5.92 24.096q0 1.088 0.928 1.728 0.512 0.288 1.088 0.288 0.448 0 0.896-0.224l16.16-8.064q0.48-0.256 0.8-0.736t0.288-1.088-0.288-1.056-0.8-0.736l-16.16-8.064q-0.448-0.224-0.896-0.224-0.544 0-1.088 0.288-0.928 0.608-0.928 1.728v16.16z"/></svg>        </div>
+        </div>
+    </div>
+
+    <div id="game">
+      <div class="container">
+        <div id="cube" class="cube" style="transform: rotatex(55deg)rotateZ(45deg)rotateX(0deg);">
+          <!--
+          cube 
+          -->
+        </div>
+      </div>
+    </div>  
+
+  </div>
+</body>
+  
+  <style>
+  
+  body {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    height: 100vh;
+  }
+
+  :root{
+    --cubeSpeed : 0.2s;
+    --cubeSize:350;
+  }
+
+  playBtn.container{
+    display: flex; 
+  }
+
+  .spinAr{
+    transition-duration: 0.6s;
+  }
+
+  .spinAr:hover{
+    rotate: 360deg;
+  }
+
+  .play{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  #playBtn{
+    border: 4px solid #ecffcd6b;
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    border-radius: 12px;
+    background: #00000036;
+  }
+  
+  #playBtn:hover{
+    cursor: pointer;
+  }
+  .movementCard.finishMove {
+    background: #afafaf;
+    border: 4px solid #ecffcd6b;  }
+  #contain-moves{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .movementCard{
+    font-family: monospace;
+    height: 21px;
+    padding: 6px;
+    border: 4px solid #9292921f;
+    transition-duration: 2s;
+    border-radius: 12px;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+  }
+
+  .contain-time{
+    margin-top: 1%;
+    position: absolute;
+    transition-duration: 2s;
+    text-align: center;
+    z-index: 1;
+    top: 0;
+    width: fit-content;
+    border-radius: 23px;
+    background: #ffffff29;
+    font-family: monospace;
+    font-size: 178%;
+    padding: 12px;
+  }
+  .doneTime{
+    top: 46%;
+    background: black;
+    color: white;
+  }
+  .noCubeBox{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 4px solid #9292921f;
+    transition-duration: 0.5s;
+    border-radius: 12px;
+    padding: 56px;
+    font-size: 2em;
+    color: #ff8282;
+    font-family: monospace;
+    background: linear-gradient(45deg, #eaeaea, #ffffff);
+  }
+  
+  .link{
+    font-size: 0.8em;
+  }
+
+  .link:hover{
+    text-decoration-line: underline;
+  }
+
+  #contain-all{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #game{
+    display: flex;
+    padding: 18px;
+    margin: 21px;
+    box-shadow: 0px 0px 20px 5px rgb(0 9 55 / 40%);
+    width: 33%;
+    height: 33%;
+    border-radius: 10px;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: radial-gradient(#000000ba, black);
+  }
+  #setUp{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: red;  
+  }
+  .sq{
+    position: absolute !important;
+    top: -1px;
+    text-align: center;
+    display: flex;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    border-radius: 13%;
+    border: 1px solid #000;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+  .sq:hover{
+    background-color: red; 
+  }
+  
+  .top{
+    position: absolute;
+    top: 100%;
+  }
+  .topOn{
+    position: absolute;
+    top: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .outer{
+    position: absolute;
+    align-self: center;
+    width: 60px;
+    height: 60px;
+  }
+  .bottom{
+    position: absolute;
+    bottom: 100%;
+  }
+  .bottomOn{
+    position: absolute;
+    bottom: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .left{
+    position: absolute;
+    left: 100%;
+  }
+  .leftOn{
+    position: absolute;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .right{
+    position: absolute;
+    right: 100%;
+  }
+  .rightOn{
+    position: absolute;
+    right: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+  }
+  .cu{height: 18.666666666666668px ; width: 18.666666666666668px  ;} 
+
+  .container {
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+  }
+  #miniMap{
+    height: 100px;
+    width: 100px;  
+    position: absolute;
+    right: 50px;
+    top: 50px;
+
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .miniMapSide{
+    transition-duration: 0.7s;
+    background-color: #a6a6a6;
+    border: 1px solid #fff;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+  }
+  .cube {
+    transform: rotateX(55deg) rotateZ(45deg);
+    transition-duration: 0.7s;
+    position: relative;
+    width: var(--cubeSize);
+    height: var(--cubeSize);
+    transform-style: preserve-3d;
+    transition-duration: 0.7s;
+  }
+  .groupEl{
+    transition-duration: var(--cubeSpeed);
+    position: relative;
+    width: var(--cubeSize);
+    height: var(--cubeSize);
+    transform-style: preserve-3d;
+  }
+
+  #cube > div {
+    position: absolute;
+  }  
+  .pi{
+    opacity: 1;
+  }
+
+  .side{
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    border-radius: 2px;
+    background: #000000e8;
+    border: 1px solid #000000e8;
+  }
+  .spinface{
+    background:#00000000;
+    transition-duration: var(--cubeSpeed);
+    pointer-events: none;/*this makes it not block the cube piece*/
+    transform: translate3d(0px, 0px, 176px);
+  }
+  .dark{
+    background:#00000032;
+    transition-duration: 0.3s;
+    pointer-events: none;/*this makes it not block the cube piece*/
+    transform: translate3d(0px, 0px, 176px);
+  }
+  .speedy{
+    transition-duration: 0.03s;
+  }
+  .noBorder{
+    border:1px solid rgba(255, 255, 255, 0)
+  }
+  .flash{
+    animation: flash 2s infinite;
+  }
+  @keyframes flash {
+    0% {
+      border: 2px solid red;
+      width: calc(18.666666666666668px - 0px);
+      height: calc(18.666666666666668px - 0px);
+    }
+    50% {
+      border: 3px solid red;
+      width: calc(18.666666666666668px - 3px);
+      height: calc(18.666666666666668px - 3px);
+    }
+    100% {
+      border: 2px solid red;
+      width: calc(18.666666666666668px - 0px);
+      height: calc(18.666666666666668px - 0px);
+    }
+  }
+</style>
+  
+<script>
+
+var cubeMovements = []
+var timeoutIds = []
+var side = document.getElementsByTagName("side");
+const cube = document.getElementById("cube");
+const movementEl = document.getElementsByClassName("movementCard")
+var animationPlaying = false;
+
+var cubeNotation = [];
+
+var sizeOfCube = 0;
+
+const cubeSpeed = "1s";
+document.documentElement.style.setProperty('--cubeSpeed', cubeSpeed);
+
+const cubeLen = 56;
+document.documentElement.style.setProperty('--cubeSize', cubeLen);
+
+
+// cube states  
+tutorialCubes = {
+    "fullCube":[
+        //side1
+            fillside("W")
+        ,
+        //side2
+            fillside("Y")
+        ,
+        //side3
+            fillside("B")
+        ,
+        //side4
+            fillside("G")
+        ,
+        //side5
+            fillside("R")
+        ,
+        //side6
+            fillside("O")
+        ,
+    ],
+    "edge-Flash":[
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+        [
+        ["I","IF","I"],
+        ["IF","I","IF"],
+        ["I","IF","I"],
+        ],
+
+        
+    ],
+    "corner-Flash":[
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+        [
+        ["IF","I","IF"],
+        ["I","I","I"],
+        ["IF","I","IF"],
+        ],
+    ],
+    "Center-Flash":[
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+        [
+        ["I","I","I"],
+        ["I","IF","I"],
+        ["I","I","I"],
+        ],
+    ],
+    "stage-1":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","W","-"],
+        ],
+        fillside("-"),
+        [
+        ["-","-","-"],
+        ["B","B","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","R","-"],
+        ["-","R","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","-"],
+        ["-","O","-"],
+        ],
+    ],
+    "cross-case1":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","R","-"],
+        ],
+        fillside("-"),
+        [
+        ["-","-","-"],
+        ["B","B","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","W","-"],
+        ["-","R","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","-"],
+        ["-","O","-"],
+        ],
+    ],
+    "cross-case2":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","-","-"],
+        ],
+        [           
+        ["-","R","-"],
+        ["-","-","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","R","-"],
+        ["-","W","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","-"],
+        ["-","O","-"],
+        ],
+    ],
+    "cross-case3":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","-","-"],
+        ],
+        [           
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","-"],
+        ["-","R","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","R","W"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","-"],
+        ["-","O","-"],
+        ],
+    ],
+    "cross-case4":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","-","-"],
+        ],
+        [           
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","R","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["W","R","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","-"],
+        ["-","O","-"],
+        ],
+    ],
+    "cross-case5":[
+        [
+        ["-","W","-"],
+        ["W","W","W"],
+        ["-","-","-"],
+        ],
+        [           
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","R","-"],
+        ["B","B","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","G","G"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","R","-"],
+        ["-","-","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["-","O","W"],
+        ["-","O","-"],
+        ],
+    ],
+    "stage-2":[
+        //side1
+            fillside("W")
+        ,
+            //side2
+            fillside("-")
+        ,
+        [//side3
+        ["B","-","-"],
+        ["B","B","-"],
+        ["B","-","-"],
+        ],
+        [//side4
+        ["-","-","G"],
+        ["-","G","G"],
+        ["-","-","G"],
+        ],
+        [//side5
+        ["R","R","R"],
+        ["-","R","-"],
+        ["-","-","-"],
+        ],
+        [//side6
+        ["-","-","-"],
+        ["-","O","-"],
+        ["O","O","O"],
+        ],
+    ],
+    "layer1-stage1":[
+        //side1
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","-"]
+        ],
+        [
+        ["-","-","B"],
+        ["-","-","-"],
+        ["-","-","-"]
+        ]
+        ,
+        [//side3
+        ["B","-","-"],
+        ["B","B","-"],
+        ["-","-","W"],
+        ],
+        [//side4
+        ["-","-","G"],
+        ["-","G","G"],
+        ["-","-","G"],
+        ],
+        [//side5
+        ["R","R","-"],
+        ["-","R","-"],
+        ["-","-","R"],
+        ],
+        [//side6
+        ["-","-","-"],
+        ["-","O","-"],
+        ["O","O","O"],
+        ],
+    ],
+    "layer1-stage2":[
+        //side1
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","-"]
+        ],
+        [
+        ["-","-","R"],
+        ["-","-","-"],
+        ["-","-","-"]
+        ]
+        ,
+        [//side3
+        ["B","-","-"],
+        ["B","B","-"],
+        ["-","-","B"],
+        ],
+        [//side4
+        ["-","-","G"],
+        ["-","G","G"],
+        ["-","-","G"],
+        ],
+        [//side5
+        ["R","R","-"],
+        ["-","R","-"],
+        ["-","-","W"],
+        ],
+        [//side6
+        ["-","-","-"],
+        ["-","O","-"],
+        ["O","O","O"],
+        ],
+    ],
+    "layer1-stage3":[
+        //side1
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","-"]
+        ],
+        [
+        ["-","-","W"],
+        ["-","-","-"],
+        ["-","-","-"]
+        ]
+        ,
+        [//side3
+        ["B","-","-"],
+        ["B","B","-"],
+        ["-","-","R"],
+        ],
+        [//side4
+        ["-","-","G"],
+        ["-","G","G"],
+        ["-","-","G"],
+        ],
+        [//side5
+        ["R","R","-"],
+        ["-","R","-"],
+        ["-","-","B"],
+        ],
+        [//side6
+        ["-","-","-"],
+        ["-","O","-"],
+        ["O","O","O"],
+        ],
+    ],
+    "layer2":[
+        [
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","-","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "layer2-Flash":[
+    [
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","RF","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","-","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","-","-"],
+        ],
+        [
+        ["-","BF","-"],
+        ["-","B","-"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "layer2-stage1":[
+        [
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","R","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","-","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","-","-"],
+        ],
+        [
+        ["-","B","-"],
+        ["-","B","-"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "layer2-stage2":[
+        [
+        ["-","-","-"],
+        ["-","-","-"],
+        ["-","O","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","-","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","-","-"],
+        ],
+        [
+        ["-","B","-"],
+        ["-","B","-"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "yellowCross":[
+        [
+        ["-","Y","-"],
+        ["Y","Y","Y"],
+        ["-","Y","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "yellowCross-stage1":[
+        [
+        ["-","-","-"],
+        ["-","Y","-"],
+        ["-","-","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["Y","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","Y"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","Y","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","Y","-"],
+        ],
+    ],
+    "yellowCross-stage2":[
+        [
+        ["-","Y","-"],
+        ["Y","Y","-"],
+        ["-","-","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["Y","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","Y","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "yellowCross-stage3":[
+        [
+        ["-","-","-"],
+        ["Y","Y","Y"],
+        ["-","-","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","Y","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","Y","-"],
+        ],
+    ],
+    "yellowSide":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["-","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "yellowSide-stage1":[
+    [
+        ["-","Y","-"],
+        ["Y","Y","Y"],
+        ["-","Y","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["Y","R","R"],
+        ["-","R","R"],
+        ["Y","R","R"],
+        ],
+        [
+        ["O","O","Y"],
+        ["O","O","-"],
+        ["O","O","YF"],
+        ],
+        [
+        ["-","-","-"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["-","-","-"],
+        ],
+    ],
+    "yellowSide-stage2":[
+        [
+        ["-","Y","-"],
+        ["Y","Y","Y"],
+        ["Y","Y","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["Y","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","-","Y"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["Y","-","-"],
+        ],
+    ],
+    "yellowSide-stage2":[
+        [
+        ["-","Y","-"],
+        ["Y","Y","Y"],
+        ["Y","Y","-"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["Y","R","R"],
+        ["-","R","R"],
+        ["-","R","R"],
+        ],
+        [
+        ["O","O","-"],
+        ["O","O","-"],
+        ["O","O","-"],
+        ],
+        [
+        ["-","-","Y"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["Y","-","-"],
+        ],
+    ],
+    "PairOfCorners":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["R","R","R"],
+        ["-","R","R"],
+        ["R","R","R"],
+        ],
+        [
+        ["O","O","O"],
+        ["O","O","-"],
+        ["O","O","O"],
+        ],
+        [
+        ["B","-","B"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["G","-","G"],
+        ],
+    ],
+    "PairOfCorners-pair":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["O","R","R"],
+        ["-","R","R"],
+        ["G","R","R"],
+        ],
+        [
+        ["O","O","R"],
+        ["O","O","-"],
+        ["O","O","G"],
+        ],
+        [
+        ["O","-","R"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["B","-","B"],
+        ],
+    ],
+
+    "PairOfCorners-pair-Flash":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["G","R","R"],
+        ["-","R","R"],
+        ["R","R","R"],
+        ],
+        [
+        ["O","O","G"],
+        ["O","O","-"],
+        ["O","O","O"],
+        ],
+        [
+        ["BF","-","BF"],
+        ["B","B","B"],
+        ["B","B","B"],
+        ],
+        [
+        ["G","G","G"],
+        ["G","G","G"],
+        ["R","-","O"],
+        ],
+    ],
+    "YellowEdges-Flash":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["G","G","G"],
+        ["BF","G","G"],
+        ["G","G","G"],
+        ],
+        [
+        ["B","B","B"],
+        ["B","B","RF"],
+        ["B","B","B"],
+        ],
+        [
+        ["R","GF","R"],
+        ["R","R","R"],
+        ["R","R","R"],
+        ],
+        [
+        ["O","O","O"],
+        ["O","O","O"],
+        ["O","O","O"],
+        ],
+
+    ],
+    "YellowEdges-right":[
+        [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["G","G","G"],
+        ["BF","G","G"],
+        ["G","G","G"],
+        ],
+        [
+        ["B","B","B"],
+        ["B","B","R"],
+        ["B","B","B"],
+        ],
+        [
+        ["R","GF","R"],
+        ["R","R","R"],
+        ["R","R","R"],
+        ],
+        [
+        ["O","O","O"],
+        ["O","O","O"],
+        ["O","O","O"],
+        ],
+    ],
+    "YellowEdges-left":[
+    [
+        ["Y","Y","Y"],
+        ["Y","Y","Y"],
+        ["Y","Y","Y"]
+        ],
+        [
+        ["W","W","W"],
+        ["W","W","W"],
+        ["W","W","W"]
+        ],
+        [
+        ["G","G","G"],
+        ["R","G","G"],
+        ["G","G","G"],
+        ],
+        [
+        ["B","B","B"],
+        ["B","B","GF"],
+        ["B","B","B"],
+        ],
+        [
+        ["R","BF","R"],
+        ["R","R","R"],
+        ["R","R","R"],
+        ],
+        [
+        ["O","O","O"],
+        ["O","O","O"],
+        ["O","O","O"],
+        ],
+    ]
+  }
+
+//get the cube load and movements forom the url
+const cubeLoad = (new URL(document.location).searchParams.get("loadCube"));
+const movements = (new URL(document.location).searchParams.get("movements"));
+
+const cubeProp = {
+  "cubeLoad" : tutorialCubes[cubeLoad],
+  "movements" : movements
+};
+
+valToColour = {
+  "W":"white",
+  "Y":"#ffff74",
+  "B":"rgb(64 64 246)",
+  "G":"#24c124",
+  "R":"#c40505",
+  "O":"orange",
+  "-":"#5c5c5c70",
+  "I":"#001f4bed",
+};
+const sides = ["top","bottom","right","back-left","left","back-right"];
+
+stopAdd = false;
+active = false;
+document.addEventListener('visibilitychange', (event)=>{
+  if(document.hidden){
+    active = true;
+  }else{
+    active = false;
+  }
+});
+
+
+//makes a 3x3 side with a center with the given color 
+function fillside(colour){
+  returnArray = new Array(3).fill(0).map(() => new Array(3).fill(colour));
+  return returnArray;
+}
+
+
+// gets 2d arrays and "overlapping them" to combine them to a single 2d array
+function merge(...arr){
+  // new array with the same parremetors
+  const mergeArray = Array(arr[0].length).fill("").map(() => Array(arr[0].length).fill(""))
+  
+  for(var i=0;i < arr[0].length;i++){
+    for(var j=0;j < arr[0][i].length;j++){        
+      mergeArray[i][j] = []
+      for(let item = 0; item < arr.length; item++){
+        mergeArray[i][j].push(arr[item][i][j])
+      }
+    }
+  }
+  return mergeArray;
+}
+
+
+// an array that describes the trl for each peice 
+function getMapArray(size) {
+  const mapArray = [];
+  const twoDArray = [];
+  var rowArr = [];
+
+  for(var Si=0;Si<6;Si++){
+    const numberedMatrix = [];
+    var count = 1
+
+    for(var i=0;i<size;i++){   
+      rowArr=[]
+      for(var j=0;j<size;j++){
+        rowArr.push(count)
+        count++
+      }
+      numberedMatrix.push(rowArr)
+    }
+    switch(Si){
+      case 0:   //top
+        mapArray.push(merge(numberedMatrix, numberedMatrix, spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 1:   //bottom 
+        mapArray.push(merge(merge(numberedMatrix,spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(numberedMatrix)), spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 2:   // right
+        mapArray.push(merge(numberedMatrix, numberedMatrix, numberedMatrix))
+        break;
+      case 3:   // back-left
+        mapArray.push(merge(numberedMatrix ,merge(numberedMatrix,spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(numberedMatrix))))
+        break;
+      case 4:   // left
+        mapArray.push(merge(numberedMatrix, spinSideArr(spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 5:   // back-right
+        mapArray.push(merge(numberedMatrix, spinSideArr(numberedMatrix),merge(spinSideArr(numberedMatrix), spinSideArr(spinSideArr(spinSideArr(numberedMatrix))))))
+        break;
+    }
+  }
+
+  return mapArray;
+}
+
+
+// a helper function that I got from the internet: 
+//https://stackoverflow.com/questions/12274748/setting-multiple-attributes-for-an-element-at-once-with-javascript
+//sets multiple setAttributes to a element 
+function setAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
+
+//retruns the difrent locations of the sides of a cube.
+function getSideLocation(sidesLen,offset){
+  offsetFromOrigen=sidesLen/2
+  if(offset){
+    return[
+    "translate3d(0px, 0px, "+offsetFromOrigen+"px)",                                                                                          //top
+    "rotateY(180deg) translate3d(0px, "+boxSize*(sizeCube-1)+"px, "+offsetFromOrigen+"px) rotate(180deg)",                                    //bottom
+    "rotateY(90deg) translate3d("+(-boxSize*(sizeCube-1)/2)+"px, 0px, "+(offsetFromOrigen+boxSize*(sizeCube-1)/2)+"px)",                  //right
+    "rotateY(-90deg) translate3d("+(-boxSize*(sizeCube-1)/2)+"px, 0px, "+(offsetFromOrigen-boxSize*(sizeCube-1)/2)+"px)"  ,               //back-left
+    "rotateX(-90deg) translate3d(0px, "+(-boxSize*(sizeCube-1)/2)+"px, "+(offsetFromOrigen+boxSize*(sizeCube-1)/2)+"px) ",                 //left
+    "rotateX(90deg) translate3d("+(boxSize*0)+"px,"+(-boxSize*(sizeCube-1)/2)+"px,"+(offsetFromOrigen-boxSize*(sizeCube-1)/2)+"px)",      //back-right
+    ];
+  }else{
+    return[
+    "translate3d(0px, 0px, "+offsetFromOrigen+"px)",                                 //top
+    "rotateY(180deg) translate3d(0px, 0px, "+offsetFromOrigen+"px) rotate(180deg)",  //bottom
+    "rotateY(90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px)",                  //right
+    "rotateY(-90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px)"  ,               //back-left
+    "rotateX(-90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px) rotate(0deg)",    //left
+    "rotateX(90deg) translateZ("+offsetFromOrigen+"px)",                             //back-right
+    ];
+  }
+}
+
+//adds the elements the the cube
+function generateCube(CubeColArr){
+  sizeCube = CubeColArr[0][0].length;
+
+  boxSize = (cubeLen/sizeCube);
+  
+
+  const sideLocation      = getSideLocation(cubeLen, true);
+  const sideLocationnNoff = getSideLocation(cubeLen, false);
+  const minimapLocation   = getSideLocation(100, false);
+
+  // add the xy locations for the piece
+  locations = [];
+  X = 0;
+  Y = 0;
+
+  for(var i = 0; i < sizeCube; i++){
+    for(var j = 0;j < sizeCube; j++){
+      locations.push("translateX("+X+"px)");
+      X+=boxSize;
+    }
+    X=0
+  }
+
+  lis=[]
+  for(var i=0;i<sizeCube;i++){
+    for(var j=0;j<sizeCube;j++){
+      lis.push("translateY("+Y+"px)");
+    }
+    Y += boxSize;
+  }
+  //add the y trasformations
+  for(var i=0;i<locations.length;i++){
+    locations[i]+=" "+lis[i]
+  }
+
+  map = getMapArray(sizeCube)
+  
+  //make each side/piece 
+  row = 0;
+  col = 0;
+  count = 0;
+  movementClasses=["top","bottom","left","right"]
+  
+  cube.innerHTML="";
+
+  cube.innerHTML += "<div class='groupEl'></div>"
+
+  for(var Si=0;Si<6;Si++){//add 6 rotation divs
+    cube.innerHTML += "<div class='spinface' style='width:"+cubeLen+" ;height:"+cubeLen+"; transform:"+sideLocationnNoff[Si]+"''></div>"
+  }
+
+  for(var Si=0;Si<6;Si++){//6
+    for(var i=0;i<sizeCube**2;i++){// piece   
+
+      var trl = "";
+      if( map[Si][row][col].length == undefined){
+        trl = map[Si][row][col];
+      }else{// join the array with |   map[Si][row][col][0] map[Si][row][col][1]
+        trl = map[Si][row][col].join("|");
+      }
+      cube.innerHTML += '<div trl="'+trl+'" ogCol=' + CubeColArr[Si][col][row]+' style="  background:'+valToColour[CubeColArr[Si][col][row][0]] +'; transform: '+sideLocation[Si] +locations[i] +';  "  '+ 'class="sq  cu pi"'  +  '  id="'+(sides[Si])+(i+1)+'" ></div>'
+      if(CubeColArr[Si][col][row][0]=="-"){
+        document.getElementById(sides[Si]+(i+1)).classList.add("noBorder")
+      }
+
+      // add flash border
+      if(CubeColArr[Si][col][row][1] == "F"){
+        document.getElementById(sides[Si]+(i+1)).classList.add("flash")
+      }
+
+      row++
+      count++
+      if((i+1) % sizeCube == 0){
+        col+=1
+        row=0
+      }
+    }
+    row=0
+    col=0
+  }
+}
+
+
+// spins a 2d array
+function spinSideArr(side){
+  const rows = side.length;
+  // Create a new empty matrix with swapped rows and columns (use )
+  const rotatedMatrix = new Array(rows).fill(0).map(() => new Array(rows).fill(0));
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < rows; j++) {
+      rotatedMatrix[j][(rows- 1) - i] = side[i][j];        
+    }
+  }
+
+  return rotatedMatrix;
+}
+
+
+// fucntion that moves the cube:
+function move(size,side,num,direction,save){
+  //user can move the cube at this point
+  touch = false;
+
+  map = getMapArray(size)
+  num = num.split("|")
+  var sideIndex = 0;
+  const delayForSwap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cubeSpeed').replace("s",""))*1000;  
+
+  switch(side){
+    case "top":     //(0th side)
+      //num[0] turnPi
+      sideIndex = 0;
+      turnPi = getNumbersToSwap(map[0], parseInt(num[sideIndex]), direction, sideIndex, side)
+      sidesTurn = SideTurning(side,map[0],num,direction,sideIndex)
+      
+      switch(direction){
+        case "up":
+          dir = 0;
+          groupAxis = "X";
+          groupDirection = 1;
+          break;
+        case "bottom":
+          dir = 0;
+          groupAxis = "X";
+          groupDirection = -1;
+          break;
+        case "left":
+          dir = 1;
+          groupAxis = "Y";
+          groupDirection = -1;
+          break;
+        case "right":
+          dir = 1;
+          groupAxis = "Y";
+          groupDirection = 1;
+          break;
+      }
+      break;
+    case "right":   //(2th side)
+      //num[1]
+      sideIndex = 1;
+      turnPi = getNumbersToSwap(map[2],parseInt(num[sideIndex]),direction,sideIndex,side)
+      sidesTurn = SideTurning(side,map[2],num,direction,sideIndex)
+      switch(direction){
+        case "up":
+          dir = 0;
+          groupAxis = "Y";
+          groupDirection = -1;
+          break;
+        case "bottom":
+          dir = 0;
+          groupAxis = "Y";
+          groupDirection = 1;
+          break;
+        case "left":
+          dir = 1;
+          groupAxis = "Z";
+          groupDirection = 1;
+          break;
+        case "right":
+          dir = 1;
+          groupAxis = "Z";
+          groupDirection = -1;
+          break;
+      }
+      break;
+    case "left":   //(4th side)
+      //num[2]
+      sideIndex = 2;
+      turnPi = getNumbersToSwap(map[3],parseInt(num[sideIndex]), direction, sideIndex, side);
+      sidesTurn = SideTurning(side,map[3],num,direction,sideIndex);
+      
+      switch(direction){
+        case "up":
+          dir = 1;
+          groupAxis = "X";
+          groupDirection = 1;
+          break;
+        case "bottom":
+          dir = 1;
+          groupAxis = "X";
+          groupDirection = -1;
+          break;
+        case "left":
+          dir = 0;
+          groupAxis = "Z";
+          groupDirection = 1;
+          break;
+        case "right":
+          dir = 0;
+          groupAxis = "Z";
+          groupDirection = -1;
+          break;
+      }
+
+      break;
+  }
+  sideTurnOfset= [sidesTurn[3],sidesTurn[0],sidesTurn[1],sidesTurn[2]];
+  
+  //get the ids needed to swap   
+  ids = [];
+  for(var i=0; i<sidesTurn.length; i++){
+    ids.push(getIDofNum(size,sidesTurn[i],turnPi,sideIndex,dir))//push an array of ids 
+  }
+  const idsOfset = [ids[3],ids[0],ids[1],ids[2]];
+  // all for show
+
+  // THIS PART OF THE MOVE FUCNTION IS NOT DONE YET, IT WILL MAKE IT LOOK NICE  
+  for(var pi=0;pi<ids.length;pi++){
+    for(var i=0;i<ids[pi].length;i++){
+      elm = document.getElementById(ids[pi][i])
+      document.getElementsByClassName("groupEl")[0].appendChild(elm)
+    }
+  }
+
+  groupTransformation = "rotate"+ groupAxis +"("+ (groupDirection*90) +"deg)"
+  document.getElementsByClassName("groupEl")[0].style.transform = groupTransformation
+
+  TimeOut = setTimeout(function() {
+    // reset the rotation
+    document.getElementsByClassName("groupEl")[0].style.transform = ""
+
+    //remove from rotation element
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        elm = document.getElementById(ids[pi][i])
+        cube.appendChild(elm);
+      }
+    }
+    //gett all the things to swap 
+    // SWAP THE LOCATIONS OF THE PEICE 
+    transformations = []
+    trls = []
+    ogIds = []
+    mouseDowns = []
+    touchDowns = []
+
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        transformations.push(document.getElementById(ids[pi][i]).style.transform)
+        trls.push(document.getElementById(ids[pi][i]).getAttribute("trl"));
+        ogIds.push(document.getElementById(ids[pi][i]).id);
+        mouseDowns.push(document.getElementById(ids[pi][i]).getAttribute("onmousedown"));
+        touchDowns.push(document.getElementById(ids[pi][i]).getAttribute("ontouchstart"));
+      }
+    }
+    var classToId=[]
+    var count=0
+    var ElementList=[]
+    
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        document.getElementById(idsOfset[pi][i]).style.transform = transformations[count];
+        setAttributes(document.getElementById(idsOfset[pi][i]),{
+          "trl":          trls[count],
+          "onmousedown":  mouseDowns[count],
+          "ontouchstart": touchDowns[count],
+        });
+        ElementList.push(document.getElementById(idsOfset[pi][i]));
+        document.getElementById(idsOfset[pi][i]).classList.add(ogIds[count]);
+        classToId.push(ogIds[count]);
+        count++;
+      }
+    }
+
+    for(var i=0;i<ElementList.length;i++){
+      listOfclass=ElementList[i].classList.value.split(" ");
+      ElementList[i].id=listOfclass[listOfclass.length-1];
+      ElementList[i].classList.remove(listOfclass[listOfclass.length-1]);
+    }
+  },delayForSwap)
+  timeoutIds.push(TimeOut);
+}
+
+
+
+//finds all the ids with the matching trl's 
+function getIDofNum(size,sideName,turnPi,sideRot,dir){
+  idsForSide = [];
+  for(var pi=0;pi<turnPi.length;pi++){// each piece in side
+    for(var i=0;i<size**2;i++){//side
+      sideDir = (document.getElementById(sideName+(i+1))).getAttribute("trl").split("|")[sideRot]
+      // for the elemnts 
+      if(sideDir.split(",").length>1){
+        sideDir = sideDir.split(",")[dir];
+      }
+      if(parseInt(sideDir)==turnPi[pi]){
+        idsForSide.push(sideName+(i+1));
+      }
+
+    }
+  }
+  return idsForSide;
+}
+
+
+//gets the number of the "trl" to swap
+function getNumbersToSwap(sideArr, number, direction, sidedir, side){
+sideArr = getOnlyRo(sideArr, sidedir); 
+
+switch(side){
+
+  case "top":{
+    if(direction == "up"||direction == "bottom"){
+      for(var i=0; i<sideArr.length; i++){
+
+        if(sideArr[i].includes(number)){
+          if (direction == "up"){
+            return(sideArr[i].reverse());
+          }else{
+            return(sideArr[i]);
+          }
+        }
+      }
+    }else{
+      const spinArr = spinSideArr(sideArr)
+      for(var i=0;i < sideArr.length; i++){
+
+        if(spinArr[i].includes(number)){
+          if (direction == "left"){
+            return(spinArr[i]);
+          }else{
+            return(spinArr[i].reverse());
+          }            
+        }
+      }
+    }
+  }
+
+  case "right":{
+    if(direction == "left" || direction == "right"){
+      for(var i=0; i<sideArr.length ;i++){
+        if(sideArr[i].includes(number)){
+          if (direction=="right"){
+            return(sideArr[i].reverse());
+          }else{
+            return(sideArr[i]);
+          }
+        }
+      }
+    }else{
+      const spinArr = spinSideArr(sideArr)
+      for(var i=0; i<sideArr.length; i++){
+
+        if(spinArr[i].includes(number)){
+          if (direction=="up"){
+            return(spinArr[i]);
+          }else{
+            return(spinArr[i].reverse());
+          }            
+        }
+      }
+    }
+  }
+
+  case "left":{
+    if(direction=="left"||direction=="right"){
+      for(var i=0; i<sideArr.length; i++){
+
+        if(sideArr[i].includes(number)){
+          if (direction=="right"){
+            return(sideArr[i].reverse());
+          }else{
+            return(sideArr[i]);
+          }
+        }
+      }
+    }else{
+      const spinArr = spinSideArr(sideArr)
+      for(var i=0; i<sideArr.length; i++){
+
+        if(spinArr[i].includes(number)){
+          if (direction=="up"){
+            return(spinArr[i]);
+          }else{
+            return(spinArr[i].reverse());
+          }
+        }
+      }
+    }
+  }
+}
+
+}
+
+
+//get only one part of an matrix with arrays in them 
+function getOnlyRo(sideArr, direction){
+  const Matrix = []
+  for(var i=0;i<sideArr.length;i++){
+    row=[]
+    for(var j=0;j<sideArr[i].length;j++){
+      row.push(sideArr[i][j][direction])
+    }
+    Matrix.push(row)
+  }
+  return(Matrix)
+}
+
+
+//get the sides to turn and spin the sides that need to be spun  
+function SideTurning(side, sideArr, number, direction, sidedir){
+
+  sideArr = getOnlyRo(sideArr, sidedir);
+  number = parseInt(number[sidedir]);
+
+  sidesToTurn = [];
+  sideIndex = sides.indexOf(side);
+  sidesToTurn.push(sideIndex);
+
+  if(side == "top"){
+    // get the side that are turning
+    if(direction=="bottom"){
+      sidesToTurn.push(4) //left
+      sidesToTurn.push(sideIndex+1) //the oposite side of the one given
+      sidesToTurn.push(5) //back-right
+    }else if(direction == "up"){
+      sidesToTurn.push(5) //back-right
+      sidesToTurn.push(sideIndex+1)//the oposite side of the one given
+      sidesToTurn.push(4) //left
+    }else if(direction == "right"){
+      sidesToTurn.push(2) //right
+      sidesToTurn.push(sideIndex+1)//the oposite side of the one given
+      sidesToTurn.push(3) // back-left
+    }else{
+      sidesToTurn.push(3) // back-left
+      sidesToTurn.push(sideIndex+1)//the oposite side of the one given
+      sidesToTurn.push(2) // right
+    }
+    // see if the peice is in the edge then spin a side if it is
+    // the 4 ends:
+    if(sideArr[0].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[3],sideArr.length,false) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[3],sideArr.length,true) 
+      }
+    }
+    if(sideArr[sideArr.length-1].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[2],sideArr.length,true) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[2],sideArr.length,false) 
+      }
+    }
+    //spin to make the left/right accessible
+    spinArr = spinSideArr(sideArr)
+    if(spinArr[0].includes(number)){
+      if(direction == "left"){
+        spinSideDirection(sides[5],sideArr.length,true) 
+      }else if(direction == "right"){
+        spinSideDirection(sides[5],sideArr.length,false) 
+      }
+    }
+    if(spinArr[sideArr.length-1].includes(number)){
+      if(direction == "left"){
+        spinSideDirection(sides[4],sideArr.length,false) 
+      }else if(direction == "right"){
+        spinSideDirection(sides[4],sideArr.length,true) 
+      }
+    }
+  
+   // the rest of the function is simeler code but with difrent values 
+  }else if(side == "right"){
+    if(direction == "bottom"){
+      sidesToTurn.push(1)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(0)
+    }else if(direction == "up"){
+      sidesToTurn.push(0)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(1)
+    }else if(direction == "right"){
+      sidesToTurn.push(5)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(4)
+    }else{
+      sidesToTurn.push(4)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(5)
+    }
+
+    if(sideArr[0].includes(number)){
+      if(direction=="left"){  
+        spinSideDirection(sides[0],sideArr.length,true) 
+      }else if(direction=="right"){
+        spinSideDirection(sides[0],sideArr.length,false) 
+      }
+    }
+    if(sideArr[sideArr.length-1].includes(number)){
+      if(direction=="left"){
+        spinSideDirection(sides[1],sideArr.length,false) 
+      }else if(direction=="right"){
+        spinSideDirection(sides[1],sideArr.length,true) 
+      }
+    }
+
+    spinArr = spinSideArr(sideArr)
+    if(spinArr[0].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[5],sideArr.length,true) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[5],sideArr.length,false) 
+      }
+    }
+    if(spinArr[sideArr.length-1].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[4],sideArr.length,false) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[4],sideArr.length,true) 
+      }
+    }
+
+  }else if(side=="left"){
+    if(direction == "bottom"){
+      sidesToTurn.push(1) 
+      sidesToTurn.push(sideIndex+1) 
+      sidesToTurn.push(0) 
+    }else if(direction == "up"){
+      sidesToTurn.push(0) 
+      sidesToTurn.push(sideIndex+1) 
+      sidesToTurn.push(1) 
+    }else if(direction == "right"){
+      sidesToTurn.push(2) 
+      sidesToTurn.push(sideIndex+1) 
+      sidesToTurn.push(3) 
+    }else{
+      sidesToTurn.push(3) 
+      sidesToTurn.push(sideIndex+1) 
+      sidesToTurn.push(2) 
+    }
+    if(sideArr[0].includes(number)){
+      if(direction=="left"){  
+        spinSideDirection(sides[1],sideArr.length,false) 
+      }else if(direction=="right"){
+        spinSideDirection(sides[1],sideArr.length,true) 
+      }
+    }
+    if(sideArr[sideArr.length-1].includes(number)){
+      if(direction=="left"){
+        spinSideDirection(sides[0],sideArr.length,true) 
+      }else if(direction=="right"){
+        spinSideDirection(sides[0],sideArr.length,false) 
+      }
+    }
+    spinArr = spinSideArr(sideArr)
+    if(spinArr[0].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[3],sideArr.length,false) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[3],sideArr.length,true) 
+      }
+    }
+    if(spinArr[sideArr.length-1].includes(number)){
+      if(direction=="up"){
+        spinSideDirection(sides[2],sideArr.length,true) 
+      }else if(direction=="bottom"){
+        spinSideDirection(sides[2],sideArr.length,false) 
+      }
+    }
+
+  }
+
+  return([sides[sidesToTurn[0]],sides[sidesToTurn[1]],sides[sidesToTurn[2]],sides[sidesToTurn[3]]]) 
+}
+
+
+// get a list of movements that will be executed on the cube in order
+function moveList(moveList,speed){
+  notationIndex = 0;  
+  for (var i = 0; i < moveList.length; i++) {
+    skip = 0;
+    (function () {
+      TimeOut = setTimeout(function (index) {
+
+        if(moveList[index] != moveList[index-1]){
+          movementEl[notationIndex].classList.add("finishMove")
+          notationIndex++
+        }
+
+        var par = moveList[index].split(",");
+        move(parseInt(par[0].trim()), par[1].trim(), par[2].trim(), par[3].trim());
+
+      }, 1900*i , i);//feed the index into setTimeout
+    })()
+    timeoutIds.push(TimeOut);
+  }
+}
+
+// when i call a set time out on a function and re call the funtion i want each istance to be seperate and not change the variables in each case.
+function spinSideDirection(side,cubeSize,dir){
+
+  delayForSwap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cubeSpeed').replace("s",""))*1000;
+  //all for show
+  var row = 0;
+  var col = 0;
+  originalTransformations = Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  originalTrl =             Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  originalMouseDowns =      Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  originalTouchDowns =      Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+
+  for(var i=0;i<cubeSize**2;i++){
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].appendChild(document.getElementById(side+(i+1)));
+
+    transformation = (document.getElementById(side+(i+1)).style.transform).split(" ");
+    document.getElementById(side+(i+1)).style.transform = transformation.slice(-2,transformation.length).join(" ");
+    originalTransformations[row][col] = transformation.join(" ");
+
+    originalTrl[row][col] = document.getElementById(side+(i+1)).getAttribute("trl");
+    originalMouseDowns[row][col] = document.getElementById(side+(i+1)).getAttribute("onmousedown");
+    originalTouchDowns[row][col] = document.getElementById(side+(i+1)).getAttribute("ontouchstart");
+    
+    col++;
+    if((i + 1)%cubeSize == 0){
+      col = 0;
+      row++;
+    }
+  }
+
+  if(dir){
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform+= " rotate(90deg)"
+  }else{
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform+= " rotate(-90deg)"
+  }
+
+
+  // once the side has spun, remove it from the div then acualy roate the pice 
+  TimeOut = setTimeout(function() {
+    for(var i=0;i<cubeSize**2;i++){
+      //swap bring it back to the main cube 
+      cube.appendChild(document.getElementById(side+(i+1)))
+    }
+
+    ogIds=[]
+    
+    count=0
+    for(var i=0;i<cubeSize;i++){
+      rowid=[]
+      for(var j=0; j<cubeSize; j++){
+        rowid.push(document.getElementById(side+(count+1)).id)
+        count++
+      }
+      ogIds.push(rowid)
+    }
+
+    if(dir){
+      rotateTransformations = spinSideArr(spinSideArr(spinSideArr(originalTransformations)));
+      rotateTrl             = spinSideArr(spinSideArr(spinSideArr(originalTrl)));
+      ogIds                 = spinSideArr(spinSideArr(spinSideArr(ogIds)));
+      mouseDowns            = spinSideArr(spinSideArr(spinSideArr(originalMouseDowns)));
+      touchDowns            = spinSideArr(spinSideArr(spinSideArr(originalTouchDowns)));
+    }else{
+      rotateTransformations = spinSideArr(originalTransformations);
+      rotateTrl             = spinSideArr(originalTrl);
+      ogIds                 = spinSideArr(ogIds);
+      mouseDowns            = spinSideArr(originalMouseDowns);
+      touchDowns            = spinSideArr(originalTouchDowns);
+    }
+    ElementList=[]
+    row=0
+    col=0
+    
+    for(var i=0;i<cubeSize**2;i++){
+      //swap bring it back to the main cube   COMMENT OUT BELOW FOR TEST
+      //document.getElementById("cube").appendChild(document.getElementById(side+(i+1)))
+      //swap the "trl" and Transformation
+      document.getElementById(side+(i+1)).style.transform = rotateTransformations[row][col];
+      document.getElementById(side+(i+1)).classList.add(ogIds[row][col]);
+      setAttributes(document.getElementById(side+(i+1)),{
+        "trl":          rotateTrl[row][col],
+        "onmousedown":  mouseDowns[row][col],
+        "ontouchstart": touchDowns[row][col],
+      });
+      ElementList.push(document.getElementById(side+(i+1)))       
+
+      //document.getElementById(side+(i+1)).id="-"
+      col++
+      if((i+1)%cubeSize==0){
+        col=0
+        row++
+      }
+    }
+    for(var i=0;i<ElementList.length;i++){
+      listOfclass = ElementList[i].classList.value.split(" ");
+      ElementList[i].id = listOfclass[listOfclass.length-1];  //set the id added 
+      ElementList[i].classList.remove(listOfclass[listOfclass.length-1]); // remove the id from the classlist 
+    }   
+    //get the transformation of the div that spins it and remove the last transformation (the +/- rotate 90 deg)   
+    spinFace = document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform
+    faceRotated = spinFace.split(" ")
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform = faceRotated.slice(0,faceRotated.length-1).join(" ")
+
+  },delayForSwap)
+  timeoutIds.push(TimeOut);
+}
+
+//convert cube notation to cubeMovement so it can be aplied to the cube
+function convertNotationToCubeMovement(notation){
+  
+  flipDirection={
+    "right" :"left",
+    "left"  :"right",
+    "up"    :"bottom",
+    "bottom":"up",
+  }
+  cubeMovements = [];
+
+  for (let i = 0; i < notation.length; i++) {
+    opisite = false;
+
+    if ( notation[i][1] == "'"){
+      opisite = true;
+    }
+
+    repeat = 1;
+    if ( notation[i][notation[i].length-1] == "2"){
+      repeat = 2;
+    }
+
+    switch(notation[i][0].toUpperCase()){      
+      case "U":
+        direction = "left"
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,right,3|3|3," + direction);
+        }
+        break;
+
+      case "D":
+        direction = "right";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,right,9|9|9," + direction);
+        }
+        break;
+
+      case"R":
+        direction = "up";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,left,7|1|1," + direction);
+        }
+        break;
+
+      case"L":
+        direction = "bottom";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,left,1|3|3," + direction);
+        }
+        break;
+
+      case"F":
+        direction = "bottom";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,right,1|3|3," + direction);
+        }
+        break;
+
+      case"B":
+        direction = "up";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,right,4|4|4," + direction);
+        }
+        break;
+
+      case"M":
+        direction = "bottom";
+
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,left,4|2|2," + direction);
+        }
+        break;
+
+      case"E":
+        direction = "right";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,left,5|5|5," + direction);
+        }
+        break;
+
+      case"S":
+        direction = "bottom";
+        if( opisite ){direction = flipDirection[direction] }
+        for (let rep = 0; rep < repeat; rep++) {
+          cubeMovements.push("3,right,5|5|5," + direction);
+        }
+        break;
+    
+      }
+  }
+  return cubeMovements;
+}
+
+
+// add in the cards html
+function addCards(notation){
+  contanerEl = document.getElementById("contain-moves") 
+  for (let i = 0; i < notation.length; i++) {
+    contanerEl.innerHTML += "<div class = 'movementCard'>"+ notation[i].toUpperCase() +"</div>"
+  }
+}
+
+
+//play cube animation
+function playAnimation(){ 
+  animationPlaying = true;
+  moveList(cubeMovements);
+  
+  document.getElementsByClassName("play")[0].innerHTML = '<svg class="spinAr" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50%" height="50%" viewBox="0 0 24 24"><path d="M 2 2 L 4.9414062 4.9414062 C 3.1620561 6.7129386 2 9.209162 2 12 C 2 17.533333 6.4666667 22 12 22 C 17.533333 22 22 17.533333 22 12 C 22 6.4666667 17.533333 2 12 2 L 12 4 C 16.466667 4 20 7.5333333 20 12 C 20 16.466667 16.466667 20 12 20 C 7.5333333 20 4 16.466667 4 12 C 4 9.7594337 4.9364614 7.7627686 6.3535156 6.3535156 L 9 9 L 9 2 L 2 2 z"></path></svg>'
+  document.getElementsByClassName("play")[0].setAttribute("onclick","reset()")
+  setTimeout(()=>{
+    animationPlaying = false;
+  },1800*cubeMovements.length)
+}
+
+
+// reset the cube
+function reset(){
+  for (var i = 0; i < timeoutIds.length; i++) {
+    clearTimeout(timeoutIds[i]);
+  }
+
+  document.getElementsByClassName("play")[0].innerHTML =  '<svg xmlns="http://www.w3.org/2000/svg"  fill="#000000" width="50%" height="50%" viewBox="0 0 32 32" version="1.1"><path d="M5.92 24.096q0 1.088 0.928 1.728 0.512 0.288 1.088 0.288 0.448 0 0.896-0.224l16.16-8.064q0.48-0.256 0.8-0.736t0.288-1.088-0.288-1.056-0.8-0.736l-16.16-8.064q-0.448-0.224-0.896-0.224-0.544 0-1.088 0.288-0.928 0.608-0.928 1.728v16.16z"/></svg>'
+  document.getElementsByClassName("play")[0].setAttribute("onclick","playAnimation()")    
+
+  cubeNotation = cubeProp.movements.split(" ");
+  for (var i = 0; i < cubeNotation.length; i++) {
+    movementEl[i].classList.remove("finishMove")
+  }
+  setTimeout(() => {
+    generateCube(cubeProp.cubeLoad);
+  }, 100);
+}
+
+
+// set up display
+function main(){
+  generateCube(cubeProp.cubeLoad);
+  if(cubeProp.movements == ""){
+    document.getElementById("contain-moves").remove()
+    return
+  }
+  cubeNotation = cubeProp.movements.split(" ");
+  addCards(cubeNotation);
+  cubeMovements = convertNotationToCubeMovement(cubeNotation);
+}
+
+window.onload = main;
+
+/*
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+  - - - - - - - - - - - - - - DRIVERS - - - - - - - - - - - - - - - - - 
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+*/
+
+    
+function driver() {
+
+  console.log(`
+  convertNotation To CubeMovement:
+
+    ${convertNotationToCubeMovement("B D F' B' D L2 U L U' B D' R B R D' R L' F U2 D")}_1\n\n
+    ${convertNotationToCubeMovement("M2 E2 S2")}_2\n\n
+    ${convertNotationToCubeMovement("L U B' U' R L' B R' F B' D R D' F'")}_3\n\n
+  `)
+}
+    
+// driver()
+
+</script>
+
+
+</html>

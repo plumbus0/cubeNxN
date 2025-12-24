@@ -1,0 +1,2190 @@
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/logo.png">
+  <title></title>
+</head>
+
+<body id="bod">
+
+  <insertBar></insertBar>
+  <link rel="stylesheet" href="menuBar.css">
+  <script src="menuBar.js"></script>
+
+  <div class="contain-time">
+    <div id="timer">
+      loading...
+    </div>
+  </div>
+  
+  <div  id="tutorialWindow" style="left: 0;top: 210; height:760px">
+    <div onmousemove="TutorialPopUpMove()" id="dragCover"></div>
+    <div id="dragBar" ontouchstart="dragTutorialPopUp(event,true,false)" onmousedown="dragTutorialPopUp(event,true,true)" class="contain-options">
+      <div onclick="reload()" class="backBtn" id="backBtn">
+        <svg class="svgButton" fill="#ffffff" height="77%" width="58px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 219.151 219.151" xml:space="preserve" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M109.576,219.151c60.419,0,109.573-49.156,109.573-109.576C219.149,49.156,169.995,0,109.576,0S0.002,49.156,0.002,109.575 C0.002,169.995,49.157,219.151,109.576,219.151z M109.576,15c52.148,0,94.573,42.426,94.574,94.575 c0,52.149-42.425,94.575-94.574,94.576c-52.148-0.001-94.573-42.427-94.573-94.577C15.003,57.427,57.428,15,109.576,15z"></path> <path d="M94.861,156.507c2.929,2.928,7.678,2.927,10.606,0c2.93-2.93,2.93-7.678-0.001-10.608l-28.82-28.819l83.457-0.008 c4.142-0.001,7.499-3.358,7.499-7.502c-0.001-4.142-3.358-7.498-7.5-7.498l-83.46,0.008l28.827-28.825 c2.929-2.929,2.929-7.679,0-10.607c-1.465-1.464-3.384-2.197-5.304-2.197c-1.919,0-3.838,0.733-5.303,2.196l-41.629,41.628 c-1.407,1.406-2.197,3.313-2.197,5.303c0.001,1.99,0.791,3.896,2.198,5.305L94.861,156.507z"></path> </g> </g></svg>
+      </div>
+      <svg class="svgButton upArrow  close" onclick="toggleCloseMiniWindow()" fill="#000000" height="200px" width="200px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_224_" d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z"></path> </g></svg>
+
+      <svg class="svgButton" fill="#000000" height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32.055 32.055" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M3.968,12.061C1.775,12.061,0,13.835,0,16.027c0,2.192,1.773,3.967,3.968,3.967c2.189,0,3.966-1.772,3.966-3.967 C7.934,13.835,6.157,12.061,3.968,12.061z M16.233,12.061c-2.188,0-3.968,1.773-3.968,3.965c0,2.192,1.778,3.967,3.968,3.967 s3.97-1.772,3.97-3.967C20.201,13.835,18.423,12.061,16.233,12.061z M28.09,12.061c-2.192,0-3.969,1.774-3.969,3.967 c0,2.19,1.774,3.965,3.969,3.965c2.188,0,3.965-1.772,3.965-3.965S30.278,12.061,28.09,12.061z"></path> </g> </g></svg>
+      <svg class="svgButton cross" ontouch onclick="toggleCloseMiniWindow()" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48"><path d="M 38.982422 6.9707031 A 2.0002 2.0002 0 0 0 37.585938 7.5859375 L 24 21.171875 L 10.414062 7.5859375 A 2.0002 2.0002 0 0 0 8.9785156 6.9804688 A 2.0002 2.0002 0 0 0 7.5859375 10.414062 L 21.171875 24 L 7.5859375 37.585938 A 2.0002 2.0002 0 1 0 10.414062 40.414062 L 24 26.828125 L 37.585938 40.414062 A 2.0002 2.0002 0 1 0 40.414062 37.585938 L 26.828125 24 L 40.414062 10.414062 A 2.0002 2.0002 0 0 0 38.982422 6.9707031 z"></path></svg>
+    </div>
+  </div>
+
+  <div id="game">
+
+    <div class="container" style="display: contents;">
+      <div id="miniMap" class="cube">
+        <!--
+          mini  map 
+        -->
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div id="cube" class="cube" style="transform: rotatex(55deg)rotateZ(45deg) rotateY(0deg);">
+        <!--
+        cube 
+        -->
+      </div>
+    </div>
+
+    <div class="zoom">
+      <div onclick="dontMove()" class="innerContainZoom"></div>
+      <div class="zoomBtn"; onclick="zoomIn(false);dontMove()">➖</div>
+      <div id="zoomNum">50%</div>
+      <div class="zoomBtn"; onclick="zoomIn(true);dontMove()">➕</div>          
+
+    </div>
+  </div>  
+    
+</body>
+  
+  <style>
+  
+  body {
+    overflow: hidden;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0;
+    background: radial-gradient(#ffffff00, #959595);
+    height: 100vh;
+  }
+  :root{
+    --cubeSpeed : 0.2s;
+    --cubeSize:350;
+  }
+  .contain-options{
+    display: flex;
+    width: 100%;
+  }
+  .svgButton{
+    height: 100%;
+    transition-duration: 1s;
+    fill: rgb(218 220 255 / 81%);
+  }
+  #zoomNum{
+    display: flex;
+    font-family: monospace;
+    text-align: center;
+    font-size: 40px;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .tutorialWindow{
+    overflow: hidden;
+    user-select: none;
+    transition-property: opacity;
+    transition-duration: 0.5s;
+    min-width: 314px;
+    max-width: 80%;
+    min-height: 457px;
+    max-height: 80%;
+    z-index: 1;
+    position: absolute;
+    width: 100px;
+    border-radius: 15px;
+    height: 100px;
+    box-shadow: 0px 0px 20px 2px rgb(0 9 55 / 40%);
+    resize: both;
+    filter: opacity(1.9);
+  }
+
+  .upArrow{
+    width: 100%;
+    cursor: pointer;
+  }
+  .tutorialWindow.close{
+    resize:none;
+    box-shadow:none;
+    box-shadow: none;
+    left: -140px !important;
+    top: 422px !important;
+    rotate: 90deg;
+  }
+  .tutorialWindow.stage1{
+    min-height: 32px;
+    height: 32px !important;
+    width: 14px !important;
+  }
+  .tutorialWindow.stage2{
+    transition-property: unset;
+  }
+  .svgButton.close{
+    opacity: 0;
+    width: 0;
+  }
+  #tutorialIframe.close{
+    transition-duration: 0.1s!important;
+    height: 0 !important;
+  }
+
+  #dragBar{
+    width: 100%;
+    height: 30px;
+    background-color: rgb(0 0 0 / 53%);
+    transition-duration: 1s;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  #dragBar:hover{
+    cursor:grab;
+  }
+  .cross{
+    height: 70%;
+    padding: 2%; 
+  }
+  .cross:hover{
+    cursor: pointer;
+    background: #0000002b;
+  }
+  .zoomBtn{
+    display: flex;
+    font-size: 22px;
+    z-index: 1;
+    width: 22%;
+    background: #0000001f;
+    height: 90%;
+    margin: 7px;
+    border-radius: 26px;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.7s;
+  }
+  .zoomBtn:hover{
+    cursor: pointer;
+    box-shadow: #000000f5 0px 0px 2px 0px;
+  }
+  .zoom{
+    position: absolute;
+    bottom: 20;
+    right: 20;
+    display: flex;
+    width: 300px;
+    height: 56px;
+    background: #ffffff26;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    opacity: 0.3;
+    transition-duration: 1s;
+  }
+  .zoom:hover{
+    opacity: 1;
+  }
+  .innerContainZoom{
+    width: 100%;
+    height: 100%;
+    background: #ffffff45;
+    filter: blur(4px);
+    position: inherit;
+    border-radius: 14px;
+  }
+  .maxOut{
+    width: 0;
+    opacity: 0;
+  }
+  .contain-time{
+    margin-top: 1%;
+    position: absolute;
+    transition-duration: 2s;
+    text-align: center;
+    z-index: 1;
+    top: 0;
+    width: fit-content;
+    border-radius: 23px;
+    background: #ffffff29;
+    font-family: monospace;
+    font-size: 178%;
+    padding: 12px;
+  }
+  .doneTime{
+    top: 46%;
+    background: black;
+    color: white;
+  }
+  .noCubeBox{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 4px solid #9292921f;
+    transition-duration: 0.5s;
+    border-radius: 12px;
+    padding: 56px;
+    font-size: 2em;
+    color: #ff8282;
+    font-family: monospace;
+    background: linear-gradient(45deg, #eaeaea, #ffffff);
+  }
+  
+  .link{
+    font-size: 0.8em;
+  }
+
+  .link:hover{
+    text-decoration-line: underline;
+  }
+
+
+  #game{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .sq{
+    position: absolute !important;
+    top: -1px;
+    text-align: center;
+    display: flex;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    border-radius: 13%;
+    border: 1px solid #000;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+
+  /* .sq:hover>div{
+    background-color: rgba(0, 0, 0, 0.322) !important;
+    height: 100%;
+    width: 100%;
+  } */
+  
+  .top{
+    position: absolute;
+    top: 100%;
+  }
+  .topOn{
+    position: absolute;
+    top: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .outer{
+    position: absolute;
+    align-self: center;
+    width: 60px;
+    height: 60px;
+  }
+  .bottom{
+    position: absolute;
+    bottom: 100%;
+  }
+  .bottomOn{
+    position: absolute;
+    bottom: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .left{
+    position: absolute;
+    left: 100%;
+  }
+  .leftOn{
+    position: absolute;
+    left: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+
+  }
+  .right{
+    position: absolute;
+    right: 100%;
+  }
+  .rightOn{
+    position: absolute;
+    right: 100%;
+    height: 100%;
+    width: 100%;
+    background:repeating-radial-gradient(black, transparent 100px) ;
+  }
+
+  .container {
+    perspective: 1000px;
+    perspective-origin: 50% 50%;
+  }
+  #miniMap{
+    height: 100px;
+    width: 100px;  
+    position: absolute;
+    right: 50px;
+    top: 50px;
+
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .miniMapSide{
+    transition-duration: 0.7s;
+    background-color: #a6a6a6;
+    border: 1px solid #fff;
+    position: absolute;
+    display: flex;
+    width: 100px;
+    height: 100px;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+  }
+  .cube {
+    transform: rotateX(55deg) rotateZ(45deg);
+    transition-duration: 0.7s;
+    position: relative;
+    width: var(--cubeSize);
+    height: var(--cubeSize);
+    transform-style: preserve-3d;
+    transition-duration: 0.7s;
+  }
+  .groupEl{
+    transition-duration: var(--cubeSpeed);
+    position: relative;
+    width: var(--cubeSize);
+    height: var(--cubeSize);
+    transform-style: preserve-3d;
+  }
+
+  #cube > div {
+    position: absolute;
+    width: var(--cubeSize);
+    height: var(--cubeSize);
+  }  
+  .pi{
+    opacity: 1;
+  }
+
+  .side{
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    border-radius: 2px;
+    background: #000000e8;
+    border: 1px solid #000000e8;
+  }
+  .spinface{
+    background:#00000000;
+    transition-duration: var(--cubeSpeed);
+    pointer-events: none;/*this makes it not block the cube piece*/
+    transform: translate3d(0px, 0px, 176px);
+  }
+  .dark{
+    background:#00000032;
+    transition-duration: 0.3s;
+    pointer-events: none;/*this makes it not block the cube piece*/
+    transform: translate3d(0px, 0px, 176px);
+  }
+  .speedy{
+    transition-duration: 0.03s;
+  }
+  .lessVisable{
+    opacity: 0.8;
+  }
+  
+  .noBorder{
+    border:1px solid rgba(255, 255, 255, 0);
+    background: rgba(15, 12, 37, 0.355) !important;    
+  }
+  .hide{
+    display: none;
+    width: 0;
+  }
+  .backBtn{
+    pointer-events: none;
+    transition-duration: 1s;
+    opacity: 0;
+    cursor: pointer;
+    height: 70%;
+  }
+  .backBtn.show{
+    pointer-events:all;
+    opacity: 1;
+  }
+  #dragCover{
+    width: 100%;
+    height: 96%;
+    bottom: 0;
+    position: absolute;
+  }
+  @keyframes rotate {
+    100% {
+      transform: rotateX(0deg) rotateY(360deg) rotateZ(360deg);
+    }
+  }
+  @keyframes rotateCube {
+    from {
+        transform: rotateX(330deg) rotateY(45deg);
+    }
+
+    to {
+        transform: rotateX(330deg) rotateY(405deg);
+    }
+  }
+</style>
+ 
+<script>
+
+var side = document.getElementsByTagName("side");
+const cube = document.getElementById("cube");
+
+var mouseDownXY = [];
+var mouseUpXY = [];
+var sideMove = "";
+var trlMove = "";
+
+var dragingElemnt = false
+const tutorialWindow = document.getElementById('tutorialWindow');
+const dragBar = document.getElementById('dragBar');
+
+var offsetX = 0
+var offsetY = 0
+
+var touch = true;
+var sizeOfCube = 0;
+var map;
+var leftSideofScreen = false;
+var isDragging = false;
+var originalDragPos = [0 , 0];
+
+const cubeSpeed = "0.2s";
+var fastcubeSpeed = "0.04s";
+document.documentElement.style.setProperty('--cubeSpeed', cubeSpeed);
+
+var cubeLen = 350;
+const cubeLenMAX = 550;
+const cubeLenMIN = 50;
+document.documentElement.style.setProperty('--cubeSize', cubeLen);
+
+//what cube from the to generate
+const allCubeProp = JSON.parse(localStorage.allCubes);
+var allids = [];
+
+
+for(let i = 0; i<allCubeProp.length;i++){
+  allids.push(allCubeProp[i].id)
+}
+
+//get the cube with the id 
+const cubeIndex = allids.indexOf(parseInt(new URL(document.location).searchParams.get("cubeID")))
+// add error message if cube not found and generate the cube   
+if(cubeIndex == -1){
+  dragBar.remove()
+  document.getElementsByClassName("contain-time")[0].remove()
+  document.getElementById("game").innerHTML = 
+    '<div class="noCubeBox">'
+    +'<div>sorry, this cube does not exist</div>'
+    +'<a class="link" href="Dashboard.html">back to Dashboard</a>'
+    +'</div>'
+}
+
+
+
+const tutorialMode = allCubeProp[cubeIndex].optionsSelect.tutorial; // get the colours the user selected
+const playMode = allCubeProp[cubeIndex].optionsSelect["play-mode"]; // get the colours the user selected
+
+
+const sides = ["top","bottom","right","back-left","left","back-right"];
+const valToColour = allCubeProp[cubeIndex].optionsSelect.colours;
+const animateCube = allCubeProp[cubeIndex].optionsSelect.animations;
+var cancelAnmiaion = false; 
+
+stopAdd = false;
+
+
+var cubeStage = 8;
+var startTime = 0;
+var ms = 0;
+
+
+const tutorialCubeStageMap = 
+    [
+        [
+            ["2","1","2"],
+            ["1","1","1"],
+            ["2","1","2"],
+        ],
+        [           
+            ["5","4","5"],
+            ["4","4","4"],
+            ["5","4","5"],
+        ],
+        [
+            ["2","3","6"],
+            ["1","1","7"],
+            ["2","3","6"],
+        ],
+        [
+            ["6","3","2"],
+            ["7","1","1"],
+            ["6","3","2"],
+        ],
+        [
+            ["2","1","2"],
+            ["3","1","3"],
+            ["6","7","6"],
+        ],
+        [
+            ["6","7","6"],
+            ["3","1","3"],
+            ["2","1","2"],
+        ],
+    ]
+//a function that add to time once every milesecond 
+function addToTime(){
+  if( stopAdd){return};
+  // get the timePass
+  timer = document.getElementById("timer")
+  allCubePropcubeProp = JSON.parse(localStorage.allCubes);
+  timePass = Date.now() - startTime;
+  
+  //for every ms that passed over the time add it on 
+  for(let i = 0; i < timePass; i++){
+    timer.innerHTML = convertTime(parseInt(allCubePropcubeProp[cubeIndex].timeSpent)) + ms + " ms";
+    ms += 1;
+    if(ms>=1000){addSeconds()}
+  }
+  startTime = Date.now();
+}
+
+
+//add a second and store it 
+function addSeconds(){
+  prvDate = Date.now()
+  allCubePropcubeProp = JSON.parse(localStorage.allCubes);
+  allCubePropcubeProp[cubeIndex].timeSpent = parseInt(allCubePropcubeProp[cubeIndex].timeSpent) + 1
+  localStorage.setItem('allCubes', JSON.stringify(allCubePropcubeProp));
+  ms = 0;
+}
+
+//
+function zoomIn(zoom){
+  buttonEl = document.getElementsByClassName("zoomBtn")
+
+  buttonEl[1].classList.remove("maxOut");
+  buttonEl[0].classList.remove("maxOut");
+
+  if(zoom){
+    if(cubeLen >= cubeLenMAX - 50){  
+      if(!buttonEl[1].classList.contains("maxOut")){
+        buttonEl[1].classList.add("maxOut")
+      }
+    }
+    if(cubeLen >= cubeLenMAX){
+      return
+    }
+    cubeLen += 50;
+
+  }else{
+    
+    if(cubeLen <= cubeLenMIN + 50){
+      if(!buttonEl[0].classList.contains("maxOut")){
+        buttonEl[0].classList.add("maxOut")
+      }
+    }
+    if(cubeLen <= cubeLenMIN){
+      return
+    }
+    cubeLen -= 50;
+  };
+
+  document.getElementById("zoomNum").innerHTML = parseInt(((cubeLen - cubeLenMIN)/(cubeLenMAX - cubeLenMIN))*100)+"%"
+  //apply the new size and generate the cube
+  document.documentElement.style.setProperty('--cubeSize', cubeLen);
+  generateCube(readCube(sizeOfCube));
+  CubeStageVisibility(cubeStage);
+}
+
+//format time 
+function convertTime(timeInSeconds){
+  var hours = Math.floor(timeInSeconds / 3600)+"h ";
+  var minutes = Math.floor((timeInSeconds % 3600) / 60)+"m ";
+  var seconds = Math.floor(timeInSeconds % 60)+"s ";
+  var milliseconds = (String(parseFloat(timeInSeconds).toFixed(3)).split(".")[1])+"ms ";
+
+  if( hours[0]  == 0 ){hours = ""};
+  if( minutes[0] == 0 ){minutes = ""};
+  if( seconds[0] == 0 ){seconds = ""};
+  if( milliseconds == "undefinedms " ){milliseconds = ""};
+  if( milliseconds[0] == 0  ){milliseconds = ""};
+
+  formatedTime = hours + minutes + seconds + milliseconds
+  if(formatedTime==""){formatedTime="---"}
+  return formatedTime;
+}
+
+
+// toggle the opacity of the minimap
+function toggleView(view){
+  sideEl=document.getElementById("miniMap").getElementsByClassName("miniMapSide")
+  for(var i=0;i< sideEl.length; i++){
+    if(view){
+      sideEl[i].style.opacity = 1;
+    }else{
+      sideEl[i].style.opacity = 0;
+    }
+  }
+}
+
+//Called one  when the user clicks/ release mouse from window to indicate dragging
+function dragTutorialPopUp(event,start,mouse) {
+  var x = event.x;
+  var y = event.y;
+  if(!mouse){
+    x = event.changedTouches[0].clientX;
+    y = event.changedTouches[0].clientY;
+  }
+
+  if(start){
+    dragingElemnt = true;    
+    tutorialWindow.classList.add("lessVisable")
+    offsetX = y - parseInt(tutorialWindow.style.top);
+    offsetY = x - parseInt(tutorialWindow.style.left);
+
+  }else{
+    tutorialWindow.classList.remove("lessVisable")
+    dragingElemnt = false;
+  }
+}
+
+function TutorialPopUpMove(event,mouse){
+  dragCover = document.getElementById("dragCover")
+  if(cubeIndex == -1){
+    dragCover.remove()
+    return;
+  };
+  if(event==undefined|| !("clientX" in event)){
+    return
+  }
+  var x = event.clientX;
+  var y = event.clientY;
+  if(!mouse){
+    x = event.changedTouches[0].clientX;
+    y = event.changedTouches[0].clientY;
+  }
+  if(dragingElemnt){
+    dragCover.classList.remove("hide");
+    if(x<30 || x>document.body.clientWidth){
+      tutorialWindow.style.top = y - offsetX;
+      return;
+    }
+    if(y<30||y>document.body.clientHeight){
+      tutorialWindow.style.left = x - offsetY;
+      return;
+    }
+    tutorialWindow.style.top = y - offsetX
+    tutorialWindow.style.left = x - offsetY
+
+  }else{
+    dragCover.classList.add("hide");
+  }
+}
+
+function reload(){
+  document.getElementById("tutorialIframe").src = document.getElementById("tutorialIframe").src;            
+  document.getElementById("backBtn").classList.remove("show")
+}
+
+
+// player input with mouse/ touch screen to move the screen 
+function playerMovement(event,mouse){
+  //reset cube position
+  isDragging = false;
+  cube.style.transform = "rotateX(55deg) rotateZ(45deg) rotateY(0deg)";    
+  cube.style.transitionDuration = ".2s";
+  document.getElementById("miniMap").style.transitionDuration = ".2s";
+  document.getElementById("miniMap").style.transform = cube.style.transform;
+
+  if(event.target.classList[0] == "svgButton"){return}
+
+  if(mouse){
+    mouseUpXY = [event.clientX,event.clientY];
+  }else{
+    const touchEv = event.changedTouches[0];
+    mouseUpXY = [event.changedTouches[0].clientX , event.changedTouches[0].clientY];
+  }
+  
+  const len = Math.sqrt((mouseUpXY[1] - mouseDownXY[1])**2 + (mouseUpXY[0] - mouseDownXY[0])**2);
+
+  if(len < 620 && len > 20 ){
+    direction = getDirection();
+  }else{
+    direction = undefined;
+  }
+
+  if(touch&&sideMove=="outside" && direction!=undefined ){//&& event.button === 0){
+    moveWholeCube(direction);
+  }
+
+  //validate the movement move cube  
+  if(touch && direction!=undefined && trlMove!=undefined){
+    if(mouse==false || event.button === 0){
+      move(sizeOfCube, sideMove, trlMove, direction, true);
+    }
+    //start the timer 
+    if(allCubeProp[cubeIndex].optionsSelect.timer == true){
+      startTime = Date.now();
+      setInterval(addToTime,1);
+    }
+  }
+  trlMove = undefined;
+};
+// drag the cube with the  
+function draging(event,mouse){
+  if(isDragging){
+    MovementSpeed = 1/6;
+
+    if(mouse){
+      x = event.clientX;
+      y = event.clientY;
+    }else{
+      x = event.changedTouches[0].clientX;
+      y = event.changedTouches[0].clientY;
+    }
+
+    const moveLenX = (x - originalDragPos[0]) * MovementSpeed;
+    const moveLenY = (y - originalDragPos[1]) * MovementSpeed;
+
+    //offset
+    var rotateX = 55 - moveLenY; 
+    var rotateZ = 45 - moveLenX;
+    
+    cube.style.transform = "rotateX("+(rotateX)+"deg) rotateZ("+(rotateZ)+"deg) ";
+    document.body.style.cursor = 'grab';
+    cube.style.transitionDuration="0s"
+    document.getElementById("miniMap").style.transitionDuration="0s"
+    document.getElementById("miniMap").style.transform = cube.style.transform;
+
+  }else{
+    document.body.style.cursor = 'unset';
+  }
+}
+
+// from the mouse down and up find the directiont the user 
+function getDirection(){
+  // get the angle and make it so that 
+  gradient = (mouseUpXY[1] - mouseDownXY[1]) / (mouseUpXY[0] - mouseDownXY[0]);
+  angRaid = Math.atan(gradient);
+  if (angRaid < 0) {
+    angRaid += Math.PI;//make the -90 to 0 positive 
+  }
+  if(mouseUpXY[1] > mouseDownXY[1]){// the gradient can be the same so add 180 
+    angRaid += Math.PI;
+  }
+  ang = angRaid*180/Math.PI;//convert to deg
+
+  switch(sideMove){
+    case "top":
+      directoins=[150,30,150+180,30+180];
+      closestDeg = closestTo(ang,directoins);
+      break;
+    case "right":
+      directoins=[90,150+180,90+180,150];
+      closestDeg = closestTo(ang,directoins);
+      break;
+    case "left":
+      directoins = [90,30,90+180,30+180];
+      closestDeg = closestTo(ang,directoins);
+      break;
+    case "outside":
+      directoins = [90,360,270,180];
+      closestDeg = closestTo(ang,directoins);
+      break;
+      //duplicate code:
+  }
+
+  if(closestDeg==directoins[0]){  
+    return "up";
+  }else if(closestDeg==directoins[1]){  
+    return "left";
+  }else if(closestDeg==directoins[2]){  
+    return "bottom";
+  }else if(closestDeg==directoins[3]){  
+    return "right";
+  }
+
+
+}
+
+
+//get the closes number from an given array to a given number   
+function closestTo(num,arr){
+  copyArr = arr.slice();
+  while(copyArr.length > 1){
+    if(Math.abs(num - copyArr[0]) < Math.abs(num - copyArr[1])){
+      copyArr.splice(1,1);
+    }else{
+      copyArr.splice(0,1);
+    }
+  }
+  return copyArr[0];
+}
+
+
+// set the veriables to what the user slecetd when touching the cube 
+function setVeribals(side,trl,mouse){
+  if(mouse){
+    mouseDownXY = [event.clientX,event.clientY];
+  }else{
+    mouseDownXY = [event.changedTouches[0].clientX , event.changedTouches[0].clientY];
+  }
+
+  sideMove = side;
+  trlMove  = trl;
+}
+
+
+// gets 2d arrays and "overlapping them" to combine them to a single 2d array
+function merge(...arr){
+  // new array with the same dimensions 
+  const mergeArray = Array(arr[0].length).fill("").map(() => Array(arr[0].length).fill(""))
+  
+  for(var i=0;i < arr[0].length;i++){
+    for(var j=0;j < arr[0][i].length;j++){        
+      mergeArray[i][j] = []
+      for(let item = 0; item < arr.length; item++){
+        mergeArray[i][j].push(arr[item][i][j]);
+      }
+    }
+  }
+  return mergeArray;
+}
+
+
+// an array that describes the trl for each peice 
+function getMapArray(size) {
+  const mapArray = [];
+  const twoDArray = [];
+  var rowArr = [];
+
+  for(var Si=0;Si<6;Si++){
+    const numberedMatrix = [];
+    var count = 1
+
+    for(var i=0;i<size;i++){ //for each row  
+      rowArr=[]
+
+      for(var j=0;j<size;j++){
+        rowArr.push(count)
+        count++
+      }
+      numberedMatrix.push(rowArr)
+    }
+    switch(Si){
+      case 0:   //top
+        mapArray.push(merge(numberedMatrix, numberedMatrix, spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 1:   //bottom 
+        mapArray.push(merge(merge(numberedMatrix,spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(numberedMatrix)), spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 2:   // right
+        mapArray.push(merge(numberedMatrix, numberedMatrix, numberedMatrix))
+        break;
+      case 3:   // back-left
+        mapArray.push(merge(numberedMatrix ,merge(numberedMatrix,spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(numberedMatrix))))
+        break;
+      case 4:   // left
+        mapArray.push(merge(numberedMatrix, spinSideArr(spinSideArr(spinSideArr(numberedMatrix))), spinSideArr(spinSideArr(spinSideArr(numberedMatrix)))))
+        break;
+      case 5:   // back-right
+        mapArray.push(merge(numberedMatrix, spinSideArr(numberedMatrix),merge(spinSideArr(numberedMatrix), spinSideArr(spinSideArr(spinSideArr(numberedMatrix))))))
+        break;
+    }
+  }
+  return mapArray;
+}
+
+
+// a helper function that I got from the internet: 
+//https://stackoverflow.com/questions/12274748/setting-multiple-attributes-for-an-element-at-once-with-javascript
+//sets multiple setAttributes to a element 
+function setAttributes(el, attrs) {
+  for(var key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+}
+
+//retruns the difrent locations of the sides of a cube.
+function getSideLocation(sidesLen,offset){
+  offsetFromOrigen=sidesLen/2
+  if(offset){
+    return[
+    "translate3d(0px, 0px, "+offsetFromOrigen+"px)",                                                                                          //top
+    "rotateY(180deg) translate3d(0px, "+boxSize*(sizeCube-1)+"px, "+offsetFromOrigen+"px) rotate(180deg)",                                    //bottom
+    "rotateY(90deg) translate3d("+(-boxSize*(sizeCube-1)/2)+"px, 0px, "+(offsetFromOrigen+boxSize*(sizeCube-1)/2)+"px)",                  //right
+    "rotateY(-90deg) translate3d("+(-boxSize*(sizeCube-1)/2)+"px, 0px, "+(offsetFromOrigen-boxSize*(sizeCube-1)/2)+"px)"  ,               //back-left
+    "rotateX(-90deg) translate3d(0px, "+(-boxSize*(sizeCube-1)/2)+"px, "+(offsetFromOrigen+boxSize*(sizeCube-1)/2)+"px) ",                 //left
+    "rotateX(90deg) translate3d("+(boxSize*0)+"px,"+(-boxSize*(sizeCube-1)/2)+"px,"+(offsetFromOrigen-boxSize*(sizeCube-1)/2)+"px)",      //back-right
+    ];
+  }else{
+    return[
+    "translate3d(0px, 0px, "+offsetFromOrigen+"px)",                                 //top
+    "rotateY(180deg) translate3d(0px, 0px, "+offsetFromOrigen+"px) rotate(180deg)",  //bottom
+    "rotateY(90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px)",                  //right
+    "rotateY(-90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px)"  ,               //back-left
+    "rotateX(-90deg) translate3d(0px, 0px, "+offsetFromOrigen+"px) rotate(0deg)",    //left
+    "rotateX(90deg) translateZ("+offsetFromOrigen+"px)",                             //back-right
+    ];
+  }
+}
+
+//adds the elements the the cube
+function generateCube(CubeColArr){
+  sizeCube = CubeColArr[0][0].length;
+
+  boxSize = (cubeLen/sizeCube);
+    
+  document.getElementsByTagName('style')[0].innerHTML += '.cu{transition-duration: 0.4s; height:'+boxSize+'px !important; width:'+boxSize+'px !important ;} ';
+
+  const sideLocation      = getSideLocation(cubeLen, true);
+  const sideLocationnNoff = getSideLocation(cubeLen, false);
+  const minimapLocation   = getSideLocation(100, false);
+
+  // add the xy locations for the piece
+  locations = [];
+  X = 0;
+  Y = 0;
+
+  for(var i = 0; i < sizeCube; i++){
+    for(var j = 0;j < sizeCube; j++){
+      locations.push("translateX("+X+"px)");
+      X+=boxSize;
+    }
+    X=0
+  }
+
+  lis=[]
+  for(var i=0;i<sizeCube;i++){
+    for(var j=0;j<sizeCube;j++){
+      lis.push("translateY("+Y+"px)");
+    }
+    Y += boxSize;
+  }
+  //add the y trasformations
+  for(var i=0;i<locations.length;i++){
+    locations[i]+=" "+lis[i]
+  }
+
+  
+  //make each side/piece 
+  row = 0;
+  col = 0;
+  count = 0;
+  movementClasses=["top","bottom","left","right"]
+  
+  cube.innerHTML="";
+
+  cube.innerHTML += "<div class='groupEl'></div>"
+
+  document.getElementById("miniMap").innerHTML=""
+  for(var Si=0;Si<6;Si++){//add 6 rotation divs and make mini map
+    cube.innerHTML += "<div class='spinface' style='width:"+cubeLen+" ;height:"+cubeLen+"; transform:"+sideLocationnNoff[Si]+"''></div>"
+    //cube.innerHTML += "<div class='dark' style='width:"+(cubeLen)+" ;height:"+(cubeLen)+"; transform:"+sideLocationnNoff[Si]+"''></div>"
+    document.getElementById("miniMap").innerHTML += "<div class='miniMapSide' style =' transform:"+minimapLocation[Si]+"'> <div style='transform:"+ "rotate(45deg)" +"'>"+sides[Si]+"</div> </div>"
+  }
+
+  for(var Si=0;Si<6;Si++){// sides
+    for(var i=0;i<sizeCube**2;i++){// piece   
+
+      var trl = "";
+      if( map[Si][row][col].length == undefined){
+        trl = map[Si][row][col];
+      }else{// join the array with |   map[Si][row][col][0] map[Si][row][col][1]
+        trl = map[Si][row][col].join("|");
+      }
+
+      cube.innerHTML += '<div trl="'+trl+'" ogCol='+CubeColArr[Si][col][row]+' style="  background:'+valToColour[CubeColArr[Si][col][row][0]] +'; transform: '+sideLocation[Si] +locations[i] +';  "  '+ 'class="sq  cu pi"'  +  '  id="'+(sides[Si])+(i+1)+'" ></div>'
+
+      setAttributes(document.getElementById(sides[Si]+(i+1)),{
+        "onmousedown":'setVeribals(\"'+sides[Si]+'\",\"'+trl +'\",true)',
+        "ontouchstart":'setVeribals(\"'+sides[Si]+'\",\"'+trl +'\",false)',
+      });
+      
+      row++
+      count++
+      if((i+1) % sizeCube == 0){
+        col+=1
+        row=0
+      }
+    }
+    row=0
+    col=0
+  }
+  
+}
+
+
+// NOT IN USE
+function populatecube(cubeSize){
+  //https://sentry.io/answers/how-can-i-create-a-two-dimensional-array-in-javascript/#:~:text=There%20are%2C%20broadly%20speaking%2C%20two,array%20to%20create%20nested%20arrays.
+  Arr = [[],[],[],[],[],[]] 
+  CodeForColour=["W","Y","B","G","R","O"]
+  for(var i =0;i<6;i++){
+    let array2d = Array(cubeSize).fill().map(() => Array(cubeSize).fill(CodeForColour[i]));
+    Arr[i] = array2d;
+  } 
+  return Arr;
+}
+
+
+// reads the cube and stores it in a 3d array
+function readCube(sizeCube){
+  //arr[side][layer][piece]
+  cubeColour=[]
+  for(var Si=0 ;Si<6; Si++){//side
+    count=0
+    side=[]
+    for(var ro=0;ro<sizeCube;ro++){
+      row=[]
+      for(var pi=0;pi<sizeCube;pi++){
+        count++
+        boxCol = document.getElementById((sides[Si])+(count)).getAttribute("ogcol")
+        row.push(boxCol)
+      }
+      side.push(row)
+    }
+    cubeColour.push(side)
+  }
+  return cubeColour;
+}
+
+
+// spins a 2d array
+function spinSideArr(side){
+  const rows = side.length;
+  // Create a new empty matrix with swapped rows and columns (use )
+  const rotatedMatrix = new Array(rows).fill(0).map(() => new Array(rows).fill(0));
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < rows; j++) {
+      rotatedMatrix[j][(rows- 1) - i] = side[i][j];        
+    }
+  }
+  return rotatedMatrix;
+}
+
+
+// fucntion that moves the cube
+function move(size,side,num,direction,save){
+  //user can move the cube at this point
+  touch = false;
+  num = num.split("|");
+  var sideIndex = 0;
+  var turnPi;
+  var sidesTurn;
+  var delayForSwap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cubeSpeed').replace("s",""))*1000;  
+  if( cancelAnmiaion || !animateCube ){ delayForSwap = 0}
+
+  switch(side){
+    case "top":     
+      sideIndex = 0;
+      turnPi = getNumbersToSwap(map[0], parseInt(num[sideIndex]), direction, sideIndex, side)
+      sidesTurn = SideTurning(side,map[0],num,direction,sideIndex)
+      
+      switch(direction){
+        case "up":
+          dir = 0;
+          groupAxis = "X";
+          groupDirection = 1;
+          break;
+        case "bottom":
+          dir = 0;
+          groupAxis = "X";
+          groupDirection = -1;
+          break;
+        case "left":
+          dir = 1;
+          groupAxis = "Y";
+          groupDirection = -1;
+          break;
+        case "right":
+          dir = 1;
+          groupAxis = "Y";
+          groupDirection = 1;
+          break;
+      }
+      break;
+    case "right":   
+      sideIndex = 1;
+      turnPi = getNumbersToSwap(map[2],parseInt(num[sideIndex]),direction,sideIndex,side)
+      sidesTurn = SideTurning(side,map[2],num,direction,sideIndex)
+      switch(direction){
+        case "up":
+          dir = 0;
+          groupAxis = "Y";
+          groupDirection = -1;
+          break;
+        case "bottom":
+          dir = 0;
+          groupAxis = "Y";
+          groupDirection = 1;
+          break;
+        case "left":
+          dir = 1;
+          groupAxis = "Z";
+          groupDirection = 1;
+          break;
+        case "right":
+          dir = 1;
+          groupAxis = "Z";
+          groupDirection = -1;
+          break;
+      }
+      break;
+    case "left":   
+      sideIndex = 2;
+      turnPi = getNumbersToSwap(map[3],parseInt(num[sideIndex]), direction, sideIndex, side);
+      sidesTurn = SideTurning(side,map[3],num,direction,sideIndex);
+      
+      switch(direction){
+        case "up":
+          dir = 1;
+          groupAxis = "X";
+          groupDirection = 1;
+          break;
+        case "bottom":
+          dir = 1;
+          groupAxis = "X";
+          groupDirection = -1;
+          break;
+        case "left":
+          dir = 0;
+          groupAxis = "Z";
+          groupDirection = 1;
+          break;
+        case "right":
+          dir = 0;
+          groupAxis = "Z";
+          groupDirection = -1;
+          break;
+      }
+      break;
+  }
+  sideTurnOfset = [sidesTurn[3],sidesTurn[0],sidesTurn[1],sidesTurn[2]];
+  
+  //get the ids needed to swap   
+  const ids = [];
+
+  for(var i=0; i<sidesTurn.length; i++){
+    ids.push(getIDofNum(size,sidesTurn[i],turnPi,sideIndex,dir))//push an array of ids 
+  }
+
+  const idsOfset = [ids[3],ids[0],ids[1],ids[2]];
+  
+  for(var pi=0;pi<ids.length;pi++){
+    for(var i=0;i<ids[pi].length;i++){
+      elm = document.getElementById(ids[pi][i]);
+      document.getElementsByClassName("groupEl")[0].appendChild(elm);
+    }
+  }
+
+  // animation to make it look like its spin
+  const groupTransformation = "rotate"+ groupAxis +"("+ (groupDirection*90) +"deg)"
+  document.getElementsByClassName("groupEl")[0].style.transform = groupTransformation
+  
+  // rotate it now 
+  setTimeout(function() {
+    // reset the rotation
+    document.getElementsByClassName("groupEl")[0].style.transform = ""
+    //remove from rotation element
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        elm = document.getElementById(ids[pi][i])
+        cube.appendChild(elm);
+      }
+    }
+
+    //get all the things to swap 
+    const transformations = []
+    const trls = []
+    const ogIds = []
+    const mouseDowns = []
+    const touchDowns = []
+    
+    //get the Attribute to swap from each peice 
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        transformations.push(document.getElementById(ids[pi][i]).style.transform)
+        trls.push(document.getElementById(ids[pi][i]).getAttribute("trl"));
+        ogIds.push(document.getElementById(ids[pi][i]).id);
+        mouseDowns.push(document.getElementById(ids[pi][i]).getAttribute("onmousedown"));
+        touchDowns.push(document.getElementById(ids[pi][i]).getAttribute("ontouchstart"));
+      }
+    }
+    
+    var classToId=[]
+    var count=0
+    var ElementList=[]
+
+    // apply the swap
+    for(var pi=0;pi<ids.length;pi++){
+      for(var i=0;i<ids[pi].length;i++){
+        document.getElementById(idsOfset[pi][i]).style.transform = transformations[count];
+        setAttributes(document.getElementById(idsOfset[pi][i]),{
+          "trl":          trls[count],
+          "onmousedown":  mouseDowns[count],
+          "ontouchstart": touchDowns[count],
+        });
+        ElementList.push(document.getElementById(idsOfset[pi][i]));
+        document.getElementById(idsOfset[pi][i]).classList.add(ogIds[count]);
+        classToId.push(ogIds[count]);
+        count++;
+      }
+    }
+    
+    // set the id back from the class list 
+    for(var i=0;i<ElementList.length;i++){
+      listOfclass       = ElementList[i].classList.value.split(" ");
+      ElementList[i].id = listOfclass[listOfclass.length-1];
+      ElementList[i].classList.remove(listOfclass[listOfclass.length-1]);
+    }
+
+  },delayForSwap)
+
+
+  setTimeout(()=>{
+    if(save){ saveCube(); }
+    //user can now move the cube
+    touch = true;
+    finished();
+  }, delayForSwap+100)
+
+}
+
+
+// put the cube in its "finished" state if solved.
+function finished(){
+  if(playMode){
+    return
+  }
+
+  const changedState = JSON.parse(localStorage.allCubes);
+  if(changedState[cubeIndex].doneScramble == false){return}
+  changedState[cubeIndex].solved = isDone();
+
+  if(isDone()){
+    stopAdd = true;
+    touch = false;
+    // see if this is the fist time solved then add the save the time 
+    document.getElementById("miniMap").style.display = "none"
+    if(changedState[cubeIndex].optionsSelect.timer == true){
+      document.getElementsByClassName("contain-time")[0].classList.add("doneTime");
+    }
+    cube.style.animation = "20s linear 0s infinite normal none running rotateCube";
+    secondsSpent = changedState[cubeIndex].timeSpent;
+    const finalSolveTimeNum = secondsSpent + (ms/1000)
+
+    if(changedState[cubeIndex].optionsSelect.timer == true){ 
+      // save time to high score
+      // see if cube is done each open now we here 
+      if(changedState[cubeIndex].finalSolveTime == "0s " || changedState[cubeIndex].finalSolveTime == "---"){
+        highScores = JSON.parse(localStorage.getItem("highScores"));
+        if(highScores[sizeOfCube] == undefined){
+          highScores[sizeOfCube] = []
+        }        
+        highScores[sizeOfCube].push(finalSolveTimeNum)
+        localStorage.setItem('highScores', JSON.stringify(highScores)); 
+
+      }else{
+        timer = document.getElementById("timer");
+        if(timer){
+          timer.innerHTML = changedState[cubeIndex].finalSolveTime;
+        }
+        return;
+      }
+      // save finalSolveTime
+      changedState[cubeIndex].finalSolveTime = convertTime(finalSolveTimeNum);      
+    }
+  }
+  localStorage.setItem('allCubes', JSON.stringify(changedState));
+}
+
+
+//see if the cube is fully solved 
+function isDone(){
+  const changedState = JSON.parse(localStorage.allCubes)[cubeIndex].solved;
+  cubeState = readCube(sizeOfCube);
+  for(var i=0;i<cubeState.length;i++){//side
+    //get the fist pice to see if they match 
+    comparePi = cubeState[i][0][0][0];
+
+    for(var j=0;j<cubeState[i].length;j++){
+      for(var k=0;k<cubeState[i][j].length;k++){
+        if(cubeState[i][j][k][0] != comparePi){
+          return false;
+        }
+      }
+    }
+  }
+  return true
+}
+
+
+//goes thrugh a side and finds all the ids with the matching trl's 
+function getIDofNum(size,sideName,turnPi,sideRot,dir){
+  idsForSide = [];
+  for(var pi=0;pi<turnPi.length;pi++){// each piece in side
+    for(var i=0;i<size**2;i++){//side
+      sideDir = (document.getElementById(sideName+(i+1))).getAttribute("trl").split("|")[sideRot]
+      // for the elemnts 
+      if(sideDir.split(",").length>1){
+        sideDir = sideDir.split(",")[dir];
+      }
+      if(parseInt(sideDir)==turnPi[pi]){
+        idsForSide.push(sideName+(i+1));
+      }
+    }
+  }
+  return idsForSide;
+}
+
+
+//
+function getNumbersToSwap(sideArr, number, direction, sidedir, side){
+  sideArr = getOnlyRo(sideArr, sidedir); 
+
+  switch(side){
+
+    case "top":{
+      if(direction == "up"||direction == "bottom"){
+        for(var i=0; i<sideArr.length; i++){
+
+          if(sideArr[i].includes(number)){
+            if (direction == "up"){
+              return(sideArr[i].reverse());
+            }else{
+              return(sideArr[i]);
+            }
+          }
+        }
+      }else{
+        const spinArr = spinSideArr(sideArr)
+        for(var i=0;i < sideArr.length; i++){
+
+          if(spinArr[i].includes(number)){
+            if (direction == "left"){
+              return(spinArr[i]);
+            }else{
+              return(spinArr[i].reverse());
+            }            
+          }
+        }
+      }
+    }
+
+    case "right":{
+      if(direction == "left" || direction == "right"){
+        for(var i=0; i<sideArr.length ;i++){
+          if(sideArr[i].includes(number)){
+            if (direction=="right"){
+              return(sideArr[i].reverse());
+            }else{
+              return(sideArr[i]);
+            }
+          }
+        }
+      }else{
+        const spinArr = spinSideArr(sideArr)
+        for(var i=0; i<sideArr.length; i++){
+
+          if(spinArr[i].includes(number)){
+            if (direction=="up"){
+              return(spinArr[i]);
+            }else{
+              return(spinArr[i].reverse());
+            }            
+          }
+        }
+      }
+    }
+
+    case "left":{
+      if(direction=="left"||direction=="right"){
+        for(var i=0; i<sideArr.length; i++){
+
+          if(sideArr[i].includes(number)){
+            if (direction=="right"){
+              return(sideArr[i].reverse());
+            }else{
+              return(sideArr[i]);
+            }
+          }
+        }
+      }else{
+        const spinArr = spinSideArr(sideArr)
+        for(var i=0; i<sideArr.length; i++){
+
+          if(spinArr[i].includes(number)){
+            if (direction=="up"){
+              return(spinArr[i]);
+            }else{
+              return(spinArr[i].reverse());
+            }            
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+//get only one part of an matrix with arrays in them 
+function  getOnlyRo(sideArr, direction){
+  const Matrix = []
+  for(var i=0;i<sideArr.length;i++){
+    row=[]
+    for(var j=0;j<sideArr[i].length;j++){
+      row.push(sideArr[i][j][direction])
+    }
+    Matrix.push(row)
+  }
+  return(Matrix)
+}
+
+
+//get the sides to turn and spin the sides that need to be spun  
+function SideTurning(side, sideArr, number, direction, sidedir, SpinSide = true){
+
+  sideArr = getOnlyRo(sideArr, sidedir);
+  number = parseInt(number[sidedir]);
+
+  sidesToTurn = [];
+  sideIndex = sides.indexOf(side);
+  sidesToTurn.push(sideIndex);
+
+  if(side == "top"){
+    if(direction=="bottom"){
+      sidesToTurn.push(4);
+      sidesToTurn.push(sideIndex+1); //the oposite side of the one given
+      sidesToTurn.push(5);
+    }else if(direction == "up"){
+      sidesToTurn.push(5);
+      sidesToTurn.push(sideIndex+1);
+      sidesToTurn.push(4);
+    }else if(direction == "right"){
+      sidesToTurn.push(2);
+      sidesToTurn.push(sideIndex+1);
+      sidesToTurn.push(3);
+    }else{
+      sidesToTurn.push(3);
+      sidesToTurn.push(sideIndex+1);
+      sidesToTurn.push(2);
+    }
+
+    if(SpinSide){
+      if(sideArr[0].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[3],sideArr.length,false) 
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[3],sideArr.length,true) 
+        }
+      }
+      if(sideArr[sideArr.length-1].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[2],sideArr.length,true) 
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[2],sideArr.length,false) 
+        }
+      }
+
+      spinArr = spinSideArr(sideArr)
+      if(spinArr[0].includes(number)){
+        if(direction == "left"){
+          spinSideDirection(sides[5],sideArr.length,true) 
+        }else if(direction == "right"){
+          spinSideDirection(sides[5],sideArr.length,false) 
+        }
+      }
+      if(spinArr[sideArr.length-1].includes(number)){
+        if(direction == "left"){
+          spinSideDirection(sides[4],sideArr.length,false) 
+        }else if(direction == "right"){
+          spinSideDirection(sides[4],sideArr.length,true) 
+        }
+      }
+    }
+
+
+  }else if(side == "right"){
+    if(direction == "bottom"){
+      sidesToTurn.push(1)
+      sidesToTurn.push(sideIndex+1)//the oposite side of the one given
+      sidesToTurn.push(0)
+    }else if(direction == "up"){
+      sidesToTurn.push(0)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(1)
+    }else if(direction ==  "right"){
+      sidesToTurn.push(5)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(4)
+    }else{
+      sidesToTurn.push(4)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(5)
+    }
+    if(SpinSide){
+      if(sideArr[0].includes(number)){
+        if(direction=="left"){  
+          spinSideDirection(sides[0],sideArr.length,true) //top
+        }else if(direction=="right"){
+          spinSideDirection(sides[0],sideArr.length,false) //top
+        }
+      }
+      if(sideArr[sideArr.length-1].includes(number)){
+        if(direction=="left"){
+          spinSideDirection(sides[1],sideArr.length,false) //bottom
+        }else if(direction=="right"){
+          spinSideDirection(sides[1],sideArr.length,true) //bottom
+        }
+      }
+
+      spinArr = spinSideArr(sideArr)
+      if(spinArr[0].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[5],sideArr.length,true) //left
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[5],sideArr.length,false) //left 4
+        }
+      }
+      if(spinArr[sideArr.length-1].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[4],sideArr.length,false) //back-right 5
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[4],sideArr.length,true) //back-right
+        }
+      }
+  }
+
+  }else if(side=="left"){
+    if(direction == "bottom"){
+      sidesToTurn.push(1)
+      sidesToTurn.push(sideIndex+1)//the oposite side of the one given
+      sidesToTurn.push(0)
+    }else if(direction == "up"){
+      sidesToTurn.push(0)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(1)
+    }else if(direction ==  "right"){
+      sidesToTurn.push(2) // right
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(3) // back-left
+    }else{
+      sidesToTurn.push(3)
+      sidesToTurn.push(sideIndex+1)
+      sidesToTurn.push(2)
+    }
+    if(SpinSide){
+      if(sideArr[0].includes(number)){
+        if(direction=="left"){  
+          spinSideDirection(sides[1],sideArr.length,false) 
+        }else if(direction=="right"){
+          spinSideDirection(sides[1],sideArr.length,true) 
+        }
+      }
+      if(sideArr[sideArr.length-1].includes(number)){
+        if(direction=="left"){
+          spinSideDirection(sides[0],sideArr.length,true) 
+        }else if(direction=="right"){
+          spinSideDirection(sides[0],sideArr.length,false) 
+        }
+      }
+
+      spinArr = spinSideArr(sideArr)
+      if(spinArr[0].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[3],sideArr.length,false) 
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[3],sideArr.length,true) 
+        }
+      }
+      if(spinArr[sideArr.length-1].includes(number)){
+        if(direction=="up"){
+          spinSideDirection(sides[2],sideArr.length,true) 
+        }else if(direction=="bottom"){
+          spinSideDirection(sides[2],sideArr.length,false) 
+        }
+      }
+    }
+  }
+
+  return([sides[sidesToTurn[0]],sides[sidesToTurn[1]],sides[sidesToTurn[2]],sides[sidesToTurn[3]]])
+
+}
+
+// set the cube to be fast
+function speedCube(fast){
+  spinfaces = document.getElementsByClassName("spinface");
+  piece = document.getElementsByClassName("sq");
+  if(fast){
+    document.documentElement.style.setProperty('--cubeSpeed', fastcubeSpeed);
+  }else{
+    setTimeout(() => {
+      document.documentElement.style.setProperty('--cubeSpeed', cubeSpeed);
+    }, 100);
+  }
+}
+
+// get a random movement
+function randomMove(cubeS){
+  face      = faces[Math.floor(Math.random()*faces.length)]
+  piece     = map[sides.indexOf(face)][Math.floor(Math.random()*cubeS)][Math.floor(Math.random()*cubeS)];
+  direction = directions[Math.floor(Math.random()*directions.length)]
+  return(cubeS+","+face+","+piece.join("|")+","+direction)
+}
+
+//makes a array of movements that can be feed in to the moveList funtion to be executed 
+function scramble(cubeSize,len){
+  // cubeMap    = getMapArray(cubeSize)
+  directions = ["up","bottom","left","right"]
+  faces      = ["top","left","right"]
+  //to ensure that the cube will not move opposite directions
+  movements=[]
+  for (var i=0; i<len; i++){
+    randomMovement = randomMove(cubeSize)
+    movements.push(randomMovement);
+  }
+  return movements;
+}
+
+
+// gets a list of movement s
+function moveList(moveList) {  
+  speedCube(true)
+  for (var i = 0; i < moveList.length+1; i++) {
+    (function () {
+      touch = false;
+      setTimeout(function (index) {
+        if(index == moveList.length){// last one 
+          speedCube(false)
+          cubeProp = JSON.parse(localStorage.allCubes);
+          cubeProp[cubeIndex].doneScramble = true;
+          localStorage.setItem('allCubes', JSON.stringify(cubeProp));
+          startTime = Date.now();
+          cancelAnmiaion = false;
+          setTimeout(()=>{saveCube()},100);
+        }else{
+          var par = moveList[index].split(",");
+          move(parseInt(par[0].trim()), par[1].trim(), par[2].trim(), par[3].trim());
+        }
+      }, (fastcubeSpeed.replace("s",""))*10000 *i , i);//feed the index into setTimeout
+    })()
+  }
+}
+
+
+// when i call a set time out on a function and re call the funtion i want each istance to be seperate and not change the variables in each case.
+function spinSideDirection(side,cubeSize,dir){
+
+  delayForSwap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cubeSpeed').replace("s",""))*1000;
+  if( cancelAnmiaion || !animateCube ){ delayForSwap = 0}
+  //all for show
+  var row = 0;
+  var col = 0;
+  var originalTransformations = Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  var originalTrl =             Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  var originalMouseDowns =      Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+  var originalTouchDowns =      Array(cubeSize).fill(0).map(() => new Array(cubeSize).fill(" "));
+
+  for(var i=0;i<cubeSize**2;i++){
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].appendChild(document.getElementById(side+(i+1)));
+
+    transformation = (document.getElementById(side+(i+1)).style.transform).split(" ");
+    //get the last two
+    document.getElementById(side+(i+1)).style.transform = transformation.slice(-2,transformation.length).join(" ");
+    originalTransformations[row][col] = transformation.join(" ");
+    originalTrl[row][col] = document.getElementById(side+(i+1)).getAttribute("trl");
+    originalMouseDowns[row][col] = document.getElementById(side+(i+1)).getAttribute("onmousedown");
+    originalTouchDowns[row][col] = document.getElementById(side+(i+1)).getAttribute("ontouchstart");
+    
+    col++;
+    if( (i + 1) % cubeSize == 0){
+      col = 0;
+      row++;
+    }
+  }
+
+  if(dir){
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform+= " rotate(90deg)"
+  }else{
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform+= " rotate(-90deg)"
+  }
+
+  // once the side has spun, remove it from the div then acualy roate the pice 
+  setTimeout(function() {
+    for(var i=0;i<cubeSize**2;i++){
+      //swap bring it back to the main cube 
+      cube.appendChild(document.getElementById(side+(i+1)));
+    }
+    var ogIds=[]
+    
+    count = 0;
+    for(var i=0;i<cubeSize;i++){
+      rowid = [];
+      for(var j=0; j<cubeSize; j++){
+        rowid.push(document.getElementById(side+(count+1)).id)
+        count++
+      }
+      ogIds.push(rowid)
+    }
+
+    // to spin the side array left spinSideArr is used 3 times
+    if(dir){
+      rotateTransformations = spinSideArr(spinSideArr(spinSideArr(originalTransformations)));
+      rotateTrl             = spinSideArr(spinSideArr(spinSideArr(originalTrl)));
+      ogIds                 = spinSideArr(spinSideArr(spinSideArr(ogIds)));
+      mouseDowns            = spinSideArr(spinSideArr(spinSideArr(originalMouseDowns)));
+      touchDowns            = spinSideArr(spinSideArr(spinSideArr(originalTouchDowns)));
+    }else{
+      rotateTransformations = spinSideArr(originalTransformations);
+      rotateTrl             = spinSideArr(originalTrl);
+      ogIds                 = spinSideArr(ogIds);
+      mouseDowns            = spinSideArr(originalMouseDowns);
+      touchDowns            = spinSideArr(originalTouchDowns);
+    }
+    ElementList=[];
+    row=0;
+    col=0;
+    
+    for(var i=0;i<cubeSize**2;i++){
+      //swap bring it back to the main cube
+      document.getElementById(side+(i+1)).style.transform = rotateTransformations[row][col];
+      document.getElementById(side+(i+1)).classList.add(ogIds[row][col]);
+      setAttributes(document.getElementById(side+(i+1)),{
+        "trl":          rotateTrl[row][col],
+        "onmousedown":  mouseDowns[row][col],
+        "ontouchstart": touchDowns[row][col],
+      });
+      ElementList.push(document.getElementById(side+(i+1)))       
+
+      col++
+      if((i+1)%cubeSize==0){
+        col=0
+        row++
+      }
+    }
+    
+    for(var i=0; i<ElementList.length; i++){
+      listOfclass = ElementList[i].classList.value.split(" ");
+      ElementList[i].id = listOfclass[listOfclass.length-1];              //set the id added to class 
+      ElementList[i].classList.remove(listOfclass[listOfclass.length-1]); // remove the id from the classlist 
+    }
+    
+    //get the transformation of the div that spins it and remove the last transformation (the +/- rotate 90 deg)   
+    spinFace = document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform
+    faceRotated = spinFace.split(" ")
+    document.getElementsByClassName("spinface")[sides.indexOf(side)].style.transform = faceRotated.slice(0,faceRotated.length-1).join(" ")
+  },delayForSwap)
+}
+
+
+//return a list of movements to move the cube a direction
+function getMovemtnsListForWholeCube(direction){
+  movelist = [];
+  if(direction == "right"||direction == "left"){
+    movelist = [];
+    number = sizeOfCube;
+    face = "left";
+    for (let i = 0; i < sizeOfCube; i++) {
+      movelist.push(sizeOfCube+","+face+",n|n|"+number+","+direction);
+      number += sizeOfCube;
+    }
+  
+  }else{//up and down for the two sides of the screen
+    number = 1;
+    if(leftSideofScreen){
+      face = "left";
+      for (let i = 0; i < sizeOfCube; i++) {    
+        movelist.push(sizeOfCube+","+face+",n|n|"+number+","+direction);
+        number += 1;
+      }
+    }else{
+      face = "right";
+      for (let i = 0; i < sizeOfCube; i++) {    
+        movelist.push(sizeOfCube+","+face+",n|"+number+"|n,"+direction);
+        number += 1;
+      }
+    }
+  }
+  return movelist
+}
+
+
+//move the whole cube 
+function moveWholeCube(direction){
+  moventsList = getMovemtnsListForWholeCube(direction);
+  for (let i = 0; i < moventsList.length; i++) {
+    movement = moventsList[i].split(",");
+    move(parseInt(movement[0]), movement[1], movement[2], movement[3]);
+  }
+
+}
+
+
+//save the cube into local storage 
+function saveCube(){
+  var changedState = JSON.parse(localStorage.allCubes);
+  //change the state 
+  changedState[cubeIndex].state = readCube(sizeOfCube);    
+  localStorage.setItem('allCubes', JSON.stringify(changedState));
+}
+
+
+// hide the piece(stickers) that depending on the stage
+function CubeStageVisibility(stage) {
+  pieceIDs = getCubeIdToChange(stage)
+  for (let i = 0; i < pieceIDs.length; i++) {
+    document.getElementById(pieceIDs[i]).classList.add("noBorder")
+  }
+}
+
+
+// get the ids of the elements that need to hide 
+function getCubeIdToChange(stage){
+  pieceIDs = [];
+  for(var Si=0;Si<6;Si++){
+    for(var i=0;i<sizeCube**2;i++){
+      PieceElement = document.getElementById((sides[Si])+(i+1))
+      PieceElement.classList.remove("noBorder")
+      if(PieceElement.getAttribute("ogcol")[1] > stage){
+        pieceIDs.push((sides[Si])+(i+1))
+      }
+    }
+  }
+  return pieceIDs
+}
+
+
+//this is made to stop the cube from moveing when the user clicks a button 
+function dontMove(){
+  mouseDownXY = [0,0];
+  mouseUpXY = [0,0];
+}
+
+
+// hide the mini window by adding it to the side 
+function toggleCloseMiniWindow(){
+  const buttons = document.getElementsByClassName("svgButton")
+  const tutorialIframe = document.getElementById("tutorialIframe")
+  const tutorialWindow = document.getElementById("tutorialWindow")
+  buttons[0].classList.toggle("close")
+  buttons[1].classList.toggle("close")
+  buttons[2].classList.toggle("close")
+  buttons[3].classList.toggle("close")
+
+
+  if(buttons[2].classList.contains("close")){
+    tutorialIframe.classList.toggle("close")
+    tutorialWindow.classList.toggle("stage2")
+    setTimeout(() => {
+      tutorialWindow.classList.toggle("stage1")
+    },500)
+    setTimeout(() => {
+      tutorialWindow.classList.toggle("close")
+    }, 1000);
+  }else{
+    tutorialWindow.classList.toggle("close")
+    setTimeout(() => {
+      tutorialWindow.classList.toggle("stage1")
+    },500)
+    setTimeout(() => {
+      tutorialWindow.classList.toggle("stage2")
+      tutorialIframe.classList.toggle("close")
+    }, 1000);
+
+  }
+}
+//add addEventListeners to get the user inputs 
+function addPlayerInput(){
+  if(JSON.parse(localStorage.allCubes)[cubeIndex].solved){
+    return
+  }
+  
+  document.getElementById("game").addEventListener("mousedown", (event) => {
+    // make it so that the curser is always the same 
+    event.preventDefault();
+    if(event.target.id == "game"){
+      if( event.clientX < document.body.clientWidth/2){
+        leftSideofScreen = true
+      }else{
+        leftSideofScreen = false
+      }
+      setVeribals("outside",null,true)
+    }
+
+    if (event.button === 2) {
+      isDragging      = true;
+      originalDragPos = [event.clientX,event.clientY];
+      toggleView(true)
+    }
+  });
+  
+  if(allCubeProp[cubeIndex].optionsSelect["block-out colours"]){
+    window.addEventListener("message", (event)=>{
+      switch (event.data) {
+        case "fullCube":
+          generateCube([[["W2","W1","W2"],["W1","W1","W1"],["W2","W1","W2"]],[["Y5","Y4","Y5"],["Y4","Y4","Y4"],["Y5","Y4","Y5"]],[["B2","B3","B6"],["B1","B1","B7"],["B2","B3","B6"]],[["G6","G3","G2"],["G7","G1","G1"],["G6","G3","G2"]],[["R2","R1","R2"],["R3","R1","R3"],["R6","R7","R6"]],[["O6","O7","O6"],["O3","O1","O3"],["O2","O1","O2"]]])
+          break;
+        case "reload":
+          document.getElementById("backBtn").classList.add("show")
+          break;
+        default:
+          cubeStage = event.data;
+          CubeStageVisibility(event.data);
+          break;
+      }
+
+    });
+  }
+
+
+  document.getElementById("game").addEventListener("touchstart", (event) => {
+    if (event.target.id == "game") {
+      if( event.changedTouches[0].clientX < document.body.clientWidth/2){
+        leftSideofScreen = true
+      }else{
+        leftSideofScreen = false
+      }
+      setVeribals("outside",null,false);
+    }
+
+    originalDragPos = [event.changedTouches[0].clientX , event.changedTouches[0].clientY];
+    return
+  });
+
+  document.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+  });
+
+  document.addEventListener('mousemove', (event) => {
+    if(tutorialMode){
+      TutorialPopUpMove(event,true);
+    }
+    draging(event,true);
+  });
+
+  document.addEventListener('touchmove', (event) => {
+    if(tutorialMode){
+      TutorialPopUpMove(event,false);
+    }
+    draging(event,false);
+  });
+
+  // set the mouse Up X and Y
+  document.addEventListener("mouseup", (event) => {
+    playerMovement(event,true)
+    toggleView(false)
+    dragTutorialPopUp(event,false,true)
+  });
+
+  document.addEventListener("touchend", (event) => {
+    playerMovement(event,false)
+    dragTutorialPopUp(event,false,false)
+    toggleView(false)
+  });
+}
+
+//set up the display depending on options
+function setUp(){
+  const cubeProp = JSON.parse(localStorage.allCubes);
+  //add in mini window
+  tutorialElement = document.getElementById("tutorialWindow");
+  // add the mini windo if tutorialMode 
+  if(tutorialMode && !cubeProp[cubeIndex].solved && window.innerWidth > 550){
+    tutorialElement.innerHTML += '<iframe id="tutorialIframe" style="width: 100%;height: 95%;" src="tutorials.html?cubeIndex='+cubeIndex+'" frameborder="0"></iframe>'
+    tutorialElement.classList.add("tutorialWindow")
+  }else{
+    tutorialElement.remove()
+    dragBar.remove()
+  }
+
+  // set timer html
+  if(cubeProp[cubeIndex].optionsSelect.timer == true){
+    timer = document.getElementById("timer")
+    timer.innerHTML = convertTime(parseInt(cubeProp[cubeIndex].timeSpent));  
+  }else{
+    document.getElementsByClassName("contain-time")[0].remove()
+  }
+  sizeOfCube = cubeProp[cubeIndex].state[0].length;
+  map = getMapArray(sizeOfCube);
+  document.title = "cube ["+sizeOfCube+" x "+sizeOfCube+"]";
+
+  generateCube(cubeProp[cubeIndex].state);
+
+  //dark-mode
+  if(localStorage.darkMode=="true"){
+    document.body.style.background = "radial-gradient(rgba(171, 137, 201, 0.84), rgb(24 28 77))"
+  }
+  /*  SCRAMBLE  */
+  scrambleLen = (sizeOfCube)**3+13
+  if(cubeProp[cubeIndex].doneScramble == false){
+    randomMovementsList = scramble(sizeOfCube, sizeOfCube**2/2+10);
+    moveList(randomMovementsList);
+  }
+}
+
+
+// set up display 
+function main(){
+  //the cubeIndex is -1 if the cube cant be found
+  if(cubeIndex == -1){
+    return;
+  };
+  setUp();
+  addPlayerInput();
+  //see if cube solved 
+  finished();
+}
+window.onload = main; 
+
+
+
+
+/*
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+  - - - - - - - - - - - - - - DRIVERS - - - - - - - - - - - - - - - - - 
+-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+*/
+
+function driver(){
+  
+  /*
+  // tutorial cube
+  CubeStageVisibility(3)
+
+  // test moves for 5 x 5
+  move( 5, 'left' , '21|1|1' ,'up')
+  move( 5, 'left' , '61|2|2' ,'up')
+  move( 5, 'left' , '11|3|3' ,'up')
+  move( 5, 'left' , '6|4|4' ,'up')
+  move( 5, 'left' , '1|5|5' ,'up')
+
+  // test two moves that cant happen together
+  move( 3, 'top' ,'9|9|7' ,'left')
+  move( 3, 'top' , '8|8|4' ,'bottom')
+
+  move( 3, 'top' ,'9|9|7' ,'left')
+  move( 3, 'top' ,'1|1|3' ,'left')
+
+  //  * 5x5 *
+  moveList(["5, top , 4|4|20 ,bottom","5, top , 12|12|8 ,up","5, top , 13|13|13 ,right"])
+   
+  * 3x3 *
+  moveList([
+    '3, left , 5|5|5 ,right',
+    '3, left , 5|5|5 ,up',
+    '3, right , 5|5|5 ,up',
+    '3, right , 1|1|1 ,right',
+  ])
+    */
+  console.log(` 
+    spinSideArr
+    ${
+      spinSideArr(
+        [
+          ["1","2"],
+          ["4","1"],
+      ])
+      }_1\n
+    
+    populatecube
+      ${populatecube(2)}_1\n
+      ${populatecube(1)}_2\n
+      ${populatecube(12)}_3\n
+      
+    merge
+      ${
+      merge(
+        [
+            ["x", "y"],
+            ["z", "w"]
+        ],
+        [
+            ["1", "2"],
+            ["3", "4"]
+        ]
+      )
+      
+      }_1
+    ${
+      merge(
+        [
+          ["a", "b"],
+          ["c", "d"]
+        ],
+        [
+            ["e", "f"],
+            ["g", "h"]
+        ]
+      )
+      }_2
+    ClosestTo:\n
+      ${closestTo(5,[1,3,8,10,15])}_1\n
+      ${closestTo(0,[1,-1,2,-2,0.5])}_2\n
+      ${closestTo(10,[1,3,8,10,15])}_3\n
+
+  `)
+  console.log("getMovemtnsListForWholeCube (left then right): \n")
+  leftSideofScreen =  true
+  console.log(`
+    ${getMovemtnsListForWholeCube("left")}_1\n
+    ${getMovemtnsListForWholeCube("right")}_2\n\n
+  `)
+  leftSideofScreen =  false;
+  console.log(`
+    ${getMovemtnsListForWholeCube("left")}_1\n
+    ${getMovemtnsListForWholeCube("right")}_2\n\n
+  `)
+
+  console.log(`
+    getCubeIdToChange:
+
+    ${getCubeIdToChange(1)}_1\n
+    ${getCubeIdToChange(2)}_2\n
+    ${getCubeIdToChange(3)}_3\n
+  `)
+  
+}
+</script>
+
+</html>

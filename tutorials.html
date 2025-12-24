@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/logo.png">
+    <title>tutorials</title>
+</head>
+<body>
+    <insertBar></insertBar>
+    <insertD-L></insertD-L>
+
+    <link rel="stylesheet" href="menuBar.css">
+    <script src="menuBar.js"></script>
+
+    <div class="containBtn right" onclick="swipeSlide(false)">
+        <div class="btn"><img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="arrImg rotateImg" alt=""></div>
+    </div>
+    
+    <div class="containBtn left" onclick="swipeSlide(true)">
+        <div class="btn"><img src="https://cdn-icons-png.flaticon.com/512/271/271220.png" class="arrImg" alt="" ></div>
+    </div>
+    
+    <div id="containdisplay">
+        <div class="display-tu toggleDark" id="mainDisplay"> </div>
+        <div class="display-tu toggleDark" id="sencond"> </div>
+    </div>
+
+    <div class="progressbar-contain toggleDark ">
+        <div id="titles"></div>
+        <div id="progressbar"></div>
+    </div>
+
+    <!--this is used to store code for each of the sections-->
+    
+    <!-- Window -->
+    <div class="Section">
+        <!-- start -->
+        <div type="main" stage="7" title="welcome" colour="repeating-linear-gradient(45deg, #7cbb9c, #ff48ec 180px)" class="tutorialHTML">
+
+            <div class="header introTxt" > welcome </div>
+            <div class="info intro">
+                This is a step by step walk-through window that will guide you to solving the rubik's cube!  <br><br>
+                <br> <br>
+                <a onclick="showReload()" href="https://ruwix.com/amazing-rubiks-cube-facts/">interesting facts</a>
+            </div>
+            
+            <insertCUBEtu movements = "" loadCube = "fullCube"> </insertCUBEtu>
+            <div class="info remove">
+                ℹ️ <br> This window can be resized by clicking and dragging the bottom right and moved/closed with the icons above <br><br>
+            </div>
+        </div>
+        <!-- teach cube notation -->
+        <div type="main" stage="7" title="Basics" colour="repeating-linear-gradient(45deg, #7cbb9c, #ff48ec 180px)" class="tutorialHTML">
+            
+            <div class="header introTxt" > Basics </div>
+            <div class="info">
+                lets start with understanding the basics <br> <br> 
+                <div class="bold">algorithms</div> are a series of moves, each move is represented with a letter.  <br> <br>
+                each letter is a 90 deg turn on the cube, if the movenet is follwed by a <div class="bold">"2"</div> repeat it twice. <br>
+                if the movenet is follwed by a  <div class="bold">'</div>  spin the side the opposite direction <br>
+
+            </div>
+            <div class="info">Pieces</div>
+            <div>
+                <div class="cubeSection">
+                    <div class="center">Edge:</div>
+                    <insertCUBEtu movements = "" loadCube = "edge-Flash"> </insertCUBEtu>
+                </div>
+                <div class="cubeSection">
+                    <div class="center">Corner:</div>
+                    <insertCUBEtu movements = "" loadCube = "corner-Flash"> </insertCUBEtu>
+                </div>
+                <div class="cubeSection">
+                    <div class="center">Center:</div>
+                    <insertCUBEtu movements = "" loadCube = "Center-Flash"> </insertCUBEtu>
+                </div>
+            </div>
+
+
+            <div class="info"> cube notation </div>
+            <div class="info">
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "U" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        UP
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "D" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        DOWN
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "R" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        RIGHT
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "L" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        LEFT
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "F" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        FRONT
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "B" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        BACK
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "M" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        MIDDLE TOP
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "E" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        MIDDLE LEFT
+                    </div>
+                </div>
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "S" loadCube = "fullCube"> </insertCUBEtu>
+                    <div class="describesCube">
+                        MIDDLE RIGHT
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- ONE -->
+        <div type="main" colour="blue" title="white Cross" stage="1" class="tutorialHTML">
+            <div class="header stage-1" > step 1 - white cross  </div>
+            <div class="info">
+                White Edge Pieces
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "stage-1"> </insertCUBEtu>
+                <div class="describesCube">
+                    This is the goal of this stage
+                </div>
+            </div>
+        </div>
+        <!-- ONE INFO -->
+        <div type="sub" colour="blue" title="white Cross" stage="1" class="tutorialHTML">
+            <div class="info">
+                Flipping An Edge
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="175" movements = "F U' R U" loadCube = "cross-case1"> </insertCUBEtu>
+                <div class="describesCube">
+                    three edges are done and the last one is oriented wrong
+                </div>
+            </div>
+
+            <div class="info">
+                From The Bottom Layer
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "F' U' R U" loadCube = "cross-case2"> </insertCUBEtu>
+                <div class="describesCube">
+                    white edge is on the front face
+                </div>
+            </div>
+
+            <div class="info">
+                From The Middle Layer
+            </div>
+            
+            <div class="cubeSection">
+                <insertCUBEtu movements = "U' R U" loadCube = "cross-case3"> </insertCUBEtu>
+                <div class="describesCube">
+                    second layer oriented wrong
+                </div>
+            </div>
+
+            <div class="cubeSection">
+                <insertCUBEtu movements = "U L' U'" loadCube = "cross-case4"> </insertCUBEtu>
+                <div class="describesCube">
+                    same case mirrored
+                </div>
+            </div>
+        </div>
+        <!-- TWO  -->
+        <div type="main" colour="rgb(36, 193, 36)" title="white corners" stage="2" class="tutorialHTML">
+            <div class="header stage-2" > step 2 - white corners  </div>
+            <div class="info">
+                White Edge Pieces
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "stage-2"> </insertCUBEtu>
+                <div class="describesCube">
+                    finish the first layer
+                </div>
+            </div>
+        </div>
+        <!-- TWO INFO -->
+        <div type="sub" colour="rgb(36, 193, 36)" title="white corners" stage="2" class="tutorialHTML">
+            <div class="info">
+                to the right
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="175" movements = "R' D' R" loadCube = "layer1-stage1"> </insertCUBEtu>
+                <div class="describesCube">
+                    White piece facing to the right
+                </div>
+            </div>
+            <div class="info">
+                to the Left
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="175" movements = "F D F'" loadCube = "layer1-stage2"> </insertCUBEtu>
+                <div class="describesCube">
+                    White piece facing to the left
+                </div>
+            </div>
+
+            <div class="info">
+                upsidedown 
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "R' D'2 R D R' D' R" loadCube = "layer1-stage3"> </insertCUBEtu>
+                <div class="describesCube">
+                    White piece facing down
+                </div>
+            </div>
+        </div>
+        <!--THREE  -->
+        <div type="main" colour="orange" title="2nd Layer" stage="3" class="tutorialHTML">
+            <div class="header stage-3" > step 3 - layer 2  </div>
+            <div class="info">
+                White Edge Pieces
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "layer2"> </insertCUBEtu>
+                <div class="describesCube">
+                    finish the second layer
+                </div>
+            </div>
+        </div>
+        <!--THREE INFO-->
+        <div type="sub" colour="orange" title="2nd Layer" stage="3" class="tutorialHTML">
+            <div class="info">
+                match a piece without yellow from the top layer to a side. thish should make a "┴" shape 
+                <div class="cubeSection">
+                    <insertCUBEtu height="230" movements = "" loadCube = "layer2-Flash"> </insertCUBEtu>
+                    <div class="describesCube">
+                        determine if the piece should go left or right (in this case right)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "U R U' R' U' F' U F" loadCube = "layer2-stage1"> </insertCUBEtu>
+                <div class="describesCube">
+                    right
+                </div>
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "U' L' U L U F U' F'" loadCube = "layer2-stage2"> </insertCUBEtu>
+                <div class="describesCube">
+                    left
+                </div>
+            </div>
+            <div class="info">
+                in the case that the piece is in the right spot but oriented wrong. <br> replace it with a yellow edge piece from the top layer 
+            </div>
+        </div>
+        <!--FOUR-->
+        <div type="main" colour="rgb(255, 255, 116)" title="Yellow Cross" stage="4" class="tutorialHTML">
+            <div class="header stage-4" > step 4 - yellow cross </div>
+            <div class="info">
+                aim :
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "yellowCross"> </insertCUBEtu>
+                <div class="describesCube">
+                    finish The Yellow Cross
+                </div>
+            </div>
+        </div>
+        <!--FOUR INFO-->
+        <div type="sub" colour="rgb(255, 255, 116)" title="Yellow Cross" stage="4" class="tutorialHTML">
+            <div class="info">
+                yellow dot      
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "F U R U' R' F' U" loadCube = "yellowCross-stage1"> </insertCUBEtu>
+                <div class="describesCube">
+                    this will make a yellow line. follow the last animation below to complete the yellow Cross
+                </div>
+            </div>
+
+            <div class="info">
+               yellow little L
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "F U R U' R' F'" loadCube = "yellowCross-stage2"> </insertCUBEtu>
+            </div>
+            
+            <div class="info">
+                yellow line 
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "F R U R' U' F'" loadCube = "yellowCross-stage3"> </insertCUBEtu>
+            </div>
+        </div>
+        <!--FIVE-->
+        <div type="main" colour="orange" title="Yellow Side" stage="5" class="tutorialHTML">
+            <div class="header stage-5" > step 5 - yellow Side </div>
+            <div class="info">
+                aim :
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "yellowSide"> </insertCUBEtu>
+                <div class="describesCube">
+                    finish The Yellow side
+                </div>
+            </div>
+        </div>
+        <!--FIVE INFO-->
+        <div type="sub" colour="orange" title="Yellow Side" stage="5" class="tutorialHTML">
+            <div class="info">
+                there is only one algorithm used in this section <div style="font-weight: bold;"> repeat the following below untill the Yellow Side is solved </div>
+            </div>
+
+            <div class="info">
+                arrangement one : <br> not fish:
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "R U R' U R U2 R'" loadCube = "yellowSide-stage1"> </insertCUBEtu>
+                <div class="describesCube">
+                    match the orientation of the top layer. <br> ensure that there is a yellow piece facing left away from you. 
+                    <br> repeating this will give you the fish.
+                </div>
+            </div>
+
+            <div class="info">
+                arrangement two : <br> fish:
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "R U R' U R U2 R'" loadCube = "yellowSide-stage2"> </insertCUBEtu>
+                <div class="describesCube">
+                    match the orientation of the top layer (fish facing the bottom left).
+                    <br> if this gives you another fish, match the orientation of the animation and redo.
+                </div>
+            </div>
+        </div>
+
+        <!--SIX-->
+        <div type="main" colour="rgb(129, 102, 191)" title="Pair Of Corners" stage="6" class="tutorialHTML">
+            <div class="header stage-6" > step 6- yellow Corners </div>
+            <div class="info">
+                aim :
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "PairOfCorners"> </insertCUBEtu>
+                <div class="describesCube">
+                    sort the corner pieces
+                </div>
+            </div>
+        </div>
+        <!--SIX INFO-->
+        <div type="sub" colour="rgb(129, 102, 191)" title="Pair Of Corners" stage="6" class="tutorialHTML">
+            
+            <div class="info">
+                find a Pair of sorted corner pieces on one side and follow STEP 1 then 2. <br>
+                if there is not sorted corner pieces follow STEP 2 to make a pair.
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "U2" loadCube = "PairOfCorners-pair-Flash"> </insertCUBEtu>
+                <div class="describesCube">
+                    STEP 1: Find a pair and rotate to back
+                </div>
+            </div>
+            <div class="info">
+                ensure that the Pair of sorted corner pieces are facing away from you.
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "R' F R' B2 R F' R' B2 R2 U" loadCube = "PairOfCorners-pair"> </insertCUBEtu>
+                <div class="describesCube">
+                    STEP 2: solve all corner pieces
+                </div>
+            </div>
+        </div>
+        <!-- SEVEN -->
+        <div type="main" colour="rgb(202, 59, 59)" title="Final Edges" stage="7" class="tutorialHTML">
+            <div class="header stage-7" > step 7- Yellow Edges </div>
+            <div class="info">
+                aim :
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu movements = "" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    sort the Yellow Edges.
+                </div>
+            </div>
+        </div>
+        <!-- SEVEN INFO-->
+        <div type="sub" colour="rgb(202, 59, 59)" title="Final Edges" stage="7" class="tutorialHTML">
+            <div class="info">
+                if the there is no solved side (that is not yellow and white), follow the one of the algorithms below. <br> otherwise position the solved side to face back right.
+            </div>
+            <div class="info">
+                determine direction:
+                <div class="cubeSection">
+                    <insertCUBEtu height="230" movements = "" loadCube = "YellowEdges-Flash"> </insertCUBEtu>
+                    <div class="describesCube">
+                        look at the middle peice (in this case green) and determine if it need to go left or right (in this case right)
+                    </div>
+                </div>
+            </div>
+
+            <div class="cubeSection">'
+                <insertCUBEtu height="230" movements = "F2 U' L R' F2 L' R U' F2" loadCube = "YellowEdges-right"> </insertCUBEtu>
+                <div class="describesCube">
+                    CASE 1: right
+                </div>
+            </div>
+            <div class="cubeSection">
+                <insertCUBEtu height="230" movements = "F2 U L R' F2 L' R U F2" loadCube = "YellowEdges-left"> </insertCUBEtu>
+                <div class="describesCube">
+                    CASE 2:left
+                </div>
+            </div>
+        </div>
+        <!-- all done -->
+        <div type="main" colour="rgb(192 72 143)" title="DONE!" stage="7" class="tutorialHTML">
+            <div class="info">
+                ALL DONE !
+                <div class="cubeSection">
+                    <insertCUBEtu movements = "" loadCube = "fullCube"> </insertCUBEtu>
+                </div>    
+            </div>
+
+            <div class="info">
+                What Next?  try: <br> <br>
+                - <div style="font-weight: bold;display: inline;">time yourself </div>  and get faster. <br> <br>
+                - <div style="font-weight: bold;display: inline;">memorise </div> how to solve the cube <br> <br>
+                - aply fun <div style="font-weight: bold;display: inline;">patterns</div>! <br> 
+                <div class="info" style="margin: 2px;"> 
+                    <div style="font-weight: bold;">
+                    more advanced skills: 
+                    </div>
+                    learing to do F2L(first two layers) in one step will this greatly improve your solvetime.
+                    <br>
+                    we do not proide any tutorial for this but <a onclick="showReload()" href="https://ruwix.com/the-rubiks-cube/advanced-cfop-fridrich/first-two-layers-f2l/"> here</a> is a good website to learn it
+                </div>
+            </div>
+        </div>
+        <!-- other -->
+        <div type="sub" colour="orange" title="patterns" stage="7" class="tutorialHTML">
+            <div class="tuBtn remove" onclick="loadCube('fullCube')"> load full cube</div>
+
+            <div class="info">
+                here are some cool patterns to try <br> visit <a onclick="showReload()" href="https://thedukeofcubes.com/3x3-cube-patterns/">this</a> site for more! :
+            </div>
+            
+            <br> <br>
+            <div class="cubeSection">
+                <insertCUBEtu height="240" movements = "U D' R L' F B' U D'" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Dots
+                </div>
+            </div> 
+            <div class="cubeSection">
+                <insertCUBEtu movements = "M2 E2 S2" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Checkerboard
+                </div>
+            </div>    
+            <div class="cubeSection">
+                <insertCUBEtu height="360" movements = "B D F' B' D L2 U L U' B D' R B R D' R L' F U2 D" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Checkerboard Cube In A Cube
+                </div>
+            </div> 
+            <div class="cubeSection">
+                <insertCUBEtu height="300" movements = "F L F U' R U F2 L2 U' L' B D' B' L2 U" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Cube In A Cube
+                </div>
+            </div> 
+            <div class="cubeSection">
+                <insertCUBEtu height="300" movements = "F R' U L F' L' F U' R U L' U' L F'" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Twist
+                </div>
+            </div> 
+
+            <div class="cubeSection">
+                <insertCUBEtu height="300" movements = "L U B' U' R L' B R' F B' D R D' F'" loadCube = "fullCube"> </insertCUBEtu>
+                <div class="describesCube">
+                    Anaconda
+                </div>
+            </div> 
+            
+        </div>
+    </div>
+
+
+</body>
+
+<style>
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+insertcubeverify{
+    display: flex;
+    justify-content: center;
+}
+.introTxt{
+    background-image:repeating-linear-gradient(45deg, #7cbb9c, #ff48ec 8px)
+}
+.info{
+    background: #7e5fa40f;
+    padding: 17px;
+    text-align: center;
+    border-radius: 12px;
+    text-transform: capitalize;
+    margin: 40px;
+}
+.describesCube{
+    font-family: monospace;
+    background: #afafaf;
+    border-radius: 12px;
+    padding: 9px;
+}
+.cubeSection{
+    background: #a8a8a887;
+    padding: 12px;
+    width:fit-content;
+    margin: 11px;
+    border-radius: 12px;
+}
+.stage-1{
+    background-image: repeating-linear-gradient(45deg, rgb(64, 64, 161), #1e8cff 18px);
+}
+.stage-2{
+    background-image: repeating-linear-gradient(45deg, #4CAF50, #29ff83 18px);
+}
+.stage-3{
+    background-image: repeating-linear-gradient(45deg, #ffb35f, #b15900 18px);
+}
+.stage-4{
+    background-image: repeating-linear-gradient(45deg, rgb(227, 255, 47), #586b1b 18px);
+}
+.stage-5{
+    background-image: repeating-linear-gradient(45deg, #ffb35f, #b15900 18px);
+}
+.stage-6{
+    background-image: repeating-linear-gradient(45deg, rgb(135, 135, 245), #3e0a6e 18px);
+}
+.stage-7{
+    background-image: repeating-linear-gradient(45deg, rgb(202, 76, 76), #4d0303 18px);
+}
+.header{
+    text-align: center;
+    font-size: 20px;
+    color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0px 0px 0.3px black);
+    text-transform: capitalize;
+}
+.Section{
+    display: none;
+}
+#titles{
+    width: 99%;
+    z-index: 2;
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+}
+.bold{
+    font-weight: bold;
+    display: inline;
+}
+.progressbar-contain{
+    height: 46px;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    position: absolute;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+    box-shadow: 0px 0px 20px 0px rgb(0 9 55 / 40%);
+    display: flex;
+    align-items: center;
+}
+
+#progressbar{
+    height: 12%;
+    background-color: red;
+    border-radius: 10px;
+    transition-duration: 1s;
+    margin-left: 3vw;
+}
+
+.rotateImg{
+    rotate:180deg;
+}
+
+.nomove{
+    -webkit-transform: scale(1.6);
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+.containBtn{
+    width: 15vw;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrImg{
+    opacity: 0.5;
+    height: 100%;
+    padding: 7px;
+    width: 90%;
+    transition-duration: 1s;
+    border: 5px solid #5555550f;
+    border-radius: 34px;
+    background: white;
+}
+
+.btn{
+    width: 37%;
+    display: flex;
+    justify-content: center;
+}
+.tuBtn{
+    background: #ff8e604f;
+    padding: 3px;
+    margin: 10px;
+    margin-top: 25px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 1px 1px;
+    transition-duration: 0.2s;
+}
+.tuBtn:hover{
+    box-shadow: 0.1px 0.1px;
+}
+.right{
+    right: 0;
+}
+
+.left{
+    left: 0;
+}
+
+.popUpHeadder{
+    font-family: monospace;
+    transition-duration: 1s;
+    opacity: 0;   
+    width: 0;
+    height: fit-content;
+}
+
+.popUpHeadder.active{
+    opacity: 1;
+    font-size: 14px;
+    width: fit-content;
+    margin-bottom: 28px;
+    border-radius: 12px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.hilight{
+    background: #00000017;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#containdisplay{
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    position: absolute;
+    transition-duration: 0.8s;
+    display: flex;    
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+#sencond{
+    margin-left: 200%;
+}
+    
+.display-tu{
+    position: absolute;
+    background: #ffffff;
+    height: 90%;
+    margin-bottom: 5vh;
+    width: 95%;
+    transition-duration: 0.7s;
+    box-shadow: 0px 0px 20px 20px rgb(0 9 55 / 40%);
+    border-radius: 14px;
+    display: flex;
+    overflow-x: hidden;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+
+.display-tu.dark{
+    background:linear-gradient(180deg, #00124f, #5f4d85)!important;
+}
+.containCubeDispay{
+    border: 4px solid #9292921f;
+    transition-duration: 0.5s;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ffeeee, #d5e8ff);
+}
+.cubeFrame{
+    border-radius: 10px;
+    height:175px;
+    width: 100%;
+}
+
+</style>
+
+<script>
+    const mainEl = document.getElementById("mainDisplay");
+    const progressBar = document.getElementById("progressbar");
+    const containdisplay =  document.getElementById("containdisplay");
+    var swapping = false;
+    var indexOn = 0;
+
+    const CubeIndex = new URL(document.location).searchParams.get("cubeIndex");
+    var tutorialSections = []
+
+
+    // when in small window send message to the outer window (cube interface) 
+    function loadCube(load){
+        parent.postMessage(load,"*");
+    }
+
+
+    // reload the page mini window to get back after going to external website 
+    function showReload(){
+        parent.postMessage("reload","*");
+    }
+
+
+    // add the cubes html 
+    function addInTheCubes(){
+        cubeTu = document.getElementsByTagName("insertCUBEtu")
+        for (let i = 0; i < cubeTu.length; i++) {
+            cubeLoad = cubeTu[i].getAttribute("loadcube");
+            movements = cubeTu[i].getAttribute("movements");
+            noMove = ""
+            if(movements==""){
+                noMove = " nomove" 
+            }
+            height = cubeTu[i].getAttribute("height");
+            cubeTu[i].innerHTML = '<iframe style="height:'+height+'px" class="cubeFrame'+noMove+'" id="frame-'+i+'" src="miniCube.html?loadCube='+cubeLoad+'&movements='+movements+'" frameborder="0"></iframe>';
+            iframe = document.getElementById("frame-"+i);
+        }
+    }
+
+
+    // set the tutorialSections 
+    function setVeribalSections(){
+        // change content if the page is a mini window or on main page
+        if(CubeIndex != null){
+            document.getElementsByTagName("insertBar")[0].remove();
+            document.getElementsByTagName("insertD-L")[0].remove();
+        }else{
+            document.getElementsByClassName("intro")[0].innerHTML = "This is a step by step walk-through page that will guide you to solving the rubik's cube!";
+            reomveEl = document.getElementsByClassName("remove");
+            for (let i = 0; i < reomveEl.length; i++) {
+                reomveEl[i].style.display = "none";
+            }
+        }
+        // populate the tutorialSections with html/ properties 
+        tutorialHTMLarr = document.getElementsByClassName("Section")[0].getElementsByClassName("tutorialHTML");
+        for (let i = 0; i < tutorialHTMLarr.length; i++) {
+            tutorialSections.push({
+                "type":tutorialHTMLarr[i].getAttribute("type"),
+                "colour":tutorialHTMLarr[i].getAttribute("colour"),
+                "title":tutorialHTMLarr[i].getAttribute("title"),
+                "stage":parseInt(tutorialHTMLarr[i].getAttribute("stage")),
+                "html":tutorialHTMLarr[i].innerHTML,   
+            });
+        }
+    
+    }
+
+
+    // animation for changing slides
+    function swipeSlide(left){
+        if(swapping==true){return;}
+        // set a range for the indexOn variable to make it within the amount of tutorials
+        if(indexOn < 1 && left){
+            indexOn = 0; 
+            return;
+        }
+        if(indexOn > tutorialSections.length - 2 && !left) {
+            tutorialSections.length - 1;
+            return
+        } 
+
+        const moveEl = document.getElementById("sencond")
+        swapping = true;
+        document.getElementsByClassName("popUpHeadder")[indexOn].classList.toggle("active");
+        //set up
+        moveEl.style.transitionDuration = "0s";
+        moveEl.style.opacity = 1;
+        moveEl.style.display = "flex";
+
+        if(left){
+            moveEl.style.marginLeft = "0%";
+            moveEl.style.marginRight = "200%";
+            indexOn--
+        }else{
+            moveEl.style.marginLeft = "200%";
+            moveEl.style.marginRight = "0%";
+            indexOn++
+        }
+
+        // add the new html to the overlay
+        document.getElementsByClassName("popUpHeadder")[indexOn].classList.toggle("active");
+       
+        if(CubeIndex != null){
+            cubes = JSON.parse(localStorage.allCubes);
+            cubes[CubeIndex].optionsSelect.stage = indexOn;
+            localStorage.setItem("allCubes",JSON.stringify(cubes))
+            parent.postMessage(tutorialSections[indexOn].stage,"*");
+        }else{
+            sessionStorage.setItem("pageOnTu",indexOn)
+        }
+        
+        moveEl.innerHTML = tutorialSections[indexOn].html;
+        containdisplay.style.background = tutorialSections[indexOn].colour;
+        progressBar.style.background = tutorialSections[indexOn].colour;
+
+        // update progress Bar 
+        progressBar.style.width = 94*(indexOn/(tutorialSections.length-1))+1+"vw";
+        
+        // add the transitionDuration after so that it applies to the element and does not interfear with the set up
+        setTimeout(()=>{
+            moveEl.style.transitionDuration="0.8s"
+            if(left){
+                moveEl.style.marginRight = "0%";
+            }else{
+                moveEl.style.marginLeft = "0%";
+            }
+        },1)
+
+        setTimeout(()=>{
+            //// add the new html to the main display then remove the overlay
+            mainEl.innerHTML = tutorialSections[indexOn].html
+            moveEl.style.opacity = 0;
+            moveEl.style.display = "none";
+            swapping = false;
+        },800)
+    }
+
+    //update the slide content to the slide on
+    function setUpBox(){
+        var cubeStage = 0;
+        if(CubeIndex != null){
+            cubeStage = JSON.parse(localStorage.allCubes)[CubeIndex].optionsSelect.stage;
+            parent.postMessage(tutorialSections[cubeStage].stage,"*");
+        }else{
+            if(sessionStorage.pageOnTu == undefined){
+                sessionStorage.setItem("pageOnTu",0)
+            }
+            cubeStage = JSON.parse(sessionStorage.pageOnTu)   
+        }
+        indexOn = cubeStage;
+        // progress Bar 
+        progressBar.style.width = 94*(cubeStage/(tutorialSections.length-1))+1+"vw";
+        document.getElementsByClassName("popUpHeadder")[cubeStage].classList.toggle("active");
+        //  main box
+        mainEl.innerHTML = tutorialSections[cubeStage].html;
+        containdisplay.style.background = tutorialSections[cubeStage].colour;
+        progressBar.style.background = tutorialSections[cubeStage].colour;
+    }
+
+
+    // initialise the display 
+    function main(){
+        addInTheCubes() 
+        setVeribalSections()
+
+        //add titles to progress bar 
+        for(let i = 0; i < tutorialSections.length;i++){
+            if(tutorialSections[i].type == "main"){
+                document.getElementById("titles").innerHTML += "<div class='popUpHeadder hilight'>" + tutorialSections[i].title + "</div>"
+            }else{
+                //for the sub sections
+                document.getElementById("titles").innerHTML += "<div class='popUpHeadder'>" + tutorialSections[i].title + "</div>"
+            }
+        }
+
+        setUpBox()
+
+        //user imput
+        document.addEventListener("keydown", (event)=> {
+            if (event.key === "ArrowLeft") {
+                swipeSlide(true);
+            } else if (event.key === "ArrowRight") {
+                swipeSlide(false);
+            }
+        });
+    }
+
+    window.onload = main
+
+</script>
+</html>
