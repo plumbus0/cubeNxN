@@ -2,10 +2,21 @@
   "name": "cubesite",
   "version": "1.0.0",
   "description": "cube site to make nxn cubes and to learn!",
-  "main": "index.html",
+  "main": "api/server.ts",
+  "type": "module",
   "scripts": {
+    "start": "npx tsx api/server.ts",
+    "dev": "ts-node-dev --respawn api/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "ts-node-dev": "^2.0.0",
+    "tsx": "^4.21.0"
+  }
 }
