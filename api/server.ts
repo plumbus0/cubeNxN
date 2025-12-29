@@ -32,7 +32,6 @@ app.use(express.static(path.join(__dirname, '..')));
 // 404: not found
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.status(404).sendFile(path.join(__dirname, '..', '..', '404.html'));
-  // res.status(404).send('Not Found');
 });
 
 app.use(((err: Error, req: Request, res: Response, next: NextFunction) => {
