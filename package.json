@@ -5,9 +5,8 @@
   "main": "api/server.ts",
   "type": "module",
   "scripts": {
-    "start": "npx tsx api/server.ts",
-    "dev": "ts-node-dev --respawn api/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/api/server.js"
   },
   "author": "",
   "license": "ISC",
